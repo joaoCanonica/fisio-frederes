@@ -1,0 +1,128 @@
+---
+// Fontes: docs/pesquisa/marcos-motores.md
+import { FONTE_MARCOS, marcos } from '../data/marcos.ts';
+const MAX = 18;
+const pct = (m: number) => `${((m / MAX) * 100).toFixed(2)}%`;
+const fmt = (n: number) => n.toLocaleString('pt-BR');
+---
+<section id="desenvolvimento" class="sec" aria-labelledby="dev-titulo">
+  <div class="wrap">
+    <div class="dev__topo" data-revelar>
+      <p class="eyebrow">Desenvolvimento motor</p>
+      <h2 id="dev-titulo" class="titulo">Cada criança tem o <em>seu ritmo</em>.</h2>
+      <p class="lead">
+        Sentar, engatinhar, ficar em pé e andar não acontecem em datas exatas. A Organização
+        Mundial da Saúde acompanhou crianças saudáveis em cinco países e mostrou que cada marco
+        acontece dentro de uma janela de idade, que pode durar vários meses.
+      </p>
+    </div>
+
+    <figure class="grafico" data-revelar>
+      <figcaption class="grafico__leg">
+        Janelas de idade em que crianças saudáveis alcançaram cada marco (meses)
+      </figcaption>
+      <table class="grafico__tab">
+        <caption class="sr-only">Idade, em meses, do início e do fim da janela de cada marco motor</caption>
+        <thead class="sr-only">
+          <tr><th scope="col">Marco</th><th scope="col">Início (meses)</th><th scope="col">Fim (meses)</th></tr>
+        </thead>
+        <tbody>
+          {marcos.map((m, i) => (
+            <tr style={`--i:${i}`}>
+              <th scope="row">{m.nome}</th>
+              <td class="grafico__trilho" colspan="2">
+                <span class="grafico__barra" style={`--ini:${pct(m.inicio)};--fim:${pct(m.fim)}`}>
+                  <span class="sr-only">de </span>
+                  <span class="grafico__n">{fmt(m.inicio)}</span>
+                  <span class="sr-only"> a </span>
+                  <span class="grafico__n">{fmt(m.fim)}</span>
+                  <span class="sr-only"> meses</span>
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot aria-hidden="true">
+          <tr>
+            <td></td>
+            <td class="grafico__eixo">
+              {[0, 3, 6, 9, 12, 15, 18].map((m) => <span style={`--x:${pct(m)}`}>{m}</span>)}
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <p class="fonte">
+        Fonte: <a href={FONTE_MARCOS.url} target="_blank" rel="noopener">{FONTE_MARCOS.texto}</a>.
+        Janelas entre os percentis 1 e 99.
+      </p>
+    </figure>
+
+    <div class="dev__nota" data-revelar>
+      <p>
+        Ter dúvidas sobre o desenvolvimento do seu filho é comum. O primeiro passo é conversar
+        com o pediatra que acompanha a criança. Quando há indicação, a fisioterapia contribui
+        com uma consulta fisioterapêutica focada no movimento.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dev__topo { max-width: 44rem; }
+  .grafico {
+    margin: 3.5rem 0 0;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    background: var(--gelo-0);
+    border: 1px solid var(--linha);
+    border-radius: var(--raio-g);
+  }
+  .grafico__leg { font-weight: 600; margin-bottom: 1.5rem; }
+  .grafico__tab { width: 100%; border-collapse: collapse; }
+  .grafico__tab tfoot tr { border: 0; }
+  .grafico__tab tr { display: grid; grid-template-columns: minmax(7.5rem, 12rem) 1fr; align-items: center; gap: 1rem; padding-block: 0.55rem; border-bottom: 1px solid var(--gelo-100); }
+  .grafico__tab th { text-align: left; font-weight: 500; font-size: 0.92rem; }
+  .grafico__trilho { position: relative; height: 2.1rem; padding: 0; }
+  .grafico__barra {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--ini);
+    right: calc(100% - var(--fim));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 0.6rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--rosa-200), var(--vinho-700));
+    color: var(--gelo-50);
+    font-size: 0.75rem;
+    font-weight: 700;
+    transform-origin: left;
+  }
+  .grafico__barra .grafico__n:first-of-type { color: var(--vinho-900); }
+  .js .grafico[data-revelar] .grafico__barra { transform: scaleX(0); transition: transform 1.1s var(--ease); transition-delay: calc(0.2s + var(--i) * 0.08s); }
+  .js .grafico.visivel .grafico__barra { transform: none; }
+  .grafico__eixo {
+    position: relative;
+    height: 1.5rem;
+    padding: 0;
+    font-size: 0.72rem;
+    color: var(--suave);
+  }
+  .grafico__eixo span { position: absolute; left: var(--x); transform: translateX(-50%); top: 0.4rem; }
+  .fonte { margin-top: 1.5rem; font-size: 0.82rem; color: var(--suave); }
+  .dev__nota {
+    margin-top: 2.5rem;
+    max-width: 44rem;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--vinho-700);
+    color: var(--suave);
+  }
+  @media (max-width: 34rem) {
+    .grafico__tab tr { grid-template-columns: 1fr; gap: 0.4rem; }
+    .grafico__tab tfoot td:first-child { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js .grafico[data-revelar] .grafico__barra { transform: none; }
+  }
+</style>

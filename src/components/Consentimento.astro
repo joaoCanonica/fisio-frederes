@@ -1,0 +1,65 @@
+---
+// Banner de consentimento (LGPD). O site não usa cookies de análise nem de
+// publicidade; o único conteúdo não essencial são incorporações de terceiros
+// (Instagram e mapa), que ficam bloqueadas até o aceite.
+// "Aceitar" e "Recusar" têm o mesmo peso visual e a mesma posição de destaque.
+---
+<section class="cons" data-consentimento hidden aria-labelledby="cons-titulo" role="region">
+  <div class="cons__in">
+    <div>
+      <h2 id="cons-titulo">Conteúdo de terceiros</h2>
+      <p>
+        Este site não usa cookies de análise nem de publicidade. Se você aceitar, carregamos
+        o Instagram e o mapa, que podem gravar cookies dos próprios serviços. Você pode mudar
+        de ideia a qualquer momento no rodapé. <a href="/privacidade">Política de privacidade</a>.
+      </p>
+    </div>
+    <div class="cons__acoes">
+      <button type="button" class="btn btn--linha" data-escolha="recusado">Recusar</button>
+      <button type="button" class="btn btn--linha" data-escolha="aceito">Aceitar</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cons {
+    position: fixed;
+    inset: auto 1rem 1rem;
+    z-index: 80;
+    max-width: 44rem;
+    margin-inline: auto;
+    background: var(--gelo-0);
+    border: 1px solid var(--linha);
+    border-radius: var(--raio);
+    box-shadow: 0 24px 60px -20px rgb(61 15 27 / 0.35);
+    padding: 1.25rem 1.4rem;
+  }
+  .cons__in { display: grid; gap: 1rem; }
+  h2 { font-size: 1.2rem; }
+  p { font-size: 0.9rem; color: var(--suave); margin-top: 0.4rem; }
+  .cons__acoes { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  @media (min-width: 40rem) {
+    .cons__in { grid-template-columns: 1fr auto; align-items: end; }
+    .cons__acoes { grid-template-columns: auto auto; }
+  }
+</style>
+
+<script>
+  import { lerConsentimento, gravarConsentimento } from '../scripts/consentimento.ts';
+  const banner = document.querySelector<HTMLElement>('[data-consentimento]');
+  if (banner) {
+    if (lerConsentimento() === null) banner.hidden = false;
+    banner.querySelectorAll<HTMLButtonElement>('[data-escolha]').forEach((b) =>
+      b.addEventListener('click', () => {
+        gravarConsentimento(b.dataset['escolha'] === 'aceito' ? 'aceito' : 'recusado');
+        banner.hidden = true;
+      }),
+    );
+    document.querySelectorAll('[data-reabrir-consentimento]').forEach((b) =>
+      b.addEventListener('click', () => {
+        banner.hidden = false;
+        banner.querySelector<HTMLButtonElement>('[data-escolha]')?.focus();
+      }),
+    );
+  }
+</script>

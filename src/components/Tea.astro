@@ -1,0 +1,109 @@
+---
+// Fontes: docs/pesquisa/tea-aspectos-motores.md
+// Limite: a fisioterapia atua no movimento e na participação. Nunca sugerir
+// tratar, curar ou reduzir o autismo.
+const atua = [
+  ['Desenvolvimento motor', 'Habilidades como correr, pular, subir e descer escadas, de acordo com a fase da criança.'],
+  ['Coordenação', 'Organização dos movimentos para brincar, pegar, arremessar e se vestir.'],
+  ['Equilíbrio e postura', 'Estabilidade para se mover com mais segurança em diferentes ambientes.'],
+  ['Aspectos sensório-motores', 'Como a criança percebe e usa o próprio corpo durante o movimento.'],
+  ['Participação', 'Mais autonomia para brincar e participar das atividades em casa e na escola.'],
+] as const;
+const naoFaz = [
+  'Não trata, não cura e não reduz o autismo. O objetivo é o movimento e a participação.',
+  'Não substitui o acompanhamento médico nem o trabalho de outras áreas da equipe.',
+  'Não promete resultados nem prazos: cada plano terapêutico é revisto conforme a resposta da criança.',
+] as const;
+---
+<section id="tea" class="sec tea" aria-labelledby="tea-titulo">
+  <div class="wrap">
+    <div class="tea__topo">
+      <div data-revelar>
+        <p class="eyebrow eyebrow--claro">Fisioterapia e TEA</p>
+        <h2 id="tea-titulo" class="titulo">O foco é o <em>movimento</em>, no tempo da criança.</h2>
+      </div>
+      <figure class="tea__dado" data-revelar style="--i:1">
+        <p class="tea__num">1 <span>em cada</span> 3</p>
+        <figcaption>
+          crianças autistas de até 6 anos apresentaram dificuldades motoras em um estudo
+          com mais de 2 mil crianças, e essas dificuldades raramente foram registradas no
+          diagnóstico.
+          <cite>Licari et al., <i>Autism Research</i>, 2020. <a href="https://doi.org/10.1002/aur.2230" target="_blank" rel="noopener">doi:10.1002/aur.2230</a></cite>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="tea__grade">
+      <div>
+        <h3 class="tea__h3">Em que a fisioterapia atua</h3>
+        <ul class="tea__lista">
+          {atua.map(([t, d], i) => (
+            <li data-revelar style={`--i:${i}`}>
+              <span class="tea__idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <div><strong>{t}</strong><p>{d}</p></div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <aside class="tea__limites" aria-labelledby="limites-titulo" data-revelar>
+        <h3 id="limites-titulo" class="tea__h3">Com clareza sobre os limites</h3>
+        <ul>{naoFaz.map((t) => <li>{t}</li>)}</ul>
+        <p class="tea__equipe">
+          O cuidado da criança autista envolve uma equipe de diferentes áreas. A fisioterapia
+          é uma delas, com foco no corpo e no movimento.
+          <cite>Ministério da Saúde, <a href="http://bvsms.saude.gov.br/bvs/publicacoes/diretrizes_atencao_reabilitacao_pessoa_autismo.pdf" target="_blank" rel="noopener">Diretrizes de Atenção à Reabilitação da Pessoa com TEA</a>, 2014.</cite>
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tea {
+    background:
+      radial-gradient(60rem 40rem at 110% -10%, rgb(154 58 82 / 0.35), transparent 60%),
+      var(--vinho-900);
+    color: var(--gelo-50);
+    --linha: rgb(232 201 207 / 0.2);
+  }
+  .tea a { color: var(--rosa-200); }
+  .eyebrow--claro { color: var(--rosa-200); }
+  .tea :global(.titulo em) { color: var(--rosa-200); }
+  .tea__topo { display: grid; gap: 3rem; align-items: end; }
+  @media (min-width: 60rem) { .tea__topo { grid-template-columns: 1.3fr 1fr; gap: 5rem; } }
+  .tea__dado { margin: 0; padding-left: 1.5rem; border-left: 1px solid var(--linha); }
+  .tea__num { font: 300 clamp(3.5rem, 8vw, 5.5rem)/1 var(--serif); color: var(--gelo-0); }
+  .tea__num span { font-size: 0.32em; font-style: italic; color: var(--rosa-200); vertical-align: middle; }
+  .tea__dado figcaption { margin-top: 1rem; color: var(--rosa-100); font-size: 0.95rem; }
+  cite { display: block; margin-top: 0.75rem; font-style: normal; font-size: 0.78rem; color: var(--vinho-300); }
+  .tea__grade { display: grid; gap: 3.5rem; margin-top: 5rem; }
+  @media (min-width: 60rem) { .tea__grade { grid-template-columns: 1.3fr 1fr; gap: 5rem; } }
+  .tea__h3 {
+    font: 700 0.75rem/1 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rosa-200);
+    margin-bottom: 1.5rem;
+  }
+  .tea__lista { list-style: none; margin: 0; padding: 0; }
+  .tea__lista li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--linha);
+  }
+  .tea__idx { font: italic 400 1rem/1.6 var(--serif); color: var(--vinho-300); }
+  .tea__lista strong { font: 450 1.35rem/1.3 var(--serif); }
+  .tea__lista p { color: var(--rosa-100); margin-top: 0.3rem; font-size: 0.97rem; }
+  .tea__limites {
+    align-self: start;
+    background: rgb(251 252 252 / 0.06);
+    border: 1px solid var(--linha);
+    border-radius: var(--raio-g);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .tea__limites ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.9rem; }
+  .tea__limites li::marker { color: var(--rosa-200); }
+  .tea__equipe { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--linha); color: var(--rosa-100); font-size: 0.95rem; }
+</style>

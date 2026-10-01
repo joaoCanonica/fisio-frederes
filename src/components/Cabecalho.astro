@@ -1,0 +1,100 @@
+---
+import Marca from './Marca.astro';
+import Icone from './Icone.astro';
+import { profissional } from '../data/profissional.ts';
+import { whatsappUrl } from '../lib/contato.ts';
+const base = Astro.url.pathname === '/' ? '' : '/';
+const links = [
+  ['Sobre', 'sobre'],
+  ['Desenvolvimento', 'desenvolvimento'],
+  ['TEA', 'tea'],
+  ['Atendimento', 'atendimento'],
+  ['Contato', 'contato'],
+] as const;
+---
+<header class="cab" data-cab>
+  <div class="wrap cab__in">
+    <a class="cab__marca" href="/" aria-label={`${profissional.nomeCurto.valor}, página inicial`}>
+      <Marca class="cab__logo" />
+      <span class="cab__nome">
+        <strong>{profissional.nomeCurto.valor}</strong>
+        <small>Fisioterapia neuropediátrica</small>
+      </span>
+    </a>
+    <nav aria-label="Seções">
+      <ul class="cab__nav">
+        {links.map(([rotulo, id]) => <li><a href={`${base}#${id}`}>{rotulo}</a></li>)}
+      </ul>
+    </nav>
+    <a class="btn cab__cta" href={whatsappUrl()} rel="noopener" target="_blank">
+      <Icone nome="whatsapp" /><span>WhatsApp</span><span class="sr-only"> (abre em nova aba)</span>
+    </a>
+  </div>
+</header>
+
+<style>
+  .cab {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in oklab, var(--gelo-50) 82%, transparent);
+    backdrop-filter: saturate(1.4) blur(14px);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .cab[data-rolado] { border-bottom-color: var(--linha); }
+  .cab__in {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 4.5rem;
+  }
+  .cab__marca {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--tinta);
+    margin-right: auto;
+  }
+  .cab :global(.cab__logo) { width: 2.5rem; height: 2.5rem; flex: none; }
+  .cab__nome { display: grid; line-height: 1.15; }
+  .cab__nome strong { font: 500 1.05rem/1.2 var(--serif); }
+  .cab__nome small { font-size: 0.72rem; color: var(--suave); letter-spacing: 0.04em; }
+  .cab__nav {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .cab__nav a {
+    color: var(--tinta);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding-block: 0.5rem;
+    background: linear-gradient(var(--vinho-700), var(--vinho-700)) left bottom / 0 1px no-repeat;
+    transition: background-size 0.4s var(--ease);
+  }
+  .cab__nav a:hover { background-size: 100% 1px; }
+  .cab__cta { min-height: 2.6rem; padding: 0.6rem 1.1rem; }
+  @media (max-width: 60rem) {
+    nav { display: none; }
+  }
+  @media (max-width: 26rem) {
+    .cab__nome small { display: none; }
+    .cab__cta span:not(.sr-only) { display: none; }
+    .cab__cta { padding: 0.6rem; aspect-ratio: 1; }
+  }
+</style>
+
+<script>
+  const cab = document.querySelector<HTMLElement>('[data-cab]');
+  if (cab) {
+    const sentinela = () => cab.toggleAttribute('data-rolado', window.scrollY > 8);
+    sentinela();
+    addEventListener('scroll', sentinela, { passive: true });
+  }
+</script>

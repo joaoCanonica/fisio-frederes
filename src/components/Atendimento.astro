@@ -1,0 +1,72 @@
+---
+const etapas = [
+  {
+    t: 'Consulta fisioterapêutica',
+    d: 'Conversa com a família sobre a história e a rotina da criança, e observação do movimento durante o brincar.',
+  },
+  {
+    t: 'Diagnóstico fisioterapêutico e plano terapêutico',
+    d: 'A partir da consulta, são definidos objetivos ligados ao dia a dia da criança e a forma de trabalhar cada um deles.',
+  },
+  {
+    t: 'Atendimentos e acompanhamento',
+    d: 'Os atendimentos usam brincadeiras e atividades com propósito. O plano é revisto com a família ao longo do tempo.',
+  },
+  {
+    t: 'Conversa com a equipe',
+    d: 'Quando a família autoriza, há troca de informações com os outros profissionais que acompanham a criança.',
+  },
+] as const;
+---
+<section id="atendimento" class="sec" aria-labelledby="atend-titulo">
+  <div class="wrap">
+    <div class="atend__topo" data-revelar>
+      <p class="eyebrow">Como funciona</p>
+      <h2 id="atend-titulo" class="titulo">Um caminho <em>combinado</em> com a família.</h2>
+    </div>
+    <ol class="etapas">
+      {etapas.map((e, i) => (
+        <li data-revelar style={`--i:${i}`}>
+          <span class="etapas__n" aria-hidden="true">{i + 1}</span>
+          <h3>{e.t}</h3>
+          <p>{e.d}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .atend__topo { max-width: 40rem; }
+  .etapas {
+    list-style: none;
+    margin: 4rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    counter-reset: e;
+  }
+  .etapas li {
+    position: relative;
+    padding: 2rem 1.5rem 1.75rem;
+    background: var(--gelo-0);
+    border: 1px solid var(--linha);
+    border-radius: var(--raio);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+  .etapas li:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -28px rgb(61 15 27 / 0.4); }
+  .etapas__n {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--vinho-700);
+    color: var(--vinho-700);
+    font: italic 400 1.25rem/1 var(--serif);
+    margin-bottom: 1.5rem;
+  }
+  .etapas h3 { font-size: 1.35rem; font-weight: 450; }
+  .etapas p { color: var(--suave); margin-top: 0.6rem; font-size: 0.97rem; }
+</style>

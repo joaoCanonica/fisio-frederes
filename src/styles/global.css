@@ -1,0 +1,255 @@
+/*
+ * Identidade: vinho e branco-gelo, derivada do logo.
+ * Contrastes (WCAG 2.2 AA) conferidos para texto normal:
+ *   tinta  #241418 / gelo #F5F6F7  → 16.5:1
+ *   vinho  #6B1F33 / gelo #F5F6F7  →  9.9:1
+ *   gelo   #F5F6F7 / vinho-900     → 15.0:1
+ *   suave  #5C4A4F / gelo #F5F6F7  →  7.9:1
+ *   rosa-200 #E8C9CF / vinho-900   →  10.7:1
+ */
+:root {
+  color-scheme: light;
+
+  --vinho-950: #26080f;
+  --vinho-900: #3d0f1b;
+  --vinho-800: #521627;
+  --vinho-700: #6b1f33;
+  --vinho-500: #9a3a52;
+  --vinho-300: #c9899a;
+  --rosa-200: #e8c9cf;
+  --rosa-100: #f3e3e6;
+
+  --gelo-0: #fbfcfc;
+  --gelo-50: #f5f6f7;
+  --gelo-100: #eceff1;
+  --gelo-200: #dde2e5;
+
+  --tinta: #241418;
+  --suave: #5c4a4f;
+  --linha: color-mix(in oklab, var(--vinho-700) 18%, transparent);
+
+  --serif: 'Fraunces Variable', 'Iowan Old Style', Georgia, serif;
+  --sans: 'Manrope Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --raio: 1.25rem;
+  --raio-g: 2rem;
+  --larg: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --sec: clamp(5rem, 11vw, 9rem);
+
+  --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--gelo-50);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  line-height: 1.65;
+  font-feature-settings: 'ss01', 'cv11';
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+img,
+svg,
+video,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-weight: 380;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--vinho-700);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--vinho-500);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--rosa-200);
+  color: var(--vinho-950);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.pular {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--vinho-900);
+  color: var(--gelo-50);
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+}
+.pular:focus {
+  top: 1rem;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--larg));
+  margin-inline: auto;
+}
+
+.sec {
+  padding-block: var(--sec);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vinho-700);
+}
+.eyebrow::before {
+  content: '';
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.titulo {
+  font-size: clamp(2.1rem, 1.4rem + 3vw, 3.6rem);
+  margin-top: 1rem;
+}
+.titulo em {
+  font-style: italic;
+  font-variation-settings: 'SOFT' 100, 'WONK' 1;
+  color: var(--vinho-700);
+}
+
+.lead {
+  font-size: clamp(1.06rem, 1rem + 0.35vw, 1.22rem);
+  color: var(--suave);
+  max-width: 38rem;
+  margin-top: 1.25rem;
+}
+
+/* Botões */
+.btn {
+  --bg: var(--vinho-700);
+  --fg: var(--gelo-50);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--bg);
+  background: var(--bg);
+  color: var(--fg);
+  font: 600 0.98rem/1 var(--sans);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.35s var(--ease),
+    background-color 0.25s,
+    color 0.25s;
+}
+.btn:hover {
+  --bg: var(--vinho-800);
+  transform: translateY(-2px);
+}
+.btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+.btn--linha {
+  --bg: transparent;
+  --fg: var(--vinho-700);
+  border-color: var(--linha);
+}
+.btn--linha:hover {
+  --bg: var(--rosa-100);
+  --fg: var(--vinho-800);
+}
+.btn--claro {
+  --bg: var(--gelo-50);
+  --fg: var(--vinho-900);
+}
+.btn--claro:hover {
+  --bg: var(--rosa-100);
+}
+
+/* Revelação ao rolar (ilha em src/scripts/revelar.ts) */
+.js [data-revelar] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.js [data-revelar].visivel {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js [data-revelar] {
+    opacity: 1;
+    transform: none;
+  }
+}

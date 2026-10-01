@@ -1,0 +1,79 @@
+---
+import Icone from './Icone.astro';
+import Incorporacao from './Incorporacao.astro';
+import Provisorio from './Provisorio.astro';
+import { profissional } from '../data/profissional.ts';
+import { provisorio } from '../lib/modo.ts';
+import { instagramUrl, instagramUser, whatsappUrl } from '../lib/contato.ts';
+const p = profissional;
+const mapa = p.endereco.consultaMapa.valor;
+const mapaSrc = mapa ? `https://www.google.com/maps?q=${encodeURIComponent(mapa)}&output=embed` : null;
+---
+<section id="contato" class="sec contato" aria-labelledby="contato-titulo">
+  <div class="wrap">
+    <div class="contato__cta" data-revelar>
+      <p class="eyebrow eyebrow--claro">Contato</p>
+      <h2 id="contato-titulo" class="titulo">Vamos conversar sobre o <em>desenvolvimento</em> do seu filho?</h2>
+      <p class="contato__txt">
+        O contato é feito pelo WhatsApp. Para proteger a privacidade da criança, evite enviar
+        exames ou relatórios por mensagem antes da consulta fisioterapêutica.
+      </p>
+      <div class="contato__acoes">
+        <a class="btn btn--claro" href={whatsappUrl()} target="_blank" rel="noopener">
+          <Icone nome="whatsapp" /> Conversar pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+        </a>
+        <a class="btn btn--linha contato__ig" href={instagramUrl()} target="_blank" rel="noopener">
+          <Icone nome="instagram" /> @{instagramUser()}<span class="sr-only"> (abre em nova aba)</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="contato__grade">
+      <div data-revelar>
+        <h3 class="contato__h3"><Icone nome="mapa" /> Onde atende</h3>
+        <address>{p.endereco.linha.valor}<Provisorio ativo={provisorio(p.endereco.linha)} /></address>
+        {mapaSrc ? (
+          <Incorporacao src={mapaSrc} titulo="Mapa com o local de atendimento" servico="Google Maps" altura="20rem" />
+        ) : (
+          <p class="contato__aviso">Mapa disponível quando o endereço for confirmado.</p>
+        )}
+      </div>
+      <div data-revelar style="--i:1">
+        <h3 class="contato__h3"><Icone nome="instagram" /> Instagram</h3>
+        <Incorporacao src={`https://www.instagram.com/${instagramUser()}/embed`} titulo="Publicações recentes no Instagram" servico="Instagram" altura="26rem" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contato {
+    background:
+      radial-gradient(50rem 30rem at -10% 0%, rgb(154 58 82 / 0.4), transparent 60%),
+      var(--vinho-800);
+    color: var(--gelo-50);
+    --linha: rgb(232 201 207 / 0.22);
+  }
+  .contato :global(.titulo em) { color: var(--rosa-200); }
+  .eyebrow--claro { color: var(--rosa-200); }
+  .contato__cta { max-width: 46rem; }
+  .contato__txt { color: var(--rosa-100); margin-top: 1.25rem; max-width: 36rem; }
+  .contato__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .contato__ig { --fg: var(--gelo-50); }
+  .contato__ig:hover { --fg: var(--vinho-900); }
+  .contato__grade { display: grid; gap: 2.5rem; margin-top: 5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+  .contato__h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font: 700 0.75rem/1 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rosa-200);
+    margin-bottom: 1rem;
+  }
+  .contato__h3 :global(svg) { width: 1.1rem; height: 1.1rem; }
+  address { font-style: normal; margin-bottom: 1.25rem; }
+  .contato__aviso { color: var(--rosa-100); font-size: 0.9rem; }
+  .contato :global(.inc) { background: rgb(251 252 252 / 0.92); --suave: #5c4a4f; }
+</style>

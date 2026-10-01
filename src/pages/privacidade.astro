@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import Identificacao from '../components/Identificacao.astro';
+import { profissional } from '../data/profissional.ts';
+const p = profissional;
+---
+<Base titulo={`Política de privacidade · ${p.nomeCurto.valor}`} descricao="Como este site trata dados pessoais e conteúdo de terceiros.">
+  <article class="sec wrap texto">
+    <p class="eyebrow">Privacidade</p>
+    <h1 class="titulo">Política de privacidade</h1>
+    <p class="lead">Este é um site de apresentação profissional. Ele não agenda atendimentos, não tem formulários e não coleta dados de saúde.</p>
+
+    <h2>Quem é o controlador</h2>
+    <Identificacao />
+
+    <h2>Que dados o site trata</h2>
+    <ul>
+      <li><strong>Nenhum formulário.</strong> O contato acontece fora do site, pelo WhatsApp ou pelo Instagram, de acordo com as políticas desses serviços.</li>
+      <li><strong>Sem cookies de análise ou publicidade.</strong> O site não usa ferramentas de medição de audiência nem anúncios.</li>
+      <li><strong>Escolha de consentimento.</strong> Sua escolha (aceitar ou recusar conteúdo de terceiros) fica guardada apenas no seu navegador.</li>
+      <li><strong>Fontes tipográficas</strong> são servidas pelo próprio site, sem chamadas a serviços externos.</li>
+    </ul>
+
+    <h2>Conteúdo de terceiros</h2>
+    <p>O mapa (Google Maps) e as publicações do Instagram só são carregados se você aceitar. Esses serviços podem gravar cookies próprios, conforme as políticas deles. Você pode mudar a escolha a qualquer momento:</p>
+    <p><button type="button" class="btn btn--linha" data-reabrir-consentimento>Revisar preferências</button></p>
+
+    <h2>Imagens e vídeos de pacientes</h2>
+    <p>Registros de crianças só são publicados com o Termo de Consentimento Livre e Esclarecido assinado pelo responsável legal, que pode ser revogado a qualquer momento. Em caso de revogação, o conteúdo é retirado do site. Não publicamos nome, escola, cidade ou outros dados que identifiquem a criança.</p>
+
+    <h2>Seus direitos</h2>
+    <p>Você pode pedir informações, correção ou exclusão de dados pessoais nos termos da Lei Geral de Proteção de Dados (Lei 13.709/2018), pelo mesmo canal de contato do site.</p>
+  </article>
+</Base>
+
+<style>
+  .texto { max-width: 46rem; }
+  .texto h2 { font-size: 1.6rem; margin: 3rem 0 1rem; }
+  .texto ul { padding-left: 1.2rem; display: grid; gap: 0.75rem; }
+  .texto p + p { margin-top: 1rem; }
+</style>

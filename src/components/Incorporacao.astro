@@ -1,0 +1,67 @@
+---
+// Incorporação de terceiro bloqueada até consentimento. Nada é requisitado ao
+// terceiro antes do aceite: o iframe só é criado depois.
+interface Props { src: string; titulo: string; servico: string; altura?: string }
+const { src, titulo, servico, altura = '28rem' } = Astro.props;
+---
+<div class="inc" data-incorporacao data-src={src} data-titulo={titulo} style={`--alt:${altura}`}>
+  <div class="inc__bloqueio">
+    <p>
+      O conteúdo do {servico} só é carregado com a sua permissão, porque o serviço pode
+      gravar cookies próprios.
+    </p>
+    <button type="button" class="btn btn--linha" data-carregar>Permitir conteúdo de terceiros</button>
+  </div>
+</div>
+
+<style>
+  .inc {
+    position: relative;
+    min-height: var(--alt);
+    border-radius: var(--raio);
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(135deg, transparent 0 14px, rgb(107 31 51 / 0.04) 14px 15px),
+      var(--gelo-100);
+    border: 1px solid var(--linha);
+  }
+  .inc__bloqueio {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    justify-items: center;
+  }
+  .inc__bloqueio p { max-width: 26rem; color: var(--suave); font-size: 0.92rem; }
+  .inc :global(iframe) { width: 100%; height: var(--alt); border: 0; }
+</style>
+
+<script>
+  import { aoMudar, gravarConsentimento, lerConsentimento } from '../scripts/consentimento.ts';
+  const blocos = document.querySelectorAll<HTMLElement>('[data-incorporacao]');
+  const carregar = () =>
+    blocos.forEach((b) => {
+      if (b.querySelector('iframe')) return;
+      const f = document.createElement('iframe');
+      f.src = b.dataset['src'] ?? '';
+      f.title = b.dataset['titulo'] ?? '';
+      f.loading = 'lazy';
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      b.replaceChildren(f);
+    });
+  if (lerConsentimento() === 'aceito') carregar();
+  aoMudar((e) => {
+    if (e === 'aceito') carregar();
+    // Revogação: recarrega para descartar iframes de terceiros já abertos.
+    else if ([...blocos].some((b) => b.querySelector('iframe'))) location.reload();
+  });
+  blocos.forEach((b) =>
+    b.querySelector('[data-carregar]')?.addEventListener('click', () => {
+      gravarConsentimento('aceito');
+      document.querySelector<HTMLElement>('[data-consentimento]')?.setAttribute('hidden', '');
+    }),
+  );
+</script>

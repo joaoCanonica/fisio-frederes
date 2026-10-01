@@ -1,0 +1,11 @@
+---
+// Marca provisória (monograma). Substituir pelo SVG do logo oficial em
+// public/marca.svg quando o arquivo for entregue; as cores do site derivam dele.
+interface Props { class?: string }
+const { class: cls } = Astro.props;
+---
+<svg class={cls} viewBox="0 0 48 48" role="img" aria-label="Monograma JF">
+  <circle cx="24" cy="24" r="23" fill="var(--vinho-700)" />
+  <circle cx="24" cy="24" r="19.5" fill="none" stroke="var(--rosa-200)" stroke-width="0.75" opacity="0.6" />
+  <text x="24" y="31" text-anchor="middle" font-family="Fraunces Variable, Georgia, serif" font-size="20" font-style="italic" fill="var(--gelo-50)">jf</text>
+</svg>

@@ -1,0 +1,93 @@
+---
+import Provisorio from './Provisorio.astro';
+import Icone from './Icone.astro';
+import { profissional, tituloNeuro } from '../data/profissional.ts';
+import { exibir, provisorio } from '../lib/modo.ts';
+const p = profissional;
+const formacao = p.formacao
+  .map((c) => ({ f: exibir(c), prov: provisorio(c) }))
+  .filter((x): x is { f: NonNullable<typeof x.f>; prov: boolean } => x.f !== null);
+const vinculo = exibir(p.vinculo.instituicao);
+const lattes = exibir(p.lattesUrl);
+---
+<section id="sobre" class="sec sobre" aria-labelledby="sobre-titulo">
+  <div class="wrap sobre__grade">
+    <div class="sobre__intro" data-revelar>
+      <p class="eyebrow">Quem atende</p>
+      <h2 id="sobre-titulo" class="titulo">{p.nomeCurto.valor}</h2>
+      <p class="lead">
+        {p.profissao.valor}. {tituloNeuro(p.rqe)}. Atende bebês e crianças com atrasos ou
+        dificuldades no desenvolvimento motor, em condições neurológicas e no transtorno do
+        espectro autista (TEA).
+      </p>
+      {lattes && (
+        <a class="btn btn--linha sobre__lattes" href={lattes} target="_blank" rel="noopener">
+          Currículo Lattes <Icone nome="externo" /><span class="sr-only"> (abre em nova aba)</span>
+        </a>
+      )}
+    </div>
+
+    <div class="sobre__fatos">
+      <h3 class="sobre__h3">Formação</h3>
+      <ol class="linha-tempo">
+        {formacao.map(({ f, prov }, i) => (
+          <li data-revelar style={`--i:${i}`}>
+            <strong>{f.titulo}<Provisorio ativo={prov} /></strong>
+            <span>{f.instituicao}{f.ano ? ` · ${f.ano}` : ''}</span>
+          </li>
+        ))}
+      </ol>
+
+      {vinculo && (
+        <>
+          <h3 class="sobre__h3">Onde atua</h3>
+          <p class="sobre__vinculo" data-revelar>
+            Fisioterapeuta na <strong>{vinculo}</strong><Provisorio ativo={provisorio(p.vinculo.instituicao)} titulo="Autorização formal da instituição a arquivar" />,
+            {' '}{p.vinculo.descricao.valor.toLowerCase()}.
+          </p>
+        </>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sobre { background: var(--gelo-0); border-block: 1px solid var(--linha); }
+  .sobre__grade { display: grid; gap: 3.5rem; }
+  @media (min-width: 60rem) {
+    .sobre__grade { grid-template-columns: 1fr 1fr; gap: 6rem; }
+    .sobre__intro { position: sticky; top: 7rem; align-self: start; }
+  }
+  .sobre__lattes { margin-top: 2rem; }
+  .sobre__h3 {
+    font: 700 0.75rem/1 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--suave);
+    margin-bottom: 1.25rem;
+  }
+  .sobre__h3:not(:first-child) { margin-top: 3rem; }
+  .linha-tempo {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1.75rem;
+    border-left: 1px solid var(--linha);
+    display: grid;
+    gap: 1.75rem;
+  }
+  .linha-tempo li { position: relative; display: grid; gap: 0.2rem; }
+  .linha-tempo li::before {
+    content: '';
+    position: absolute;
+    left: calc(-1.75rem - 5px);
+    top: 0.55rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--gelo-0);
+    border: 2px solid var(--vinho-700);
+  }
+  .linha-tempo strong { font: 450 1.3rem/1.25 var(--serif); }
+  .linha-tempo span { color: var(--suave); font-size: 0.95rem; }
+  .sobre__vinculo { font-size: 1.1rem; }
+</style>

@@ -1,0 +1,94 @@
+---
+import Marca from './Marca.astro';
+import Identificacao from './Identificacao.astro';
+import Provisorio from './Provisorio.astro';
+import { profissional } from '../data/profissional.ts';
+import { exibir, provisorio } from '../lib/modo.ts';
+import { instagramUrl, whatsappUrl } from '../lib/contato.ts';
+const p = profissional;
+const lattes = exibir(p.lattesUrl);
+const ano = new Date().getFullYear();
+---
+<footer class="rod">
+  <div class="wrap rod__grade">
+    <div class="rod__marca">
+      <Marca class="rod__logo" />
+      <p class="rod__frase">Movimento, brincadeira e participação no dia a dia da criança.</p>
+    </div>
+    <div>
+      <h2 class="rod__h">Identificação profissional</h2>
+      <Identificacao />
+    </div>
+    <div>
+      <h2 class="rod__h">Endereço</h2>
+      <address>{p.endereco.linha.valor}<Provisorio ativo={provisorio(p.endereco.linha)} /></address>
+      <h2 class="rod__h">Links</h2>
+      <ul class="rod__links">
+        <li><a href={whatsappUrl()} target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href={instagramUrl()} target="_blank" rel="noopener">Instagram</a></li>
+        {lattes && <li><a href={lattes} target="_blank" rel="noopener">Currículo Lattes</a></li>}
+        <li><a href="/privacidade">Política de privacidade</a></li>
+        <li><button type="button" class="rod__btn" data-reabrir-consentimento>Preferências de conteúdo de terceiros</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap rod__base">
+    <p>
+      © {ano} {p.nomeCompleto.valor}. As informações deste site têm caráter educativo e
+      não substituem a consulta com profissional de saúde. Este site não agenda
+      atendimentos nem coleta dados de saúde.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .rod {
+    background: var(--vinho-950);
+    color: var(--gelo-100);
+    padding-block: 4.5rem 2rem;
+    --linha: rgb(232 201 207 / 0.18);
+  }
+  .rod a { color: var(--rosa-200); }
+  .rod :global(dt) { color: var(--vinho-300); }
+  .rod :global(.id__link) { color: var(--rosa-200); }
+  .rod__grade {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+  .rod :global(.rod__logo) { width: 3.5rem; height: 3.5rem; }
+  .rod__frase {
+    font: italic 400 1.35rem/1.3 var(--serif);
+    margin-top: 1.25rem;
+    max-width: 18rem;
+    color: var(--gelo-50);
+  }
+  .rod__h {
+    font: 700 0.7rem/1 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--vinho-300);
+    margin-bottom: 1rem;
+  }
+  .rod__h:not(:first-child) { margin-top: 2rem; }
+  address { font-style: normal; }
+  .rod__links { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+  .rod__btn {
+    font: inherit;
+    color: var(--rosa-200);
+    background: none;
+    border: 0;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+    text-align: left;
+  }
+  .rod__base {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--linha);
+    font-size: 0.82rem;
+    color: var(--vinho-300);
+  }
+</style>

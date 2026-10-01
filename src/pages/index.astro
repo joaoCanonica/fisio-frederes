@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Sobre from '../components/Sobre.astro';
+import Desenvolvimento from '../components/Desenvolvimento.astro';
+import Tea from '../components/Tea.astro';
+import Atendimento from '../components/Atendimento.astro';
+import Videos from '../components/Videos.astro';
+import Contato from '../components/Contato.astro';
+import { profissional } from '../data/profissional.ts';
+import { EM_PRODUCAO } from '../lib/modo.ts';
+const p = profissional;
+const titulo = `${p.nomeCurto.valor} · Fisioterapeuta · Neuropediatria e desenvolvimento motor`;
+const descricao =
+  'Fisioterapia neuropediátrica: desenvolvimento motor, coordenação e equilíbrio de bebês e crianças, incluindo crianças no espectro autista. Contato pelo WhatsApp.';
+// Dados estruturados só em produção (com dados confirmados).
+const ld = EM_PRODUCAO
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Physiotherapy',
+      name: `${p.nomeCompleto.valor} – ${p.profissao.valor}`,
+      url: p.site.valor,
+      address: p.endereco.linha.valor,
+      medicalSpecialty: 'Pediatric',
+      employee: {
+        '@type': 'Person',
+        name: p.nomeCompleto.valor,
+        jobTitle: p.profissao.valor,
+        identifier: `${p.crefito.regiao.valor} ${p.crefito.numero.valor}`,
+      },
+    })
+  : null;
+---
+<Base titulo={titulo} descricao={descricao}>
+  {ld && <script type="application/ld+json" set:html={ld} />}
+  <Hero />
+  <Sobre />
+  <Desenvolvimento />
+  <Tea />
+  <Atendimento />
+  <Videos />
+  <Contato />
+</Base>

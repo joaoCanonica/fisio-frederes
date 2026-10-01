@@ -1,0 +1,84 @@
+---
+// Mídia com pacientes. Regras em src/data/midia.ts e src/lib/modo.ts.
+// Junto a cada publicação: data do registro e identificação do profissional.
+import Provisorio from './Provisorio.astro';
+import Identificacao from './Identificacao.astro';
+import { midia } from '../data/midia.ts';
+import { midiaVisivel } from '../lib/modo.ts';
+const itens = midiaVisivel(midia);
+const data = (iso: string | null) =>
+  iso ? new Date(`${iso}T12:00:00`).toLocaleDateString('pt-BR') : 'data a registrar';
+---
+{itens.length > 0 && (
+  <section id="rotina" class="sec videos" aria-labelledby="videos-titulo">
+    <div class="wrap">
+      <div data-revelar>
+        <p class="eyebrow">No atendimento</p>
+        <h2 id="videos-titulo" class="titulo">O brincar como <em>ferramenta</em>.</h2>
+        <p class="lead">
+          Registros publicados com autorização por escrito do responsável legal, que pode ser
+          retirada a qualquer momento.
+        </p>
+      </div>
+      <ul class="videos__grade">
+        {itens.map(({ item, provisorio }, i) => (
+          <li data-revelar style={`--i:${i}`}>
+            <figure class="video">
+              <div class="video__midia">
+                {item.arquivo ? (
+                  <video controls preload="none" playsinline poster={item.poster ?? undefined} aria-label={item.alt}>
+                    <source src={item.arquivo} type="video/mp4" />
+                  </video>
+                ) : (
+                  <div class="video__vago" role="img" aria-label={item.alt}>
+                    <span>Espaço reservado para vídeo</span>
+                  </div>
+                )}
+                {provisorio && <span class="video__selo"><Provisorio ativo titulo="Sem TCLE ou slot vago: não vai para produção" /></span>}
+              </div>
+              <figcaption>
+                <p>{item.descricao}</p>
+                <p class="video__meta">Registro de {data(item.dataRegistro)}</p>
+                <Identificacao variante="linha" />
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .videos { background: var(--gelo-100); }
+  .videos__grade {
+    list-style: none;
+    margin: 3.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+  .video { margin: 0; }
+  .video__midia {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--raio);
+    overflow: hidden;
+    background: var(--vinho-900);
+  }
+  .video__midia video { width: 100%; height: 100%; object-fit: cover; }
+  .video__vago {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: var(--rosa-200);
+    font-size: 0.85rem;
+    background:
+      radial-gradient(circle at 30% 20%, rgb(154 58 82 / 0.6), transparent 60%),
+      var(--vinho-900);
+  }
+  .video__selo { position: absolute; top: 0.75rem; left: 0.5rem; }
+  figcaption { margin-top: 1rem; display: grid; gap: 0.3rem; }
+  .video__meta { font-size: 0.82rem; color: var(--suave); }
+</style>
