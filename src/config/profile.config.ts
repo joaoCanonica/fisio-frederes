@@ -37,16 +37,13 @@ export interface Unidade {
 }
 
 export const profile = {
-  nomeCompleto: bloqueante(
-    'João Pedro Frederes',
-    'Confirmar o nome completo exatamente como consta no registro do CREFITO.',
-  ),
+  nomeCompleto: confirmado('João Pedro Frederes'),
   nomeMarca: confirmado('João Pedro Frederes'),
   profissao: confirmado('Fisioterapeuta' as const),
 
   crefito: {
     numero: confirmado('369113-F'),
-    regiao: bloqueante('CREFITO-10', 'Confirmar a região do CREFITO (CREFITO-10 = Santa Catarina).'),
+    regiao: confirmado('CREFITO-10'), // Santa Catarina
     atuacaoUfs: ['SC', 'RS'] as const,
     /** Registro no CREFITO-5 (RS) confirmado pelo cliente. */
     comprovanteAtuacaoUfs: confirmado<string | null>('CREFITO-5: registro confirmado pelo cliente'),
@@ -109,7 +106,7 @@ export const profile = {
       vinculoId: 'neurokids',
       mapsUrl: aviso<string | null>(null, 'Informar o link do Google Maps da NeuroKids.'),
       ftid: aviso<string | null>(null, 'Informar o ftid do Google Maps da NeuroKids.'),
-      endereco: bloqueante('Lages (SC)', 'Endereço da NeuroKids por extenso (rua, número, bairro, CEP).'),
+      endereco: confirmado('R. Frei Rogério, 394, Centro, Lages (SC), CEP 88502-161'),
     },
     {
       id: 'cer-uniplac',
@@ -125,7 +122,7 @@ export const profile = {
 
   instagram: confirmado('fisiofrederes.ped'),
   /** Somente dígitos: 55 + DDD + número. */
-  whatsapp: bloqueante('5549000000000', 'Informar o número real de WhatsApp.'),
+  whatsapp: confirmado('5554996593170'),
   lattes: aviso<string | null>(null, 'Informar o link do Currículo Lattes, se existir (opcional).'),
 
   /** Domínio de produção, sem barra final. */
