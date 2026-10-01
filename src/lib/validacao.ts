@@ -8,6 +8,7 @@ import type { Campo, Nivel } from '../config/campo.ts';
 import { profile, type Vinculo } from '../config/profile.config.ts';
 import { compliance } from '../config/compliance.config.ts';
 import { slots } from '../config/slots-video.config.ts';
+import { copy } from '../config/copy.config.ts';
 import { dataValida, manifesto, midiaPorId, type ItemManifesto } from './manifesto.ts';
 
 export type Grupo =
@@ -33,6 +34,7 @@ const isCampo = (v: unknown): v is Campo<unknown> =>
 function grupoDoCampo(caminho: string): Grupo {
   if (/nomeCompleto|crefito|profissao|especialista|linkVerificacao|titulos/.test(caminho)) return 'Identidade e registro';
   if (/unidades|whatsapp|instagram|regioes|atendimentoRS/.test(caminho)) return 'Endereço e contato';
+  if (caminho.startsWith('copy')) return 'Conteúdo e vocabulário';
   return 'Outros';
 }
 
@@ -91,6 +93,8 @@ function checarTextos(out: Pendencia[]): void {
   const fontes: [string, string][] = [
     ['slots.conviteVideo.titulo', slots.conviteVideo.titulo],
     ['slots.compilado.titulo', slots.compilado.titulo],
+    ['copy.hero.titulo', copy.hero.titulo.valor],
+    ['copy.hero.subtitulo', copy.hero.subtitulo.valor],
     ...profile.areasAtuacao.map((a, i): [string, string] => [`areasAtuacao[${i}]`, a]),
     ...manifesto.itens.flatMap((i): [string, string][] => [[`midia.${i.id}.descricao`, i.descricao], [`midia.${i.id}.alt`, i.alt]]),
   ];
@@ -164,6 +168,7 @@ function checarSlots(out: Pendencia[]): void {
 export function listarPendencias(): Pendencia[] {
   const out: Pendencia[] = [];
   coletarCampos(profile, '', out);
+  coletarCampos(copy, 'copy', out);
   checarEspecialista(out);
   checarVinculos(out);
   checarTextos(out);

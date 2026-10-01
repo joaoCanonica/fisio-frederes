@@ -4,6 +4,8 @@ import Icone from './ui/Icon.astro';
 import { profile, tituloProfissional } from '../config/profile.config.ts';
 import { exibir, provisorio } from '../lib/modo.ts';
 import { instagramUrl } from '../lib/contato.ts';
+import Pose from './Pose.astro';
+import { poseDaSecao } from '../lib/retrato.ts';
 const p = profile;
 const { graduacao, posGraduacao, mestrado } = p.titulos;
 const mest = exibir(mestrado);
@@ -15,10 +17,12 @@ const formacao = [
     : []),
 ];
 const lattes = exibir(p.lattes);
+const pose = poseDaSecao('sobre');
 ---
 <section id="sobre" class="sec sobre" aria-labelledby="sobre-titulo">
   <div class="wrap sobre__grade">
     <div class="sobre__intro" data-revelar>
+      {pose && <div class="sobre__pose"><Pose pose={pose} sizes="(min-width: 60rem) 18rem, 70vw" /></div>}
       <p class="eyebrow">Quem atende</p>
       <h2 id="sobre-titulo" class="titulo">{p.nomeMarca.valor}</h2>
       <p class="lead">
@@ -66,6 +70,7 @@ const lattes = exibir(p.lattes);
     .sobre__intro { position: sticky; top: 7rem; align-self: start; }
   }
   .sobre__lattes { margin-top: 2rem; }
+  .sobre__pose { width: min(70%, 18rem); margin-bottom: 2rem; }
   .sobre__h3 {
     font: 700 0.75rem/1 var(--fonte-texto);
     letter-spacing: 0.16em;

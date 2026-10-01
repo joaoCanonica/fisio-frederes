@@ -1,36 +1,33 @@
 ---
-// Primeira dobra: os pais precisam entender em 2 segundos que é fisioterapia
-// PEDIÁTRICA (docs/design/REFERENCIAS-PEDIATRIA.md). O lúdico vem da FOTO
-// (brinquedo, ambiente); o grafismo é só da marca: arco e coluna de pontos.
-import Identificacao from './Identificacao.astro';
-import Provisorio from './Provisorio.astro';
-import Marca from './Marca.astro';
+// Primeira dobra: deixa claro em 2 s que é fisioterapia PEDIÁTRICA e já mostra a
+// identificação (nome completo, profissão, CREFITO). O lúdico vem da foto.
+// A foto vem das poses do retrato (src/config/retrato.config.ts).
 import Button from './ui/Button.astro';
 import Eyebrow from './ui/Eyebrow.astro';
+import BadgeId from './ui/BadgeId.astro';
 import Tag from './ui/Tag.astro';
 import MediaFrame from './ui/MediaFrame.astro';
-import Pontos from './ui/Pontos.astro';
+import Pose from './Pose.astro';
+import Marca from './Marca.astro';
+import Provisorio from './Provisorio.astro';
 import { profile } from '../config/profile.config.ts';
+import { copy } from '../config/copy.config.ts';
 import { whatsappUrl, instagramUrl } from '../lib/contato.ts';
-import { imagemLiberada, srcsetImagem } from '../lib/manifesto.ts';
-import { EM_PRODUCAO } from '../lib/modo.ts';
+import { poseDaSecao, SIZES_HERO } from '../lib/retrato.ts';
+import { provisorio } from '../lib/modo.ts';
 
-const foto = imagemLiberada('pessoa-foto-01', EM_PRODUCAO);
-const avif = foto ? srcsetImagem(foto, 'avif') : null;
-const webp = foto ? srcsetImagem(foto, 'webp') : null;
+const pose = poseDaSecao('inicio');
 const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
 ---
-<section class="hero tom-claro" aria-labelledby="hero-titulo">
+<section id="inicio" class="hero tom-claro" aria-labelledby="hero-titulo">
   <div class="wrap hero__grade">
     <div class="hero__texto">
-      <Eyebrow>Fisioterapia pediátrica · {profile.regioesAtendimento[0]}</Eyebrow>
+      <Eyebrow>Fisioterapia pediátrica · Lages (SC)</Eyebrow>
       <h1 id="hero-titulo" class="hero__h1">
-        Fisioterapia para <span>bebês e crianças</span>
+        {copy.hero.titulo.valor}<Provisorio ativo={provisorio(copy.hero.titulo)} titulo="Título proposto: confirmar" />
       </h1>
-      <p class="lead">
-        Desenvolvimento motor e neuropediatria, com atendimento pensado para o jeito de a
-        criança aprender: brincando, no ritmo dela e com a família por perto.
-      </p>
+      <p class="lead hero__sub">{copy.hero.subtitulo.valor}</p>
+      <div class="hero__id"><BadgeId /></div>
       <ul class="hero__publicos" aria-label="Para quem é o atendimento">
         {publicos.map((p, i) => <li><Tag variante={i === 0 ? 'acento' : 'neutra'}>{p}</Tag></li>)}
       </ul>
@@ -41,34 +38,13 @@ const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
     </div>
 
     <div class="hero__visual">
-      <div class="hero__coluna"><Pontos variante="marcador" /></div>
-      <MediaFrame formato="4:5" arco>
-        {foto && avif && webp ? (
-          <picture>
-            <source type="image/avif" srcset={avif.srcset} sizes="(min-width: 60rem) 30rem, 90vw" />
-            <img
-              src={webp.srcset.split(', ').at(-1)?.split(' ')[0]}
-              srcset={webp.srcset}
-              sizes="(min-width: 60rem) 30rem, 90vw"
-              width={webp.largura}
-              height={webp.altura}
-              alt={foto.alt}
-              fetchpriority="high"
-              decoding="async"
-            />
-          </picture>
-        ) : (
-          <div class="hero__semfoto" role="img" aria-label="Monograma JF">
-            <Marca class="hero__marca" />
-          </div>
-        )}
-        {foto && !foto.publicavel && (
-          <span class="hero__prov"><Provisorio ativo titulo="Foto em baixa resolução, aguardando o original" /></span>
-        )}
-      </MediaFrame>
-      <div class="hero__cartao">
-        <Identificacao />
-      </div>
+      {pose ? (
+        <Pose pose={pose} sizes={SIZES_HERO} prioridade />
+      ) : (
+        <MediaFrame formato="4:5" arco>
+          <div class="hero__semfoto" role="img" aria-label="Monograma JF"><Marca class="hero__marca" /></div>
+        </MediaFrame>
+      )}
     </div>
   </div>
 </section>
@@ -76,46 +52,32 @@ const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
 <style>
   .hero {
     position: relative;
-    padding-block: clamp(2.5rem, 6vw, 5rem) var(--sec);
+    padding-block: clamp(2rem, 5vw, 4.5rem) var(--sec);
     overflow: clip;
     background:
       radial-gradient(46rem 34rem at 100% 0%, var(--superficie-alt), transparent 65%),
       var(--fundo);
   }
-  .hero__grade { display: grid; gap: 3.5rem; align-items: center; }
+  .hero__grade { display: grid; gap: 2.5rem; align-items: center; }
   @media (min-width: 60rem) {
-    .hero__grade { grid-template-columns: 1.15fr 1fr; gap: 4.5rem; }
+    .hero__grade { grid-template-columns: 1.2fr 1fr; gap: 4.5rem; }
   }
   .hero__h1 {
-    font-size: clamp(2.3rem, 1.2rem + 4.4vw, 4.6rem);
-    line-height: 1.05;
+    font-size: clamp(1.9rem, 1.1rem + 3vw, 3.4rem);
+    line-height: 1.08;
     letter-spacing: 0.03em;
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
   }
-  .hero__h1 span { display: block; color: var(--destaque); }
-  .hero__publicos { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.75rem 0 0; padding: 0; }
-  .hero__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-
-  .hero__visual { position: relative; justify-self: center; width: min(100%, 29rem); }
-  .hero__coluna { position: absolute; z-index: 2; right: -1.6rem; top: 22%; }
-  .hero__coluna :global(.pontos--marcador) { gap: 0.35rem; }
-  .hero__coluna :global(.pontos i) { width: calc(var(--d) * 2.2); height: calc(var(--d) * 2.2); }
+  .hero__sub { margin-top: 1.1rem; }
+  .hero__id { margin-top: 1.4rem; }
+  .hero__publicos { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0 0; padding: 0; }
+  .hero__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+  .hero__visual { justify-self: center; width: min(100%, 28rem); }
   .hero__semfoto { height: 100%; display: grid; place-items: center; }
   .hero__visual :global(.hero__marca) { width: 45%; height: auto; color: var(--marca); }
-  .hero__prov { position: absolute; top: 18%; left: 50%; transform: translateX(-50%); }
-  .hero__cartao {
-    position: relative;
-    z-index: 3;
-    margin: -4.5rem -0.5rem 0 auto;
-    width: min(100%, 21rem);
-    background: color-mix(in oklab, var(--superficie) 94%, transparent);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--linha);
-    border-radius: var(--raio);
-    padding: 1.25rem 1.4rem;
-    box-shadow: var(--sombra-suave);
-  }
-  @media (max-width: 30rem) {
-    .hero__coluna { right: -0.4rem; }
+  /* Mobile: foto antes do texto? Não: texto primeiro (o título é o que diz "pediatria"),
+     foto logo abaixo, reduzida para aparecer cedo. */
+  @media (max-width: 59.99rem) {
+    .hero__visual { width: min(78%, 22rem); }
   }
 </style>

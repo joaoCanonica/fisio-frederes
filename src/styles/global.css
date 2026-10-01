@@ -3,6 +3,16 @@
  * src/config/theme.config.ts (src/lib/tema.ts). Nunca hex/rgb aqui.
  * Tipografia: Marcellus (display, caixa alta, como o logotipo) + Lato (texto).
  */
+/* Fallback com métricas ajustadas às da Lato: a troca de fonte não move o layout. */
+@font-face {
+  font-family: 'Lato Fallback';
+  src: local('Arial');
+  ascent-override: 101.18%;
+  descent-override: 21.83%;
+  line-gap-override: 0%;
+  size-adjust: 97.69%;
+}
+
 :root {
   --raio: 1rem;
   --raio-g: 1.75rem;

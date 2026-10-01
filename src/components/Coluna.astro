@@ -1,0 +1,90 @@
+---
+// Assinatura "A Coluna": a coluna de pontos vertebrais do monograma vira o
+// indicador de progresso. Cada ponto é uma seção; acende quando a seção passa.
+// Em reduced-motion: estática e completa (todos acesos, sem transição).
+// Estado controlado por src/scripts/secoes.ts.
+import { theme } from '../config/theme.config.ts';
+import { secoes } from '../lib/secoes.ts';
+const lista = secoes();
+const max = Math.max(...theme.pontos);
+const tam = (i: number) => (theme.pontos[i % theme.pontos.length] ?? max) / max;
+---
+<nav class="coluna" aria-label="Seções da página" data-coluna>
+  <ol>
+    {lista.map((s, i) => (
+      <li>
+        <a href={`#${s.id}`} data-alvo={s.id} style={`--t:${tam(i)}`}>
+          <span class="coluna__ponto" aria-hidden="true"></span>
+          <span class="coluna__rotulo">{s.rotulo}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .coluna { display: none; }
+  @media (min-width: 48rem) {
+    .coluna {
+      display: block;
+      position: fixed;
+      z-index: 45;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0.9rem 0.45rem;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--superficie) 88%, transparent);
+      border: 1px solid var(--linha);
+      backdrop-filter: blur(8px);
+    }
+  }
+  ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; justify-items: center; position: relative; }
+  ol::before {
+    content: '';
+    position: absolute;
+    inset: 0.4rem auto 0.4rem 50%;
+    width: 1px;
+    background: var(--linha);
+  }
+  a {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem; /* alvo de toque ≥ 24px (WCAG 2.5.8) */
+    text-decoration: none;
+  }
+  .coluna__ponto {
+    width: calc(0.35rem + var(--t) * 0.55rem);
+    height: calc(0.35rem + var(--t) * 0.55rem);
+    border-radius: 50%;
+    background: var(--superficie);
+    border: 1.5px solid var(--destaque);
+    transition: background-color 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  a[data-aceso] .coluna__ponto { background: var(--destaque); }
+  a[aria-current='true'] .coluna__ponto { transform: scale(1.35); }
+  .coluna__rotulo {
+    position: absolute;
+    right: calc(100% + 0.6rem);
+    white-space: nowrap;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: var(--acao);
+    color: var(--acao-texto);
+    font: 700 0.72rem/1.2 var(--fonte-texto);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateX(0.3rem);
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  a:hover .coluna__rotulo,
+  a:focus-visible .coluna__rotulo { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .coluna__ponto { background: var(--destaque); transition: none; }
+    a[aria-current='true'] .coluna__ponto { transform: none; }
+  }
+</style>

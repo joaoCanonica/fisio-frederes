@@ -4,22 +4,29 @@ import '@fontsource/lato/latin-400.css';
 import '@fontsource/lato/latin-400-italic.css';
 import '@fontsource/lato/latin-700.css';
 import '../styles/global.css';
+// Fontes críticas pré-carregadas para evitar troca tardia (CLS).
+import marcellus400 from '@fontsource/marcellus/files/marcellus-latin-400-normal.woff2?url';
+import lato400 from '@fontsource/lato/files/lato-latin-400-normal.woff2?url';
+import lato700 from '@fontsource/lato/files/lato-latin-700-normal.woff2?url';
 import Cabecalho from '../components/Cabecalho.astro';
 import Rodape from '../components/Rodape.astro';
 import Consentimento from '../components/Consentimento.astro';
+import Entrada from '../components/Entrada.astro';
+import Coluna from '../components/Coluna.astro';
+import PortraitTravel from '../components/PortraitTravel.astro';
 import { EM_PRODUCAO } from '../lib/modo.ts';
 import { listarPendencias } from '../lib/validacao.ts';
 import { identificacao } from '../lib/contato.ts';
 import { cssDoTema, themeColor } from '../lib/tema.ts';
 
-interface Props { titulo: string; descricao: string; noindex?: boolean }
-const { titulo, descricao, noindex = false } = Astro.props;
+interface Props { titulo: string; descricao: string; noindex?: boolean; landing?: boolean; preload?: { srcset: string; sizes: string; type: string } | undefined }
+const { titulo, descricao, noindex = false, landing = false, preload } = Astro.props;
 const pend = EM_PRODUCAO ? [] : listarPendencias();
 const nBloq = pend.filter((p) => p.nivel === 'bloqueante').length;
 const canonico = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-entrada={landing ? 'on' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,10 +40,27 @@ const canonico = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descricao} />
+    {preload && <link rel="preload" as="image" imagesrcset={preload.srcset} imagesizes={preload.sizes} type={preload.type} fetchpriority="high" />}
+    <link rel="preload" as="font" type="font/woff2" href={marcellus400} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={lato400} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={lato700} crossorigin />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script is:inline>document.documentElement.classList.add('js')</script>
+    <script is:inline>
+      // .js para revelações; .entrada uma vez por sessão, nunca com reduced-motion.
+      (function () {
+        var h = document.documentElement;
+        h.classList.add('js');
+        try {
+          if (h.dataset.entrada === 'on' && !matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('jpf-entrada')) {
+            sessionStorage.setItem('jpf-entrada', '1');
+            h.classList.add('entrada');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
+    {landing && <Entrada />}
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
     {!EM_PRODUCAO && (
       <a class="faixa-preview" href="/pendencias">
@@ -49,8 +73,11 @@ const canonico = new URL(Astro.url.pathname, Astro.site);
     </main>
     <Rodape />
     <Consentimento />
+    {landing && <Coluna />}
+    {landing && <PortraitTravel />}
     <script>
       import '../scripts/revelar.ts';
+      import '../scripts/secoes.ts';
     </script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 import { profile, registroCrefito } from '../config/profile.config.ts';
 
 /** Mensagem inicial neutra: não pede nem sugere envio de dado de saúde. */
-const MENSAGEM = 'Olá! Gostaria de informações sobre consulta fisioterapêutica.';
+const MENSAGEM = 'Olá, gostaria de agendar uma consulta fisioterapêutica.';
 
 export const whatsappUrl = (): string =>
   `https://wa.me/${profile.whatsapp.valor}?text=${encodeURIComponent(MENSAGEM)}`;

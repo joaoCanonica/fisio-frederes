@@ -10,8 +10,11 @@ import Contato from '../components/Contato.astro';
 import { profile, registroCrefito, sede } from '../config/profile.config.ts';
 import { slots } from '../config/slots-video.config.ts';
 import { renderCompilado, renderConvite } from '../lib/slots.ts';
+import { poseDaSecao, SIZES_HERO } from '../lib/retrato.ts';
 import { EM_PRODUCAO } from '../lib/modo.ts';
 const p = profile;
+const poseHero = poseDaSecao('inicio');
+const preload = poseHero ? { srcset: poseHero.avif, sizes: SIZES_HERO, type: 'image/avif' } : undefined;
 const titulo = `${p.nomeMarca.valor} · Fisioterapia pediátrica em Lages (SC)`;
 const descricao =
   'Fisioterapia neuropediátrica: desenvolvimento motor, coordenação e equilíbrio de bebês e crianças, incluindo crianças no espectro autista. Contato pelo WhatsApp.';
@@ -33,7 +36,7 @@ const ld = EM_PRODUCAO
     })
   : null;
 ---
-<Base titulo={titulo} descricao={descricao}>
+<Base titulo={titulo} descricao={descricao} landing preload={preload}>
   {ld && <script type="application/ld+json" set:html={ld} />}
   <Hero />
   <SlotVideo id="convite" render={renderConvite()} eyebrow="Apresentação" titulo={slots.conviteVideo.titulo} formato="vertical" />

@@ -1,0 +1,171 @@
+---
+// Entrada: uma vez por sessão. Toda a coreografia é CSS; o JS só trata "Pular",
+// Esc e a limpeza. Rede de segurança: a cortina termina em 3,2 s e, aos 5 s, o
+// overlay some mesmo se algo falhar (CSS + timer). Com prefers-reduced-motion, a
+// entrada não acontece (decidido no <head>, antes da primeira pintura).
+// O hero está no DOM desde o início, por baixo.
+import { theme } from '../config/theme.config.ts';
+import { profile } from '../config/profile.config.ts';
+const max = Math.max(...theme.pontos);
+---
+<div class="entrada" data-entrada>
+  <div class="entrada__cortina" aria-hidden="true">
+    <div class="entrada__centro">
+      <svg class="entrada__mono" viewBox="0 0 250 230">
+        <path class="t" pathLength="1" d="M95 8h24v168h-24z" />
+        <path class="t s" pathLength="1" d="M152 9 C 138 40, 136 70, 145 100 C 153 130, 132 165, 102 190 C 80 208, 42 216, 10 208" />
+        <path class="t" pathLength="1" d="M150 8h92l-5 11h-89z" />
+        <path class="t" pathLength="1" d="M150 102h72l-4 11h-70z" />
+        <g class="entrada__vertebras">
+          <circle cx="171" cy="42" r="4" /><circle cx="174" cy="65" r="6" /><circle cx="167" cy="92" r="8" />
+          <circle cx="146" cy="132" r="9" /><circle cx="125" cy="160" r="6" /><circle cx="112" cy="183" r="5" />
+          <circle cx="135" cy="208" r="12" />
+        </g>
+      </svg>
+      <p class="entrada__nome">{profile.nomeMarca.valor}</p>
+      <p class="entrada__linha">{profile.profissao.valor} · CREFITO {profile.crefito.numero.valor}</p>
+    </div>
+  </div>
+  <div class="entrada__coluna" aria-hidden="true">
+    {theme.pontos.map((d, i) => <i style={`--d:${(d / max) * 0.9}rem;--i:${i}`}></i>)}
+  </div>
+  <button type="button" class="entrada__pular" data-pular>Pular</button>
+</div>
+
+<style>
+  .entrada { display: none; }
+  :global(html.entrada) .entrada { display: block; }
+
+  .entrada__cortina {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    background: var(--fundo);
+    animation:
+      cortina 0.6s 2.6s cubic-bezier(0.7, 0, 0.2, 1) forwards,
+      seguranca 0s 5s forwards;
+  }
+  .entrada__centro { display: grid; justify-items: center; gap: 0.9rem; text-align: center; padding: 1rem; }
+  .entrada__mono { width: clamp(6rem, 18vw, 8.5rem); height: auto; color: var(--marca); overflow: visible; }
+  .entrada__mono .t {
+    fill: currentColor;
+    fill-opacity: 0;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation:
+      tracar 1.1s 0.1s var(--ease) forwards,
+      preencher 0.4s 0.9s ease forwards;
+  }
+  .entrada__mono .s { fill: none; stroke-width: 10; animation: tracar 1.2s 0.1s var(--ease) forwards; }
+  .entrada__vertebras circle {
+    fill: currentColor;
+    opacity: 0;
+    animation: vertebra 1.2s 0.75s ease forwards;
+  }
+  .entrada__nome,
+  .entrada__linha {
+    opacity: 0;
+    transform: translateY(0.6rem);
+    animation: revelar 0.6s var(--ease) forwards;
+  }
+  .entrada__nome {
+    font: 400 clamp(1.4rem, 1rem + 2.4vw, 2.3rem)/1.1 var(--fonte-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--destaque);
+    animation-delay: 1.75s;
+  }
+  .entrada__linha {
+    font: 700 0.78rem/1.3 var(--fonte-texto);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    animation-delay: 1.95s;
+  }
+
+  /* Pontos que "descem" do monograma e formam a linha lateral (vira A Coluna). */
+  .entrada__coluna {
+    position: fixed;
+    z-index: 201;
+    right: 2.1rem;
+    top: 50%;
+    display: grid;
+    justify-items: center;
+    gap: 0.75rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--destaque);
+    animation: sumir 0.5s 3s ease forwards, seguranca 0s 5s forwards;
+  }
+  .entrada__coluna i {
+    display: block;
+    width: var(--d);
+    height: var(--d);
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0;
+    transform: translate(calc(-50vw + 2.1rem), -3rem) scale(0.4);
+    animation: cascata 0.75s cubic-bezier(0.3, 0.1, 0.2, 1) forwards;
+    animation-delay: calc(1.15s + var(--i) * 0.08s);
+  }
+
+  .entrada__pular {
+    position: fixed;
+    z-index: 202;
+    right: 1rem;
+    bottom: 1rem;
+    min-height: 2.75rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--destaque);
+    background: var(--superficie);
+    color: var(--destaque);
+    font: 700 0.85rem/1 var(--fonte-texto);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    animation: sumir 0.3s 2.8s ease forwards, seguranca 0s 5s forwards;
+  }
+
+  :global(html.entrada-pulada) .entrada__cortina,
+  :global(html.entrada-pulada) .entrada__coluna,
+  :global(html.entrada-pulada) .entrada__pular { animation: sumir 0.2s ease forwards; }
+
+  @keyframes tracar { to { stroke-dashoffset: 0; } }
+  @keyframes preencher { to { fill-opacity: 1; } }
+  @keyframes vertebra { 0% { opacity: 0; } 30%, 45% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes revelar { to { opacity: 1; transform: none; } }
+  @keyframes cascata {
+    0% { opacity: 0; transform: translate(calc(-50vw + 2.1rem), -3rem) scale(0.4); }
+    35% { opacity: 1; }
+    100% { opacity: 1; transform: none; }
+  }
+  @keyframes cortina { to { transform: translateY(-100%); visibility: hidden; } }
+  @keyframes sumir { to { opacity: 0; visibility: hidden; } }
+  @keyframes seguranca { to { visibility: hidden; opacity: 0; pointer-events: none; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .entrada { display: none !important; }
+  }
+</style>
+
+<script>
+  const html = document.documentElement;
+  if (html.classList.contains('entrada')) {
+    const fim = () => html.classList.remove('entrada', 'entrada-pulada');
+    const pular = () => {
+      html.classList.add('entrada-pulada');
+      setTimeout(fim, 250);
+    };
+    document.querySelector('[data-pular]')?.addEventListener('click', pular);
+    addEventListener('keydown', (e) => e.key === 'Escape' && pular(), { once: true });
+    document.querySelector('.entrada__cortina')?.addEventListener('animationend', (e) => {
+      if ((e as AnimationEvent).animationName.includes('cortina')) fim();
+    });
+    setTimeout(fim, 5000); // rede de segurança
+  }
+</script>

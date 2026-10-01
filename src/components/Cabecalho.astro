@@ -2,19 +2,11 @@
 import Marca from './Marca.astro';
 import Icone from './ui/Icon.astro';
 import { profile } from '../config/profile.config.ts';
-import { renderCompilado, renderConvite } from '../lib/slots.ts';
 import { whatsappUrl } from '../lib/contato.ts';
+import { secoes } from '../lib/secoes.ts';
 const base = Astro.url.pathname === '/' ? '' : '/';
-// Itens de slot de vídeo só entram no menu quando o slot renderiza.
-const links: (readonly [string, string])[] = [
-  ...(renderConvite() ? [['Apresentação', 'convite'] as const] : []),
-  ['Sobre', 'sobre'],
-  ['Desenvolvimento', 'desenvolvimento'],
-  ['TEA', 'tea'],
-  ['Atendimento', 'atendimento'],
-  ...(renderCompilado() ? [['Vídeos', 'videos'] as const] : []),
-  ['Contato', 'contato'],
-];
+// Itens de slot de vídeo só entram quando o slot renderiza (ver lib/secoes.ts).
+const links = secoes().filter((s) => s.noMenu).map((s) => [s.rotulo, s.id] as const);
 ---
 <header class="cab" data-cab>
   <div class="wrap cab__in">

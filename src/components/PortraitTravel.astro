@@ -1,0 +1,68 @@
+---
+// Retrato que percorre o site (desktop largo): moldura em arco fixa na margem
+// direita que troca de pose a cada seção. Fica oculta enquanto o hero está na
+// tela (o hero já mostra o retrato grande). Em telas estreitas, as poses com
+// `inline: true` aparecem dentro das próprias seções (ver Hero/Sobre).
+// Estado controlado por src/scripts/secoes.ts (data-ativa).
+import Provisorio from './Provisorio.astro';
+import { posesLiberadas } from '../lib/retrato.ts';
+const lista = posesLiberadas().filter((p) => p.secao !== 'inicio');
+---
+{lista.length > 0 && (
+  <aside class="pt" aria-hidden="true" data-retrato>
+    <div class="pt__arco">
+      {lista.map((p) => (
+        <picture class="pt__pose" data-pose={p.secao}>
+          <source type="image/avif" srcset={p.avif} sizes="9rem" />
+          <img
+            src={p.fallback}
+            srcset={p.webp}
+            sizes="9rem"
+            width={p.largura}
+            height={p.altura}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            style={`object-position:${p.foco};transform:scale(${p.zoom});transform-origin:${p.foco}`}
+          />
+        </picture>
+      ))}
+    </div>
+    {lista.some((p) => p.provisorio) && <span class="pt__prov"><Provisorio ativo /></span>}
+  </aside>
+)}
+
+<style>
+  .pt { display: none; }
+  @media (min-width: 100rem) {
+    .pt {
+      display: block;
+      position: fixed;
+      z-index: 40;
+      right: 4.25rem;
+      top: 50%;
+      width: 8.5rem;
+      transform: translate(1.5rem, -50%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s var(--ease), transform 0.8s var(--ease);
+    }
+    .pt[data-visivel] { opacity: 1; transform: translate(0, -50%); }
+  }
+  .pt__arco {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 999px 999px 1.25rem 1.25rem;
+    overflow: hidden;
+    border: 4px solid var(--superficie);
+    background: var(--superficie-alt);
+    box-shadow: var(--sombra-suave);
+  }
+  .pt__pose { position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s var(--ease); }
+  .pt__pose img { width: 100%; height: 100%; object-fit: cover; }
+  .pt__pose[data-ativa] { opacity: 1; }
+  .pt__prov { position: absolute; left: 50%; bottom: -1.6rem; transform: translateX(-50%); }
+  @media (prefers-reduced-motion: reduce) {
+    .pt, .pt__pose { transition: none; }
+  }
+</style>

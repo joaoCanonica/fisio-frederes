@@ -1,0 +1,29 @@
+---
+// Uma pose do retrato (moldura em arco). Usada no hero, no "Quem é" e no PortraitTravel.
+import MediaFrame from './ui/MediaFrame.astro';
+import Provisorio from './Provisorio.astro';
+import type { PoseResolvida } from '../lib/retrato.ts';
+interface Props { pose: PoseResolvida; sizes: string; prioridade?: boolean; class?: string }
+const { pose, sizes, prioridade = false, class: cls } = Astro.props;
+---
+<MediaFrame formato="4:5" arco class={cls}>
+  <picture>
+    <source type="image/avif" srcset={pose.avif} sizes={sizes} />
+    <img
+      src={pose.fallback}
+      srcset={pose.webp}
+      sizes={sizes}
+      width={pose.largura}
+      height={pose.altura}
+      alt={pose.item.alt}
+      loading={prioridade ? 'eager' : 'lazy'}
+      fetchpriority={prioridade ? 'high' : 'auto'}
+      decoding="async"
+      style={`object-position:${pose.foco};transform:scale(${pose.zoom});transform-origin:${pose.foco}`}
+    />
+  </picture>
+  {pose.provisorio && <span class="pose__prov"><Provisorio ativo titulo="Foto em baixa resolução, aguardando o original" /></span>}
+</MediaFrame>
+<style>
+  .pose__prov { position: absolute; top: 16%; left: 50%; transform: translateX(-50%); }
+</style>

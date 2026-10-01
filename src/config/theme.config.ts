@@ -134,7 +134,7 @@ export const theme = {
 
   fontes: {
     display: "'Marcellus', 'Optima', 'Candara', serif",
-    texto: "'Lato', system-ui, -apple-system, 'Segoe UI', sans-serif",
+    texto: "'Lato', 'Lato Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif",
   },
 
   /** Motivo "coluna de pontos" do monograma: diâmetros relativos, de cima para baixo. */

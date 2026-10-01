@@ -1,6 +1,6 @@
 ---
 // Moldura de imagem. "arco" usa o topo arredondado (como uma porta/arcada).
-interface Props { formato?: '4:5' | '9:16' | '9:5'; arco?: boolean; class?: string }
+interface Props { formato?: '4:5' | '9:16' | '9:5'; arco?: boolean; class?: string | undefined }
 const { formato = '4:5', arco = false, class: cls } = Astro.props;
 ---
 <figure class:list={['mf', { 'mf--arco': arco }, cls]} style={`--ar:${formato.replace(':', '/')}`}>
