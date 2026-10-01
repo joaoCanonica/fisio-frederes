@@ -22,7 +22,13 @@
       "pacienteRef": null,
       "menorDeIdade": false,
       "dataRegistro": null,
-      "ocr": { "status": "manual", "texto": ["JOÃO PEDRO FREDERES", "FISIOTERAPEUTA | CREFITO 369113 - F"] },
+      "ocr": {
+        "status": "manual",
+        "texto": [
+          "JOÃO PEDRO FREDERES",
+          "FISIOTERAPEUTA | CREFITO 369113 - F"
+        ]
+      },
       "problemas": [
         "Raster de mockup (sombra de folhas e relevo), não é o arquivo-fonte do logo",
         "Resolução baixa (860x854) para uso grande",
@@ -59,12 +65,24 @@
       "consentimento": "nao-se-aplica",
       "publicavel": false,
       "previewOk": true,
-      "crop": { "x": 40, "y": 0, "largura": 685, "altura": 860, "motivo": "remover seta do carrossel (esquerda) e bolinhas de paginação (rodapé)" },
+      "crop": {
+        "x": 40,
+        "y": 0,
+        "largura": 685,
+        "altura": 860,
+        "motivo": "remover seta do carrossel (esquerda) e bolinhas de paginação (rodapé)"
+      },
       "edicoes": [],
       "pacienteRef": null,
       "menorDeIdade": false,
       "dataRegistro": null,
-      "ocr": { "status": "manual", "texto": ["CERTIFICADO (ilegível)", "João Pedro F… (bordado no jaleco)"] },
+      "ocr": {
+        "status": "manual",
+        "texto": [
+          "CERTIFICADO (ilegível)",
+          "João Pedro F… (bordado no jaleco)"
+        ]
+      },
       "problemas": [
         "Captura de tela do Instagram: seta de carrossel à esquerda e bolinhas de paginação no rodapé",
         "Resolução baixa (725x902) e compressão visível; insuficiente para hero em telas grandes",
@@ -88,12 +106,24 @@
       "consentimento": "nao-se-aplica",
       "publicavel": false,
       "previewOk": true,
-      "crop": { "x": 0, "y": 0, "largura": 680, "altura": 860, "motivo": "remover seta do carrossel (direita) e bolinhas de paginação (rodapé)" },
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "largura": 680,
+        "altura": 860,
+        "motivo": "remover seta do carrossel (direita) e bolinhas de paginação (rodapé)"
+      },
       "edicoes": [],
       "pacienteRef": null,
       "menorDeIdade": false,
       "dataRegistro": null,
-      "ocr": { "status": "manual", "texto": ["CERTIFICADO (ilegível)", "João Pedro Frederes (caneca)"] },
+      "ocr": {
+        "status": "manual",
+        "texto": [
+          "CERTIFICADO (ilegível)",
+          "João Pedro Frederes (caneca)"
+        ]
+      },
       "problemas": [
         "Captura de tela do Instagram: seta de carrossel à direita e bolinhas de paginação no rodapé",
         "Resolução baixa (722x904) e compressão visível",
@@ -102,6 +132,122 @@
         "Não há foto de corpo inteiro"
       ],
       "usoSugerido": "quem-e"
+    },
+    {
+      "id": "video-neurokids-apresentacao",
+      "arquivo": "assets-originais/videos/apresentando-neurokids.mp4",
+      "categoria": "videos",
+      "tipo": "video",
+      "largura": 720,
+      "altura": 1280,
+      "bytes": 3340494,
+      "sha256": "6813a8a325c3730d536dbbbf3271342efe773b0e101709999086071137d645bf",
+      "duracaoSeg": 33.83,
+      "codec": {
+        "video": "h264 30fps",
+        "audio": "aac 44,1 kHz estéreo"
+      },
+      "descricao": "O profissional, de camisa verde-água, sentado à mesa numa sala infantil (mural de árvore, piscina de bolinhas, faixa elástica suspensa), falando para a câmera. Na mesa, um boneco Sr. Cabeça de Batata e um brinquedo azul de encaixe. Sem paciente e sem outras pessoas.",
+      "alt": "João Pedro Frederes, fisioterapeuta, apresenta-se em uma sala de atendimento infantil",
+      "autoria": "propria",
+      "consentimento": "nao-se-aplica",
+      "tcleRef": null,
+      "publicavel": false,
+      "previewOk": true,
+      "crop": null,
+      "edicoes": [],
+      "pacienteRef": null,
+      "menorDeIdade": false,
+      "dataRegistro": "CONFIRMAR",
+      "autoriaInstituicao": "NeuroKids",
+      "autorizacaoInstituicao": "confirmada-pelo-cliente",
+      "comprovanteAutorizacao": "pendente",
+      "ocr": {
+        "status": "manual",
+        "texto": []
+      },
+      "transcricao": {
+        "status": "pendente",
+        "arquivo": "assets-originais/videos/derivados/neurokids-secao.pt-BR.vtt",
+        "revisada": false
+      },
+      "problemas": [
+        "Sem data de gravação nos metadados (dataRegistro bloqueante para produção)",
+        "Áudio não ouvido: conteúdo da fala não verificado quanto a vocabulário COFFITO e promessas",
+        "Brinquedos de marca registrada (Sr. Cabeça de Batata) em cena: uso incidental",
+        "Autorização da NeuroKids só verbal pelo cliente; arquivar comprovante formal"
+      ],
+      "derivados": [
+        "assets-originais/videos/derivados/neurokids-poster.avif",
+        "assets-originais/videos/derivados/neurokids-poster.webp",
+        "assets-originais/videos/derivados/neurokids-secao.mp4",
+        "assets-originais/videos/derivados/neurokids-secao.pt-BR.vtt",
+        "assets-originais/videos/derivados/neurokids-secao.webm"
+      ],
+      "usoSugerido": "quem-e"
+    },
+    {
+      "id": "video-P-001-marcha",
+      "arquivo": "assets-originais/videos/P-001_atendimento-marcha.mp4",
+      "categoria": "videos",
+      "tipo": "video",
+      "largura": 720,
+      "altura": 1280,
+      "bytes": 5582708,
+      "sha256": "3dc99a67b8077d7ad6235a4c8bc20680c46f0a9d58cc1b99b6f6d44e3ac143e4",
+      "duracaoSeg": 58.86,
+      "codec": {
+        "video": "h264 30fps",
+        "audio": "aac 44,1 kHz estéreo"
+      },
+      "descricao": "Câmera fixa no chão. Em uma sala ampla de piso de madeira, com espelhos em arco e aparelhos de pilates, uma criança caminha e faz atividades de marcha com as mãos na cabeça, acompanhada por um adulto de camiseta bege.",
+      "alt": "Pernas de uma criança e de um adulto caminhando lado a lado em uma sala de atendimento com piso de madeira",
+      "autoria": "CONFIRMAR",
+      "consentimento": "ok",
+      "tcleRef": "T-001",
+      "tcleArquivadoForaDoRepo": false,
+      "publicavel": false,
+      "previewOk": true,
+      "crop": {
+        "x": 0,
+        "y": 660,
+        "largura": 720,
+        "altura": 400,
+        "motivo": "enquadrar só pernas e piso: remove o rosto da criança (visível de perfil e quase de frente), os reflexos no espelho e a identificação do adulto"
+      },
+      "edicoes": [
+        "recorte"
+      ],
+      "pacienteRef": "P-001",
+      "menorDeIdade": true,
+      "dataRegistro": "CONFIRMAR",
+      "autoriaInstituicao": "CONFIRMAR",
+      "autorizacaoInstituicao": "pendente",
+      "ocr": {
+        "status": "manual",
+        "texto": []
+      },
+      "transcricao": {
+        "status": "nao-usar",
+        "motivo": "Derivados sem áudio: o áudio pode conter o nome da criança ou música de terceiros"
+      },
+      "problemas": [
+        "Rosto da criança visível no original (perfil e quase frontal) e refletido no espelho",
+        "O adulto não parece ser o profissional (sem óculos, corte de cabelo e porte diferentes): confirmar quem é. Se for outro profissional, exige autorização formal",
+        "Local diferente da sala da NeuroKids do outro vídeo (sala de pilates com teto de vidro): identificar a instituição",
+        "Áudio contínuo (média -15,7 dB), possivelmente música: não ouvido",
+        "Sem data de gravação nos metadados (bloqueante)",
+        "TCLE T-001 a arquivar fora do repositório"
+      ],
+      "derivados": [
+        "assets-originais/videos/derivados/P-001-loop-pernas.mp4",
+        "assets-originais/videos/derivados/P-001-loop-pernas.webm",
+        "assets-originais/videos/derivados/P-001-poster-pernas.avif",
+        "assets-originais/videos/derivados/P-001-poster-pernas.webp",
+        "assets-originais/videos/derivados/P-001-secao-pernas.mp4",
+        "assets-originais/videos/derivados/P-001-secao-pernas.webm"
+      ],
+      "usoSugerido": "secao-atendimento (versão recortada, sem áudio); loop de 10 s opcional"
     }
   ],
   "lacunas": [

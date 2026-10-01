@@ -7,6 +7,8 @@
 // Saída: public/midia/<id>-<largura>.{avif,webp} e src/data/midia.gerada.json (srcset).
 // Os originais em assets-originais/ nunca são alterados: o recorte vem de `crop`
 // e as únicas edições aceitas são recorte e cobertura de identificadores.
+// Vídeos: os derivados (MP4 H.264 + WebM, poster, .vtt) ficam em assets-originais/videos/derivados/
+// (gerados com ffmpeg; comandos em docs/midia/LOTE-02.md) e só são copiados para public/ quando liberados.
 // Este script NÃO roda no build ainda: nada é exposto ao site nesta etapa.
 import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -39,12 +41,17 @@ export function validar(man) {
     if (!Array.isArray(it.edicoes) || it.edicoes.some((x) => !EDICOES.includes(x))) e('edicoes só aceita recorte/tarja');
     if (!Array.isArray(it.problemas)) e('problemas deve ser lista');
     if (it.crop && !['x', 'y', 'largura', 'altura'].every((k) => Number.isInteger(it.crop[k]))) e('crop incompleto');
-    if (it.dataRegistro !== null && !/^\d{4}-\d{2}-\d{2}$/.test(it.dataRegistro)) e('dataRegistro AAAA-MM-DD ou null');
+    if (it.dataRegistro !== null && it.dataRegistro !== 'CONFIRMAR' && !/^\d{4}-\d{2}-\d{2}$/.test(it.dataRegistro)) e('dataRegistro AAAA-MM-DD, CONFIRMAR ou null');
+    const dataOk = /^\d{4}-\d{2}-\d{2}$/.test(it.dataRegistro ?? '');
+    if (it.publicavel && it.tipo === 'video' && !dataOk) e('vídeo publicável exige dataRegistro (bloqueante)');
+    if (it.publicavel && it.autoriaInstituicao && it.autorizacaoInstituicao === 'pendente') e('uso de instituição sem autorização');
+    if (it.consentimento === 'ok' && it.pacienteRef && !/^T-\d{3,}$/.test(it.tcleRef ?? '')) e('consentimento ok exige tcleRef (T-001)');
+    if (it.publicavel && it.transcricao?.status === 'pendente') e('legenda não revisada');
     // Privacidade e regras de paciente
     if (it.pacienteRef !== null && !/^P-\d{3,}$/.test(it.pacienteRef)) e('pacienteRef deve ser código opaco (P-001)');
     if (it.menorDeIdade && !it.pacienteRef) e('menor de idade exige pacienteRef');
     if (it.pacienteRef && it.consentimento === 'nao-se-aplica') e('paciente exige consentimento (TCLE)');
-    if (it.publicavel && it.pacienteRef && (it.consentimento !== 'ok' || !it.dataRegistro)) e('publicável com paciente exige TCLE ok e dataRegistro');
+    if (it.publicavel && it.pacienteRef && (it.consentimento !== 'ok' || !/^\d{4}-\d{2}-\d{2}$/.test(it.dataRegistro ?? ''))) e('publicável com paciente exige TCLE ok e dataRegistro');
     if (it.publicavel && it.autoria === 'CONFIRMAR') e('publicável exige autoria confirmada');
     if (it.antesDepois && !man.antesDepoisHabilitado) e('"antes e depois" desligado');
     // Integridade do original
