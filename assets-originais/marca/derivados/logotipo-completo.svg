@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="t">
+  <title id="t">João Pedro Frederes, Fisioterapeuta, CREFITO 369113-F</title>
+  <!-- Redesenho APROXIMADO. Texto em <text>: a fonte do original (serifa com terminais abertos, estilo glífico) não foi identificada.
+       Antes de usar em produção: obter o vetor do designer ou converter o texto em contornos com a fonte correta. -->
+  <g transform="translate(235 20)"><use href="#m"/></g>
+  <defs>
+    <g id="m" fill="#541D2C">
+    <path d="M95 8h24v168h-24z"/>
+    <path d="M152 9 C 138 40, 136 70, 145 100 C 153 130, 132 165, 102 190 C 80 208, 42 216, 10 208" fill="none" stroke="#541D2C" stroke-width="10" stroke-linecap="butt"/>
+    <path d="M150 8h92l-5 11h-89z"/>
+    <path d="M150 102h72l-4 11h-70z"/>
+    <circle cx="171" cy="42" r="4"/><circle cx="174" cy="65" r="6"/><circle cx="167" cy="92" r="8"/>
+    <circle cx="146" cy="132" r="9"/><circle cx="125" cy="160" r="6"/><circle cx="112" cy="183" r="5"/>
+    <circle cx="135" cy="208" r="12"/>
+  </g>
+  </defs>
+  <text x="360" y="300" text-anchor="middle" fill="#541D2C" font-family="'Cinzel','Trajan Pro','Optima',serif" font-size="46" letter-spacing="1">JOÃO PEDRO FREDERES</text>
+  <text x="360" y="345" text-anchor="middle" fill="#541D2C" font-family="'Lato','Helvetica Neue',sans-serif" font-size="19" font-weight="700" letter-spacing="5">FISIOTERAPEUTA | CREFITO 369113 - F</text>
+</svg>

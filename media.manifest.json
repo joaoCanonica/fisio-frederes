@@ -1,0 +1,110 @@
+{
+  "versao": 1,
+  "antesDepoisHabilitado": false,
+  "itens": [
+    {
+      "id": "marca-logo-original",
+      "arquivo": "assets-originais/marca/logo-original.png",
+      "categoria": "marca",
+      "tipo": "imagem",
+      "largura": 860,
+      "altura": 854,
+      "bytes": 163366,
+      "sha256": "92a75acd0b33991c3358dfed47a71dee889e9d2768b101df1a5f805e0eaea23f",
+      "descricao": "Mockup do logotipo: monograma JF (haste do J, curva em S e coluna de pontos que lembra a coluna vertebral) sobre o F, com 'JOÃO PEDRO FREDERES' e 'FISIOTERAPEUTA | CREFITO 369113 - F'. Fundo branco-gelo com sombra de folhagem e relevo.",
+      "alt": "Logotipo de João Pedro Frederes, fisioterapeuta, CREFITO 369113-F",
+      "autoria": "CONFIRMAR",
+      "consentimento": "nao-se-aplica",
+      "publicavel": false,
+      "previewOk": true,
+      "crop": null,
+      "edicoes": [],
+      "pacienteRef": null,
+      "menorDeIdade": false,
+      "dataRegistro": null,
+      "ocr": { "status": "manual", "texto": ["JOÃO PEDRO FREDERES", "FISIOTERAPEUTA | CREFITO 369113 - F"] },
+      "problemas": [
+        "Raster de mockup (sombra de folhas e relevo), não é o arquivo-fonte do logo",
+        "Resolução baixa (860x854) para uso grande",
+        "O texto do logo informa CREFITO 369113-F, mas não a região (ex.: CREFITO-x)",
+        "Autoria do design (designer contratado?) e cessão de uso a confirmar"
+      ],
+      "cores": {
+        "vinho": "#541D2C",
+        "brancoGelo": "#F4F3F3",
+        "observacao": "Vinho medido nos pixels do monograma (média ≈ rgb(84,29,44)). O fundo do mockup tem ≈ #F0EFEF, com sombras. Sugestão de tema; confirmar com o arquivo do designer."
+      },
+      "derivados": [
+        "assets-originais/marca/derivados/monograma-jf.svg",
+        "assets-originais/marca/derivados/monograma-jf-mono-claro.svg",
+        "assets-originais/marca/derivados/monograma-jf-mono-escuro.svg",
+        "assets-originais/marca/derivados/logotipo-completo.svg",
+        "assets-originais/marca/derivados/logotipo-mono-claro.svg",
+        "assets-originais/marca/derivados/logotipo-mono-escuro.svg"
+      ],
+      "usoSugerido": "Fonte da identidade (tema vinho/branco-gelo). Usar os SVG derivados só depois de comparar com o vetor original do designer."
+    },
+    {
+      "id": "pessoa-foto-01",
+      "arquivo": "assets-originais/pessoa/foto-01-dinossauro.webp",
+      "categoria": "pessoa",
+      "tipo": "imagem",
+      "largura": 725,
+      "altura": 902,
+      "bytes": 61896,
+      "sha256": "fe0cf65bc6647f535b6cd57112bcb6952701014c6f1b25098608c440ea863994",
+      "descricao": "O profissional sentado à mesa, de jaleco branco e camisa verde-água, sorrindo e segurando um dinossauro de brinquedo azul com uma bola laranja. Ao fundo, parede clara com três quadros de certificados. Caneca branca e notebook em primeiro plano.",
+      "alt": "João Pedro Frederes, de jaleco, sentado à mesa segurando um dinossauro de brinquedo",
+      "autoria": "propria",
+      "consentimento": "nao-se-aplica",
+      "publicavel": false,
+      "previewOk": true,
+      "crop": { "x": 40, "y": 0, "largura": 685, "altura": 860, "motivo": "remover seta do carrossel (esquerda) e bolinhas de paginação (rodapé)" },
+      "edicoes": [],
+      "pacienteRef": null,
+      "menorDeIdade": false,
+      "dataRegistro": null,
+      "ocr": { "status": "manual", "texto": ["CERTIFICADO (ilegível)", "João Pedro F… (bordado no jaleco)"] },
+      "problemas": [
+        "Captura de tela do Instagram: seta de carrossel à esquerda e bolinhas de paginação no rodapé",
+        "Resolução baixa (725x902) e compressão visível; insuficiente para hero em telas grandes",
+        "Certificados ao fundo ilegíveis: não usar como comprovação de formação",
+        "Não há foto de corpo inteiro"
+      ],
+      "usoSugerido": "hero"
+    },
+    {
+      "id": "pessoa-foto-02",
+      "arquivo": "assets-originais/pessoa/foto-02-caneca.webp",
+      "categoria": "pessoa",
+      "tipo": "imagem",
+      "largura": 722,
+      "altura": 904,
+      "bytes": 66274,
+      "sha256": "e714b016a64adb94fae50a30f7b86897ad176ed7ec156baa4207876904846ed3",
+      "descricao": "O profissional sentado à mesa, de frente, de jaleco, sorrindo, com a mão numa caneca branca com símbolo verde e o nome 'João Pedro Frederes'. À direita, notebook e um boneco caricato dele de jaleco. Ao fundo, quatro quadros de certificados.",
+      "alt": "João Pedro Frederes, de jaleco, sentado à mesa com uma caneca e um boneco em miniatura",
+      "autoria": "propria",
+      "consentimento": "nao-se-aplica",
+      "publicavel": false,
+      "previewOk": true,
+      "crop": { "x": 0, "y": 0, "largura": 680, "altura": 860, "motivo": "remover seta do carrossel (direita) e bolinhas de paginação (rodapé)" },
+      "edicoes": [],
+      "pacienteRef": null,
+      "menorDeIdade": false,
+      "dataRegistro": null,
+      "ocr": { "status": "manual", "texto": ["CERTIFICADO (ilegível)", "João Pedro Frederes (caneca)"] },
+      "problemas": [
+        "Captura de tela do Instagram: seta de carrossel à direita e bolinhas de paginação no rodapé",
+        "Resolução baixa (722x904) e compressão visível",
+        "Certificados ao fundo ilegíveis: não usar como comprovação de formação",
+        "A caneca tem um símbolo verde (parece um caduceu) diferente da marca vinho; confere com a identidade?",
+        "Não há foto de corpo inteiro"
+      ],
+      "usoSugerido": "quem-e"
+    }
+  ],
+  "lacunas": [
+    "Sem foto de corpo inteiro: o recurso 'retrato que percorre o site' exigirá novas poses na versão final (ver Prompt 4)."
+  ]
+}
