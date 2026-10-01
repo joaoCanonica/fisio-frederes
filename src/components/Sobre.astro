@@ -1,7 +1,8 @@
 ---
 import Provisorio from './Provisorio.astro';
 import Icone from './ui/Icon.astro';
-import { profile, tituloProfissional } from '../config/profile.config.ts';
+import { profile } from '../config/profile.config.ts';
+import { copy } from '../config/copy.config.ts';
 import { exibir, provisorio } from '../lib/modo.ts';
 import { instagramUrl } from '../lib/contato.ts';
 import Pose from './Pose.astro';
@@ -17,18 +18,19 @@ const formacao = [
     : []),
 ];
 const lattes = exibir(p.lattes);
+const verificacao = exibir(p.linkVerificacaoCrefito);
 const pose = poseDaSecao('sobre');
 ---
 <section id="sobre" class="sec sobre" aria-labelledby="sobre-titulo">
   <div class="wrap sobre__grade">
     <div class="sobre__intro" data-revelar>
       {pose && <div class="sobre__pose"><Pose pose={pose} sizes="(min-width: 60rem) 18rem, 70vw" /></div>}
-      <p class="eyebrow">Quem atende</p>
-      <h2 id="sobre-titulo" class="titulo">{p.nomeMarca.valor}</h2>
-      <p class="lead">
-        {p.profissao.valor}. {tituloProfissional()}. Atende bebês e crianças em
-        {' '}{p.regioesAtendimento.join(', ')}, com foco em neuropediatria, desenvolvimento
-        motor e aspectos motores do transtorno do espectro autista (TEA).
+      <p class="eyebrow">{copy.sobre.eyebrow}</p>
+      <h2 id="sobre-titulo" class="titulo">{copy.sobre.titulo}</h2>
+      <p class="lead">{copy.sobre.texto}</p>
+      <p class="sobre__verifique">
+        {copy.sobre.verifique}
+        {verificacao && <> <a href={verificacao} target="_blank" rel="noopener">Verifique o registro<span class="sr-only"> (abre em nova aba)</span></a></>}
       </p>
       {lattes && (
         <a class="btn btn--linha sobre__lattes" href={lattes} target="_blank" rel="noopener">
@@ -48,7 +50,7 @@ const pose = poseDaSecao('sobre');
         ))}
       </ol>
 
-      <h3 class="sobre__h3">Onde atua</h3>
+      <h3 class="sobre__h3">Vínculos</h3>
       <ul class="vinculos" data-revelar>
         {p.vinculos.map((v) => (
           <li>
@@ -70,6 +72,7 @@ const pose = poseDaSecao('sobre');
     .sobre__intro { position: sticky; top: 7rem; align-self: start; }
   }
   .sobre__lattes { margin-top: 2rem; }
+  .sobre__verifique { margin-top: 1.25rem; font-size: 0.92rem; color: var(--texto-suave); max-width: 36rem; }
   .sobre__pose { width: min(70%, 18rem); margin-bottom: 2rem; }
   .sobre__h3 {
     font: 700 0.75rem/1 var(--fonte-texto);

@@ -1,6 +1,6 @@
 # Copy deck: landing de João Pedro Frederes
 
-**Status: RASCUNHO PARA REVISÃO. Nada daqui foi integrado ao site.**
+**Status: APROVADO e integrado em 2026-10-01 (fonte no site: `src/config/copy.config.ts`).**
 Versão 1, de 2026-10-01. Revisores: cliente e João Pedro Frederes.
 
 Legenda:

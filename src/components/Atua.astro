@@ -1,0 +1,60 @@
+---
+// Em que atua. Limite inegociável no TEA: só o que a fisioterapia faz (movimento
+// e participação), nunca tratar/curar/reduzir o autismo. Fontes: docs/pesquisa/.
+import Fontes from './ui/Fontes.astro';
+import { copy } from '../config/copy.config.ts';
+const c = copy.atua;
+---
+<section id="atua" class="sec atua tom-escuro" aria-labelledby="atua-titulo">
+  <div class="wrap">
+    <div class="atua__topo">
+      <div data-revelar>
+        <p class="eyebrow">{c.eyebrow}</p>
+        <h2 id="atua-titulo" class="titulo">{c.titulo}</h2>
+        <p class="lead">{c.intro}</p>
+      </div>
+      <figure class="atua__dado" data-revelar style="--i:1">
+        <p class="atua__num">{c.dado.numero}</p>
+        <figcaption>
+          {c.dado.texto}
+          <Fontes fontes={[c.dado.fonte]} />
+        </figcaption>
+      </figure>
+    </div>
+
+    <ol class="atua__lista">
+      {c.areas.map((a, i) => (
+        <li data-revelar style={`--i:${i}`}>
+          <span class="atua__idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>{a.titulo}</h3>
+            <p>{a.texto}</p>
+            <Fontes fontes={a.fontes} />
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .atua { --linha: color-mix(in oklab, var(--borda) 80%, transparent); }
+  .atua__topo { display: grid; gap: 3rem; align-items: end; }
+  @media (min-width: 60rem) { .atua__topo { grid-template-columns: 1.4fr 1fr; gap: 5rem; } }
+  .atua__dado { margin: 0; padding-left: 1.5rem; border-left: 1px solid var(--linha); }
+  .atua__num { font: 400 clamp(3.2rem, 7vw, 5rem)/1 var(--fonte-display); color: var(--destaque); }
+  .atua__dado figcaption { margin-top: 0.75rem; color: var(--texto-suave); font-size: 0.95rem; }
+  .atua__lista { list-style: none; margin: 4.5rem 0 0; padding: 0; display: grid; gap: 0; }
+  @media (min-width: 60rem) { .atua__lista { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+  .atua__lista li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--linha);
+  }
+  .atua__idx { font: 400 1rem/1.6 var(--fonte-display); color: var(--destaque); }
+  .atua__lista h3 { font-size: 1.15rem; }
+  .atua__lista p { color: var(--texto-suave); margin-top: 0.5rem; font-size: 0.97rem; }
+  .atua__lista :global(.fontes) { margin-top: 0.75rem; }
+</style>

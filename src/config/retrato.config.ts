@@ -20,8 +20,10 @@ export interface Pose {
 export const poses: readonly Pose[] = [
   { secao: 'inicio', midiaId: 'pessoa-foto-01', foco: '50% 40%', zoom: 1, inline: true },
   { secao: 'sobre', midiaId: 'pessoa-foto-02', foco: '50% 45%', zoom: 1, inline: true },
-  { secao: 'desenvolvimento', midiaId: 'pessoa-foto-01', foco: '78% 72%', zoom: 1.6, inline: false },
-  { secao: 'tea', midiaId: 'pessoa-foto-02', foco: '50% 38%', zoom: 1.7, inline: false },
+  { secao: 'porque', midiaId: 'pessoa-foto-01', foco: '78% 72%', zoom: 1.6, inline: false },
+  { secao: 'atua', midiaId: 'pessoa-foto-02', foco: '50% 38%', zoom: 1.7, inline: false },
   { secao: 'atendimento', midiaId: 'pessoa-foto-01', foco: '42% 42%', zoom: 1.5, inline: false },
-  { secao: 'contato', midiaId: 'pessoa-foto-02', foco: '50% 50%', zoom: 1.15, inline: false },
+  { secao: 'onde', midiaId: 'pessoa-foto-02', foco: '50% 50%', zoom: 1.15, inline: false },
+  { secao: 'faq', midiaId: 'pessoa-foto-01', foco: '50% 40%', zoom: 1.2, inline: false },
+  { secao: 'contato', midiaId: 'pessoa-foto-02', foco: '50% 45%', zoom: 1, inline: false },
 ];

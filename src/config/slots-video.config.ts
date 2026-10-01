@@ -20,7 +20,7 @@ export interface SlotConvite {
   readonly legendaVtt: string | null;
   /** Preenchido a partir do manifesto quando null. */
   readonly dataRegistro: string | null;
-  readonly posicao: 'apos-hero';
+  readonly posicao: 'quem-e';
 }
 
 export interface SlotCompilado {
@@ -34,10 +34,10 @@ export const slots = {
   conviteVideo: {
     estado: 'vago',
     midiaId: null,
-    titulo: 'Uma conversa sobre o desenvolvimento do seu filho',
+    titulo: 'Apresentação de João Pedro Frederes',
     legendaVtt: null,
     dataRegistro: null,
-    posicao: 'apos-hero',
+    posicao: 'quem-e',
   } satisfies SlotConvite as SlotConvite,
 
   /** Provisório: 1 item (vídeo P-001) até o compilado chegar. */

@@ -1,6 +1,6 @@
 import { renderCompilado, renderConvite } from './slots.ts';
 
-/** Seções da landing, na ordem. Fonte única para o menu e para "A Coluna". */
+/** Seções da landing, na ordem do copy deck. Fonte única para o menu e "A Coluna". */
 export interface Secao {
   readonly id: string;
   readonly rotulo: string;
@@ -10,12 +10,14 @@ export interface Secao {
 export function secoes(): Secao[] {
   return [
     { id: 'inicio', rotulo: 'Início', noMenu: false },
-    ...(renderConvite() ? [{ id: 'convite', rotulo: 'Apresentação', noMenu: true }] : []),
     { id: 'sobre', rotulo: 'Quem é', noMenu: true },
-    { id: 'desenvolvimento', rotulo: 'Desenvolvimento', noMenu: true },
-    { id: 'tea', rotulo: 'TEA', noMenu: true },
+    ...(renderConvite() ? [{ id: 'convite', rotulo: 'Apresentação', noMenu: false }] : []),
+    { id: 'atua', rotulo: 'Em que atua', noMenu: true },
     { id: 'atendimento', rotulo: 'Atendimento', noMenu: true },
-    ...(renderCompilado() ? [{ id: 'videos', rotulo: 'Vídeos', noMenu: true }] : []),
+    ...(renderCompilado() ? [{ id: 'videos', rotulo: 'Vídeos', noMenu: false }] : []),
+    { id: 'porque', rotulo: 'Desenvolvimento', noMenu: true },
+    { id: 'onde', rotulo: 'Onde atende', noMenu: true },
+    { id: 'faq', rotulo: 'Perguntas', noMenu: true },
     { id: 'contato', rotulo: 'Contato', noMenu: true },
   ];
 }

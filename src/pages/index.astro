@@ -3,7 +3,9 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import Sobre from '../components/Sobre.astro';
 import Desenvolvimento from '../components/Desenvolvimento.astro';
-import Tea from '../components/Tea.astro';
+import Atua from '../components/Atua.astro';
+import Onde from '../components/Onde.astro';
+import Faq from '../components/Faq.astro';
 import Atendimento from '../components/Atendimento.astro';
 import SlotVideo from '../components/SlotVideo.astro';
 import Contato from '../components/Contato.astro';
@@ -17,7 +19,7 @@ const poseHero = poseDaSecao('inicio');
 const preload = poseHero ? { srcset: poseHero.avif, sizes: SIZES_HERO, type: 'image/avif' } : undefined;
 const titulo = `${p.nomeMarca.valor} · Fisioterapia pediátrica em Lages (SC)`;
 const descricao =
-  'Fisioterapia neuropediátrica: desenvolvimento motor, coordenação e equilíbrio de bebês e crianças, incluindo crianças no espectro autista. Contato pelo WhatsApp.';
+  'João Pedro Frederes, fisioterapeuta (CREFITO 369113-F): atendimento neuropediátrico com foco no desenvolvimento motor de bebês e crianças, em Lages (SC). Contato pelo WhatsApp.';
 // Dados estruturados só em produção (com dados confirmados).
 const ld = EM_PRODUCAO
   ? JSON.stringify({
@@ -39,10 +41,9 @@ const ld = EM_PRODUCAO
 <Base titulo={titulo} descricao={descricao} landing preload={preload}>
   {ld && <script type="application/ld+json" set:html={ld} />}
   <Hero />
-  <SlotVideo id="convite" render={renderConvite()} eyebrow="Apresentação" titulo={slots.conviteVideo.titulo} formato="vertical" />
   <Sobre />
-  <Desenvolvimento />
-  <Tea />
+  <SlotVideo id="convite" render={renderConvite()} eyebrow="Apresentação" titulo={slots.conviteVideo.titulo} formato="vertical" />
+  <Atua />
   <Atendimento />
   <SlotVideo
     id="videos"
@@ -52,5 +53,8 @@ const ld = EM_PRODUCAO
     texto="Registros publicados com autorização por escrito do responsável legal, que pode ser retirada a qualquer momento."
     formato="paisagem"
   />
+  <Desenvolvimento />
+  <Onde />
+  <Faq />
   <Contato />
 </Base>

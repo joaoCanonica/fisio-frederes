@@ -1,71 +1,36 @@
 ---
-import Icone from './ui/Icon.astro';
+import Button from './ui/Button.astro';
+import Icon from './ui/Icon.astro';
 import Incorporacao from './Incorporacao.astro';
-import Provisorio from './Provisorio.astro';
-import { profile, sede } from '../config/profile.config.ts';
-import { exibir, provisorio } from '../lib/modo.ts';
+import { copy } from '../config/copy.config.ts';
 import { instagramUrl, instagramUser, whatsappUrl } from '../lib/contato.ts';
-const p = profile;
-// O mapa só existe com endereço confirmado (e só carrega após consentimento).
-const enderecoSede = sede().endereco;
-const mapa = enderecoSede.status === 'confirmado' ? `${sede().nome}, ${enderecoSede.valor}` : '';
-const mapaSrc = mapa ? `https://www.google.com/maps?q=${encodeURIComponent(mapa)}&output=embed` : null;
+const c = copy.contato;
 ---
 <section id="contato" class="sec contato tom-vinho" aria-labelledby="contato-titulo">
-  <div class="wrap">
+  <div class="wrap contato__grade">
     <div class="contato__cta" data-revelar>
-      <p class="eyebrow eyebrow--claro">Contato</p>
-      <h2 id="contato-titulo" class="titulo">Vamos conversar sobre o <em>desenvolvimento</em> do seu filho?</h2>
-      <p class="contato__txt">
-        O contato é feito pelo WhatsApp. Para proteger a privacidade da criança, evite enviar
-        exames ou relatórios por mensagem antes da consulta fisioterapêutica.
-      </p>
+      <p class="eyebrow">{c.eyebrow}</p>
+      <h2 id="contato-titulo" class="titulo">{c.titulo}</h2>
+      <p class="contato__txt">{c.texto}</p>
       <div class="contato__acoes">
-        <a class="btn btn--claro" href={whatsappUrl()} target="_blank" rel="noopener">
-          <Icone nome="whatsapp" /> Conversar pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span>
-        </a>
-        <a class="btn btn--linha contato__ig" href={instagramUrl()} target="_blank" rel="noopener">
-          <Icone nome="instagram" /> @{instagramUser()}<span class="sr-only"> (abre em nova aba)</span>
-        </a>
+        <Button href={whatsappUrl()} icone="whatsapp" externo>Conversar pelo WhatsApp</Button>
+        <Button href={instagramUrl()} icone="instagram" variante="secundario" externo>@{instagramUser()}</Button>
       </div>
     </div>
-
-    <div class="contato__grade">
-      <div data-revelar>
-        <h3 class="contato__h3"><Icone nome="mapa" /> Onde atende</h3>
-        <ul class="unidades">
-          {p.unidades.map((u) => {
-            const maps = exibir(u.mapsUrl);
-            return (
-              <li>
-                <strong>{u.nome}{u.id === p.sedePrincipal && <span class="unidades__sede"> · principal</span>}</strong>
-                <address>{u.endereco.valor}<Provisorio ativo={provisorio(u.endereco)} /></address>
-                {maps && <a href={maps} target="_blank" rel="noopener">Abrir no Google Maps<span class="sr-only"> (abre em nova aba)</span></a>}
-              </li>
-            );
-          })}
-        </ul>
-        {mapaSrc ? (
-          <Incorporacao src={mapaSrc} titulo="Mapa com o local de atendimento" servico="Google Maps" altura="20rem" />
-        ) : (
-          <p class="contato__aviso">Mapa disponível quando o endereço for confirmado.</p>
-        )}
-      </div>
-      <div data-revelar style="--i:1">
-        <h3 class="contato__h3"><Icone nome="instagram" /> Instagram</h3>
-        <Incorporacao src={`https://www.instagram.com/${instagramUser()}/embed`} titulo="Publicações recentes no Instagram" servico="Instagram" altura="26rem" />
-      </div>
+    <div data-revelar style="--i:1">
+      <h3 class="contato__h3"><Icon nome="instagram" /> Instagram</h3>
+      <p class="contato__txt">{c.instagram}</p>
+      <Incorporacao src={`https://www.instagram.com/${instagramUser()}/embed`} titulo="Publicações recentes no Instagram" servico="Instagram" altura="24rem" />
     </div>
   </div>
 </section>
 
 <style>
   .contato { --linha: color-mix(in oklab, var(--borda) 90%, transparent); }
-  .contato :global(.titulo em) { color: var(--destaque); }
-  .contato__cta { max-width: 46rem; }
-  .contato__txt { color: var(--texto-suave); margin-top: 1.25rem; max-width: 36rem; }
+  .contato__grade { display: grid; gap: 3.5rem; }
+  @media (min-width: 60rem) { .contato__grade { grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start; } }
+  .contato__txt { color: var(--texto-suave); margin-top: 1.1rem; max-width: 36rem; }
   .contato__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-  .contato__grade { display: grid; gap: 2.5rem; margin-top: 5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
   .contato__h3 {
     display: flex;
     align-items: center;
@@ -74,14 +39,7 @@ const mapaSrc = mapa ? `https://www.google.com/maps?q=${encodeURIComponent(mapa)
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--destaque);
-    margin-bottom: 1rem;
   }
   .contato__h3 :global(svg) { width: 1.1rem; height: 1.1rem; }
-  address { font-style: normal; }
-  .unidades { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: 1rem; }
-  .unidades strong { font-weight: 600; }
-  .unidades__sede { font-weight: 400; color: var(--destaque); font-size: 0.85rem; }
-  .contato a { color: var(--destaque); }
-  .contato__aviso { color: var(--texto-suave); font-size: 0.9rem; }
-  .contato :global(.inc) { background: var(--superficie); }
+  .contato :global(.inc) { margin-top: 1.25rem; background: var(--superficie); }
 </style>
