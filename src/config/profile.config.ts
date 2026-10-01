@@ -48,26 +48,21 @@ export const profile = {
     numero: confirmado('369113-F'),
     regiao: bloqueante('CREFITO-10', 'Confirmar a região do CREFITO (CREFITO-10 = Santa Catarina).'),
     atuacaoUfs: ['SC', 'RS'] as const,
-    comprovanteAtuacaoUfs: aviso<string | null>(
-      null,
-      'Atuação no RS: confirmar inscrição secundária ou autorização no CREFITO-5 e arquivar o comprovante.',
-    ),
+    /** Registro no CREFITO-5 (RS) confirmado pelo cliente. */
+    comprovanteAtuacaoUfs: confirmado<string | null>('CREFITO-5: registro confirmado pelo cliente'),
   },
 
-  /** Página de consulta pública de profissionais do CREFITO da região. */
-  linkVerificacaoCrefito: aviso<string | null>(
-    null,
-    'Informar o link da consulta pública de profissionais do CREFITO-10.',
-  ),
+  /**
+   * Opcional. A norma exige exibir nome, profissão e número do CREFITO, não um
+   * link. Se um dia for informado, aparece ao lado do registro.
+   */
+  linkVerificacaoCrefito: confirmado<string | null>(null),
 
   titulos: {
     graduacao: confirmado({ curso: 'Fisioterapia', instituicao: 'Uniplac' }),
     posGraduacao: confirmado({ area: 'Fisioterapia Neuropediátrica', instituicao: null as string | null }),
-    /** Só pode ser citado se concluído. Enquanto não confirmado, fica oculto em produção. */
-    mestrado: aviso(
-      { programa: 'Ambiente e Saúde', instituicao: 'Uniplac' as string | null, concluido: true },
-      'Confirmar que o mestrado em Ambiente e Saúde está concluído (e a instituição).',
-    ),
+    /** Concluído (confirmado pelo cliente). */
+    mestrado: confirmado({ programa: 'Ambiente e Saúde', instituicao: 'Uniplac' as string | null, concluido: true }),
   },
 
   /** Sem registro de especialista + RQE, o site nunca usa a palavra "especialista". */

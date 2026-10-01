@@ -12,12 +12,19 @@
 
   --vinho-950: #26080f;
   --vinho-900: #3d0f1b;
-  --vinho-800: #521627;
+  --vinho-800: #541d2c; /* cor medida no logo */
   --vinho-700: #6b1f33;
   --vinho-500: #9a3a52;
   --vinho-300: #c9899a;
   --rosa-200: #e8c9cf;
   --rosa-100: #f3e3e6;
+
+  /* Acentos lúdicos (só decorativos, nunca para texto): sálvia da camisa das fotos
+     e um damasco suave, sempre em tom baixo para não competir com o vinho. */
+  --salvia-100: #e3efeb;
+  --salvia-300: #b5d3ca;
+  --salvia-500: #6f9c90;
+  --damasco-200: #f3d9c6;
 
   --gelo-0: #fbfcfc;
   --gelo-50: #f5f6f7;

@@ -49,3 +49,23 @@ export function urlDerivado(item: ItemManifesto, tipo: 'secao' | 'loop' | 'poste
   const d = item.derivados?.find((x) => x.includes(`-${tipo}`) && x.endsWith(`.${ext}`));
   return d ? `/midia/${d.split('/').pop()}` : null;
 }
+
+const LARGURAS = [480, 768, 1080, 1600];
+
+/** Imagem liberada no modo atual (mesma regra de scripts/prepare-media.mjs). */
+export function imagemLiberada(id: string, emProducao: boolean): ItemManifesto | null {
+  const it = midiaPorId(id);
+  if (!it || it.tipo !== 'imagem') return null;
+  const ok =
+    (it.publicavel && (it.consentimento === 'ok' || it.consentimento === 'nao-se-aplica')) ||
+    (!emProducao && it.previewOk);
+  return ok ? it : null;
+}
+
+/** srcset dos derivados gerados por prepare-media (mesmas larguras). */
+export function srcsetImagem(it: ItemManifesto, fmt: 'avif' | 'webp'): { srcset: string; largura: number; altura: number } {
+  const largura = it.crop?.largura ?? it.largura;
+  const altura = it.crop?.altura ?? it.altura;
+  const ls = LARGURAS.filter((l) => l < largura).concat(largura);
+  return { srcset: ls.map((l) => `/midia/${it.id}-${l}.${fmt} ${l}w`).join(', '), largura, altura };
+}

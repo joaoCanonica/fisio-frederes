@@ -193,7 +193,6 @@
         "arquivo": "assets-originais/videos/derivados/neurokids-secao.pt-BR.vtt",
         "obs": "Cliente adiou a legenda. Sem legenda revisada, o vídeo não vai a um slot."
       },
-      "dataRegistroObs": "Dia e mês informados pelo cliente; ano 2026 presumido (CONFIRMAR).",
       "vinculoId": "neurokids",
       "comprovanteAutorizacao": null
     },
@@ -258,7 +257,6 @@
         "status": "nao-se-aplica",
         "obs": "Derivados sem áudio e sem fala."
       },
-      "dataRegistroObs": "Dia e mês informados pelo cliente; ano 2026 presumido (CONFIRMAR).",
       "vinculoId": "neurokids",
       "comprovanteAutorizacao": null,
       "audio": {
