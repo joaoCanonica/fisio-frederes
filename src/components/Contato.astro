@@ -1,9 +1,9 @@
 ---
 import Button from './ui/Button.astro';
 import Icon from './ui/Icon.astro';
-import Incorporacao from './Incorporacao.astro';
+import InstagramBloco from './InstagramBloco.astro';
 import { copy } from '../config/copy.config.ts';
-import { instagramUrl, instagramUser, whatsappUrl } from '../lib/contato.ts';
+import { whatsappUrl } from '../lib/contato.ts';
 const c = copy.contato;
 ---
 <section id="contato" class="sec contato tom-vinho" aria-labelledby="contato-titulo">
@@ -14,13 +14,12 @@ const c = copy.contato;
       <p class="contato__txt">{c.texto}</p>
       <div class="contato__acoes">
         <Button href={whatsappUrl()} icone="whatsapp" externo>Conversar pelo WhatsApp</Button>
-        <Button href={instagramUrl()} icone="instagram" variante="secundario" externo>@{instagramUser()}</Button>
       </div>
     </div>
     <div data-revelar style="--i:1">
       <h3 class="contato__h3"><Icon nome="instagram" /> Instagram</h3>
       <p class="contato__txt">{c.instagram}</p>
-      <Incorporacao src={`https://www.instagram.com/${instagramUser()}/embed`} titulo="Publicações recentes no Instagram" servico="Instagram" altura="24rem" />
+      <InstagramBloco />
     </div>
   </div>
 </section>
@@ -41,5 +40,4 @@ const c = copy.contato;
     color: var(--destaque);
   }
   .contato__h3 :global(svg) { width: 1.1rem; height: 1.1rem; }
-  .contato :global(.inc) { margin-top: 1.25rem; background: var(--superficie); }
 </style>

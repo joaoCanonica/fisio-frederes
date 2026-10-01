@@ -4,7 +4,7 @@ import Identificacao from './Identificacao.astro';
 import Provisorio from './Provisorio.astro';
 import { profile, sede } from '../config/profile.config.ts';
 import { exibir, provisorio } from '../lib/modo.ts';
-import { instagramUrl, whatsappUrl } from '../lib/contato.ts';
+import { instagramUrl, revogacaoUrl, whatsappUrl } from '../lib/contato.ts';
 const p = profile;
 const lattes = exibir(p.lattes);
 const endereco = sede().endereco;
@@ -28,8 +28,13 @@ const ano = new Date().getFullYear();
         <li><a href={whatsappUrl()} target="_blank" rel="noopener">WhatsApp</a></li>
         <li><a href={instagramUrl()} target="_blank" rel="noopener">Instagram</a></li>
         {lattes && <li><a href={lattes} target="_blank" rel="noopener">Currículo Lattes</a></li>}
-        <li><a href="/privacidade">Política de privacidade</a></li>
-        <li><button type="button" class="rod__btn" data-reabrir-consentimento>Preferências de conteúdo de terceiros</button></li>
+        <li><a href="/privacidade">Política de privacidade e cookies</a></li>
+        <li><button type="button" class="rod__btn" data-reabrir-consentimento>Preferências de cookies</button></li>
+      </ul>
+      <h2 class="rod__h">Imagens de pacientes</h2>
+      <ul class="rod__links">
+        <li><a href={revogacaoUrl()} target="_blank" rel="noopener">Pedir retirada de imagem ou vídeo (revogar o TCLE)<span class="sr-only"> (abre o WhatsApp em nova aba)</span></a></li>
+        <li><a href="/privacidade#revogacao">Como funciona a retirada</a></li>
       </ul>
     </div>
   </div>

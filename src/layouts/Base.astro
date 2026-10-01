@@ -14,6 +14,7 @@ import Consentimento from '../components/Consentimento.astro';
 import Entrada from '../components/Entrada.astro';
 import Coluna from '../components/Coluna.astro';
 import PortraitTravel from '../components/PortraitTravel.astro';
+import BarraMobile from '../components/BarraMobile.astro';
 import { EM_PRODUCAO } from '../lib/modo.ts';
 import { listarPendencias } from '../lib/validacao.ts';
 import { identificacao } from '../lib/contato.ts';
@@ -75,6 +76,7 @@ const canonico = new URL(Astro.url.pathname, Astro.site);
     <Consentimento />
     {landing && <Coluna />}
     {landing && <PortraitTravel />}
+    {landing && <BarraMobile />}
     <script>
       import '../scripts/revelar.ts';
       import '../scripts/secoes.ts';
