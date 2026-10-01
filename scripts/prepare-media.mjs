@@ -11,7 +11,7 @@
 // (gerados com ffmpeg; comandos em docs/midia/LOTE-02.md) e só são copiados para public/ quando liberados.
 // Este script NÃO roda no build ainda: nada é exposto ao site nesta etapa.
 import { createHash } from 'node:crypto';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 
 const CATEGORIAS = ['marca', 'pessoa', 'espaco', 'videos'];
 const AUTORIA = ['propria', 'terceiro', 'desconhecida', 'CONFIRMAR'];
@@ -44,9 +44,9 @@ export function validar(man) {
     if (it.dataRegistro !== null && it.dataRegistro !== 'CONFIRMAR' && !/^\d{4}-\d{2}-\d{2}$/.test(it.dataRegistro)) e('dataRegistro AAAA-MM-DD, CONFIRMAR ou null');
     const dataOk = /^\d{4}-\d{2}-\d{2}$/.test(it.dataRegistro ?? '');
     if (it.publicavel && it.tipo === 'video' && !dataOk) e('vídeo publicável exige dataRegistro (bloqueante)');
-    if (it.publicavel && it.autoriaInstituicao && it.autorizacaoInstituicao === 'pendente') e('uso de instituição sem autorização');
+    if (it.publicavel && it.autoriaInstituicao && !['confirmada-pelo-cliente', 'formal-arquivada'].includes(it.autorizacaoInstituicao)) e('uso de instituição sem autorização');
     if (it.consentimento === 'ok' && it.pacienteRef && !/^T-\d{3,}$/.test(it.tcleRef ?? '')) e('consentimento ok exige tcleRef (T-001)');
-    if (it.publicavel && it.transcricao?.status === 'pendente') e('legenda não revisada');
+    if (it.tipo === 'video' && !['pendente', 'revisada', 'nao-se-aplica'].includes(it.legenda?.status)) e('legenda.status inválido');
     // Privacidade e regras de paciente
     if (it.pacienteRef !== null && !/^P-\d{3,}$/.test(it.pacienteRef)) e('pacienteRef deve ser código opaco (P-001)');
     if (it.menorDeIdade && !it.pacienteRef) e('menor de idade exige pacienteRef');
@@ -67,7 +67,6 @@ export function validar(man) {
 }
 
 export const liberado = (it, m) =>
-  it.tipo === 'imagem' &&
   ((it.publicavel && (it.consentimento === 'ok' || it.consentimento === 'nao-se-aplica')) ||
     (m !== 'production' && it.previewOk));
 
@@ -81,9 +80,21 @@ console.log(`media.manifest.json válido (${man.itens.length} itens).`);
 if (so) process.exit(0);
 
 const { default: sharp } = await import('sharp');
+rmSync('public/midia', { recursive: true, force: true }); // nada sobra de um modo anterior
 mkdirSync('public/midia', { recursive: true });
 const saida = {};
 for (const it of man.itens.filter((i) => liberado(i, modo))) {
+  if (it.tipo === 'video') {
+    // Vídeos: copia os derivados já codificados (ffmpeg). Nunca o original.
+    const arquivos = {};
+    for (const d of it.derivados ?? []) {
+      const nome = d.split('/').pop();
+      copyFileSync(d, `public/midia/${nome}`);
+      arquivos[nome.replace(/^.*?-(secao|loop|poster)/, '$1')] = `/midia/${nome}`;
+    }
+    saida[it.id] = { alt: it.alt, provisorio: !it.publicavel, arquivos };
+    continue;
+  }
   let base = sharp(it.arquivo).rotate();
   if (it.crop) base = base.extract({ left: it.crop.x, top: it.crop.y, width: it.crop.largura, height: it.crop.altura });
   const larguraMax = it.crop?.largura ?? it.largura;

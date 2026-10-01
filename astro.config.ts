@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import type { AstroIntegration } from 'astro';
-import { formatarRelatorio, listarPendencias } from './src/lib/pendencias.ts';
+import { formatarRelatorio, listarPendencias } from './src/lib/validacao.ts';
 
 const SITE_MODE = process.env.SITE_MODE === 'production' ? 'production' : 'preview';
 

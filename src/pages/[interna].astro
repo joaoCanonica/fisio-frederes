@@ -2,7 +2,7 @@
 // Página de pendências: só é gerada em dev/preview, nunca em produção.
 import Base from '../layouts/Base.astro';
 import { EM_PRODUCAO } from '../lib/modo.ts';
-import { listarPendencias } from '../lib/pendencias.ts';
+import { GRUPOS, listarPendencias } from '../lib/validacao.ts';
 export function getStaticPaths() {
   return EM_PRODUCAO ? [] : [{ params: { interna: 'pendencias' } }];
 }
@@ -16,13 +16,21 @@ const grupos = [
   <section class="sec wrap">
     <p class="eyebrow">Somente preview</p>
     <h1 class="titulo">Pendências</h1>
-    <p class="lead">Edite <code>src/data/profissional.ts</code> e <code>src/data/midia.ts</code>. O build de produção (<code>pnpm build</code>) falha enquanto houver item bloqueante.</p>
+    <p class="lead">Edite <code>src/config/*.ts</code> e <code>media.manifest.json</code>. O build de produção (<code>npm run build</code>) falha enquanto houver item bloqueante.</p>
     {grupos.map(([nivel, rotulo]) => {
       const lista = ps.filter((p) => p.nivel === nivel);
       return (
         <div class="grupo">
           <h2>{rotulo} ({lista.length})</h2>
-          <ul>{lista.map((p) => <li><code>{p.campo}</code><span>{p.nota}</span></li>)}</ul>
+          {GRUPOS.map((g) => {
+            const doGrupo = lista.filter((p) => p.grupo === g);
+            return doGrupo.length > 0 && (
+              <>
+                <h3>{g}</h3>
+                <ul>{doGrupo.map((p) => <li><code>{p.campo.replace(/^\./, '')}</code><span>{p.nota}</span></li>)}</ul>
+              </>
+            );
+          })}
         </div>
       );
     })}
@@ -32,6 +40,7 @@ const grupos = [
 <style>
   .grupo { margin-top: 3rem; }
   .grupo h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+  .grupo h3 { font: 700 0.75rem/1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--suave); margin: 1.5rem 0 0.75rem; }
   ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
   li { display: grid; gap: 0.2rem; padding: 0.9rem 1rem; background: var(--gelo-0); border: 1px solid var(--linha); border-radius: 0.75rem; }
   code { font-size: 0.82rem; color: var(--vinho-700); }

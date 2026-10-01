@@ -9,11 +9,13 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "check": "astro check",
-    "conformidade": "node scripts/conformidade.mjs",
-    "pendencias": "node --experimental-strip-types scripts/pendencias.ts",
-    "build:preview": "SITE_MODE=preview astro build && node scripts/conformidade.mjs",
-    "build": "SITE_MODE=production astro build && node scripts/conformidade.mjs",
+    "validate": "node --experimental-strip-types --no-warnings scripts/validate-config.ts",
+    "pendencias": "node --experimental-strip-types --no-warnings scripts/validate-config.ts --relatorio",
+    "check": "astro check && node scripts/prepare-media.mjs --validar",
+    "media:preview": "node scripts/prepare-media.mjs --modo=preview",
+    "media:production": "node scripts/prepare-media.mjs --modo=production",
+    "build:preview": "node scripts/prepare-media.mjs --modo=preview && SITE_MODE=preview astro build && node --experimental-strip-types --no-warnings scripts/conformidade.ts",
+    "build": "node --experimental-strip-types --no-warnings scripts/validate-config.ts --production && node scripts/prepare-media.mjs --modo=production && SITE_MODE=production astro build && node --experimental-strip-types --no-warnings scripts/conformidade.ts",
     "preview": "astro preview"
   },
   "dependencies": {

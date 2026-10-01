@@ -48,7 +48,10 @@
         "assets-originais/marca/derivados/logotipo-mono-claro.svg",
         "assets-originais/marca/derivados/logotipo-mono-escuro.svg"
       ],
-      "usoSugerido": "Fonte da identidade (tema vinho/branco-gelo). Usar os SVG derivados só depois de comparar com o vetor original do designer."
+      "usoSugerido": "Fonte da identidade (tema vinho/branco-gelo). Usar os SVG derivados só depois de comparar com o vetor original do designer.",
+      "legenda": {
+        "status": "nao-se-aplica"
+      }
     },
     {
       "id": "pessoa-foto-01",
@@ -89,7 +92,10 @@
         "Certificados ao fundo ilegíveis: não usar como comprovação de formação",
         "Não há foto de corpo inteiro"
       ],
-      "usoSugerido": "hero"
+      "usoSugerido": "hero",
+      "legenda": {
+        "status": "nao-se-aplica"
+      }
     },
     {
       "id": "pessoa-foto-02",
@@ -131,7 +137,10 @@
         "A caneca tem um símbolo verde (parece um caduceu) diferente da marca vinho; confere com a identidade?",
         "Não há foto de corpo inteiro"
       ],
-      "usoSugerido": "quem-e"
+      "usoSugerido": "quem-e",
+      "legenda": {
+        "status": "nao-se-aplica"
+      }
     },
     {
       "id": "video-neurokids-apresentacao",
@@ -158,24 +167,18 @@
       "edicoes": [],
       "pacienteRef": null,
       "menorDeIdade": false,
-      "dataRegistro": "CONFIRMAR",
+      "dataRegistro": "2026-03-23",
       "autoriaInstituicao": "NeuroKids",
       "autorizacaoInstituicao": "confirmada-pelo-cliente",
-      "comprovanteAutorizacao": "pendente",
       "ocr": {
         "status": "manual",
         "texto": []
       },
-      "transcricao": {
-        "status": "pendente",
-        "arquivo": "assets-originais/videos/derivados/neurokids-secao.pt-BR.vtt",
-        "revisada": false
-      },
       "problemas": [
-        "Sem data de gravação nos metadados (dataRegistro bloqueante para produção)",
         "Áudio não ouvido: conteúdo da fala não verificado quanto a vocabulário COFFITO e promessas",
         "Brinquedos de marca registrada (Sr. Cabeça de Batata) em cena: uso incidental",
-        "Autorização da NeuroKids só verbal pelo cliente; arquivar comprovante formal"
+        "Comprovante da autorização da NeuroKids a arquivar (baixa prioridade)",
+        "Legenda .vtt pendente (adiada pelo cliente)"
       ],
       "derivados": [
         "assets-originais/videos/derivados/neurokids-poster.avif",
@@ -184,7 +187,15 @@
         "assets-originais/videos/derivados/neurokids-secao.pt-BR.vtt",
         "assets-originais/videos/derivados/neurokids-secao.webm"
       ],
-      "usoSugerido": "quem-e"
+      "usoSugerido": "quem-e",
+      "legenda": {
+        "status": "pendente",
+        "arquivo": "assets-originais/videos/derivados/neurokids-secao.pt-BR.vtt",
+        "obs": "Cliente adiou a legenda. Sem legenda revisada, o vídeo não vai a um slot."
+      },
+      "dataRegistroObs": "Dia e mês informados pelo cliente; ano 2026 presumido (CONFIRMAR).",
+      "vinculoId": "neurokids",
+      "comprovanteAutorizacao": null
     },
     {
       "id": "video-P-001-marcha",
@@ -200,44 +211,39 @@
         "video": "h264 30fps",
         "audio": "aac 44,1 kHz estéreo"
       },
-      "descricao": "Câmera fixa no chão. Em uma sala ampla de piso de madeira, com espelhos em arco e aparelhos de pilates, uma criança caminha e faz atividades de marcha com as mãos na cabeça, acompanhada por um adulto de camiseta bege.",
-      "alt": "Pernas de uma criança e de um adulto caminhando lado a lado em uma sala de atendimento com piso de madeira",
-      "autoria": "CONFIRMAR",
+      "descricao": "Câmera fixa no chão, numa sala de atendimento da NeuroKids com piso de madeira e espelhos em arco. Uma criança caminha e faz atividades de marcha, com as mãos na cabeça, acompanhada pelo fisioterapeuta João Pedro Frederes.",
+      "alt": "Pernas de uma criança e do fisioterapeuta caminhando lado a lado em uma sala de atendimento com piso de madeira",
+      "autoria": "propria",
       "consentimento": "ok",
       "tcleRef": "T-001",
       "tcleArquivadoForaDoRepo": false,
-      "publicavel": false,
+      "publicavel": true,
       "previewOk": true,
       "crop": {
         "x": 0,
         "y": 660,
         "largura": 720,
         "altura": 400,
-        "motivo": "enquadrar só pernas e piso: remove o rosto da criança (visível de perfil e quase de frente), os reflexos no espelho e a identificação do adulto"
+        "motivo": "enquadrar só pernas e piso: remove o rosto da criança (visível de perfil e quase de frente), os reflexos no espelho e a identificação do adulto",
+        "aprovadoPeloCliente": true
       },
       "edicoes": [
         "recorte"
       ],
       "pacienteRef": "P-001",
       "menorDeIdade": true,
-      "dataRegistro": "CONFIRMAR",
-      "autoriaInstituicao": "CONFIRMAR",
-      "autorizacaoInstituicao": "pendente",
+      "dataRegistro": "2026-03-31",
+      "autoriaInstituicao": "NeuroKids",
+      "autorizacaoInstituicao": "confirmada-pelo-cliente",
       "ocr": {
         "status": "manual",
         "texto": []
       },
-      "transcricao": {
-        "status": "nao-usar",
-        "motivo": "Derivados sem áudio: o áudio pode conter o nome da criança ou música de terceiros"
-      },
       "problemas": [
-        "Rosto da criança visível no original (perfil e quase frontal) e refletido no espelho",
-        "O adulto não parece ser o profissional (sem óculos, corte de cabelo e porte diferentes): confirmar quem é. Se for outro profissional, exige autorização formal",
-        "Local diferente da sala da NeuroKids do outro vídeo (sala de pilates com teto de vidro): identificar a instituição",
-        "Áudio contínuo (média -15,7 dB), possivelmente música: não ouvido",
-        "Sem data de gravação nos metadados (bloqueante)",
-        "TCLE T-001 a arquivar fora do repositório"
+        "Original: rosto da criança visível (perfil e quase frontal) e refletido no espelho; resolvido no derivado recortado (aprovado)",
+        "Áudio é música de terceiros (Sparks, Coldplay): derivados sem áudio",
+        "TCLE T-001 a arquivar fora do repositório (baixa prioridade)",
+        "Comprovante da autorização da NeuroKids a arquivar (baixa prioridade)"
       ],
       "derivados": [
         "assets-originais/videos/derivados/P-001-loop-pernas.mp4",
@@ -247,7 +253,18 @@
         "assets-originais/videos/derivados/P-001-secao-pernas.mp4",
         "assets-originais/videos/derivados/P-001-secao-pernas.webm"
       ],
-      "usoSugerido": "secao-atendimento (versão recortada, sem áudio); loop de 10 s opcional"
+      "usoSugerido": "secao-atendimento (versão recortada, sem áudio); loop de 10 s opcional",
+      "legenda": {
+        "status": "nao-se-aplica",
+        "obs": "Derivados sem áudio e sem fala."
+      },
+      "dataRegistroObs": "Dia e mês informados pelo cliente; ano 2026 presumido (CONFIRMAR).",
+      "vinculoId": "neurokids",
+      "comprovanteAutorizacao": null,
+      "audio": {
+        "conteudo": "música (Sparks, Coldplay), sem fala",
+        "uso": "nunca: obra de terceiros sem licença; derivados sem áudio"
+      }
     }
   ],
   "lacunas": [

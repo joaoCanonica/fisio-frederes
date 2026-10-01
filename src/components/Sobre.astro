@@ -1,24 +1,30 @@
 ---
 import Provisorio from './Provisorio.astro';
 import Icone from './Icone.astro';
-import { profissional, tituloNeuro } from '../data/profissional.ts';
+import { profile, tituloProfissional } from '../config/profile.config.ts';
 import { exibir, provisorio } from '../lib/modo.ts';
-const p = profissional;
-const formacao = p.formacao
-  .map((c) => ({ f: exibir(c), prov: provisorio(c) }))
-  .filter((x): x is { f: NonNullable<typeof x.f>; prov: boolean } => x.f !== null);
-const vinculo = exibir(p.vinculo.instituicao);
-const lattes = exibir(p.lattesUrl);
+import { instagramUrl } from '../lib/contato.ts';
+const p = profile;
+const { graduacao, posGraduacao, mestrado } = p.titulos;
+const mest = exibir(mestrado);
+const formacao = [
+  { titulo: `Graduação em ${graduacao.valor.curso}`, inst: graduacao.valor.instituicao, prov: false },
+  { titulo: `Pós-graduação em ${posGraduacao.valor.area}`, inst: posGraduacao.valor.instituicao, prov: false },
+  ...(mest && mest.concluido
+    ? [{ titulo: `Mestrado em ${mest.programa}`, inst: mest.instituicao, prov: provisorio(mestrado) }]
+    : []),
+];
+const lattes = exibir(p.lattes);
 ---
 <section id="sobre" class="sec sobre" aria-labelledby="sobre-titulo">
   <div class="wrap sobre__grade">
     <div class="sobre__intro" data-revelar>
       <p class="eyebrow">Quem atende</p>
-      <h2 id="sobre-titulo" class="titulo">{p.nomeCurto.valor}</h2>
+      <h2 id="sobre-titulo" class="titulo">{p.nomeMarca.valor}</h2>
       <p class="lead">
-        {p.profissao.valor}. {tituloNeuro(p.rqe)}. Atende bebês e crianças com atrasos ou
-        dificuldades no desenvolvimento motor, em condições neurológicas e no transtorno do
-        espectro autista (TEA).
+        {p.profissao.valor}. {tituloProfissional()}. Atende bebês e crianças em
+        {' '}{p.regioesAtendimento.join(', ')}, com foco em neuropediatria, desenvolvimento
+        motor e aspectos motores do transtorno do espectro autista (TEA).
       </p>
       {lattes && (
         <a class="btn btn--linha sobre__lattes" href={lattes} target="_blank" rel="noopener">
@@ -30,23 +36,24 @@ const lattes = exibir(p.lattesUrl);
     <div class="sobre__fatos">
       <h3 class="sobre__h3">Formação</h3>
       <ol class="linha-tempo">
-        {formacao.map(({ f, prov }, i) => (
+        {formacao.map((f, i) => (
           <li data-revelar style={`--i:${i}`}>
-            <strong>{f.titulo}<Provisorio ativo={prov} /></strong>
-            <span>{f.instituicao}{f.ano ? ` · ${f.ano}` : ''}</span>
+            <strong>{f.titulo}<Provisorio ativo={f.prov} titulo="Conclusão do mestrado a confirmar" /></strong>
+            {f.inst && <span>{f.inst}</span>}
           </li>
         ))}
       </ol>
 
-      {vinculo && (
-        <>
-          <h3 class="sobre__h3">Onde atua</h3>
-          <p class="sobre__vinculo" data-revelar>
-            Fisioterapeuta na <strong>{vinculo}</strong><Provisorio ativo={provisorio(p.vinculo.instituicao)} titulo="Autorização formal da instituição a arquivar" />,
-            {' '}{p.vinculo.descricao.valor.toLowerCase()}.
-          </p>
-        </>
-      )}
+      <h3 class="sobre__h3">Onde atua</h3>
+      <ul class="vinculos" data-revelar>
+        {p.vinculos.map((v) => (
+          <li>
+            <strong>{v.nome}</strong>
+            <Provisorio ativo={!v.comprovante} titulo="Comprovante da autorização a arquivar" />
+            <a href={instagramUrl(v.instagram)} target="_blank" rel="noopener">@{v.instagram}<span class="sr-only"> (Instagram, abre em nova aba)</span></a>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </section>
@@ -89,5 +96,7 @@ const lattes = exibir(p.lattesUrl);
   }
   .linha-tempo strong { font: 450 1.3rem/1.25 var(--serif); }
   .linha-tempo span { color: var(--suave); font-size: 0.95rem; }
-  .sobre__vinculo { font-size: 1.1rem; }
+  .vinculos { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+  .vinculos li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; font-size: 1.05rem; }
+  .vinculos a { font-size: 0.9rem; }
 </style>

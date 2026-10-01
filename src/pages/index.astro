@@ -5,12 +5,14 @@ import Sobre from '../components/Sobre.astro';
 import Desenvolvimento from '../components/Desenvolvimento.astro';
 import Tea from '../components/Tea.astro';
 import Atendimento from '../components/Atendimento.astro';
-import Videos from '../components/Videos.astro';
+import SlotVideo from '../components/SlotVideo.astro';
 import Contato from '../components/Contato.astro';
-import { profissional } from '../data/profissional.ts';
+import { profile, registroCrefito, sede } from '../config/profile.config.ts';
+import { slots } from '../config/slots-video.config.ts';
+import { renderCompilado, renderConvite } from '../lib/slots.ts';
 import { EM_PRODUCAO } from '../lib/modo.ts';
-const p = profissional;
-const titulo = `${p.nomeCurto.valor} · Fisioterapeuta · Neuropediatria e desenvolvimento motor`;
+const p = profile;
+const titulo = `${p.nomeMarca.valor} · Fisioterapeuta · Neuropediatria e desenvolvimento motor`;
 const descricao =
   'Fisioterapia neuropediátrica: desenvolvimento motor, coordenação e equilíbrio de bebês e crianças, incluindo crianças no espectro autista. Contato pelo WhatsApp.';
 // Dados estruturados só em produção (com dados confirmados).
@@ -19,14 +21,14 @@ const ld = EM_PRODUCAO
       '@context': 'https://schema.org',
       '@type': 'Physiotherapy',
       name: `${p.nomeCompleto.valor} – ${p.profissao.valor}`,
-      url: p.site.valor,
-      address: p.endereco.linha.valor,
+      url: p.dominio.valor,
+      address: sede().endereco.valor,
       medicalSpecialty: 'Pediatric',
       employee: {
         '@type': 'Person',
         name: p.nomeCompleto.valor,
         jobTitle: p.profissao.valor,
-        identifier: `${p.crefito.regiao.valor} ${p.crefito.numero.valor}`,
+        identifier: registroCrefito(),
       },
     })
   : null;
@@ -34,10 +36,18 @@ const ld = EM_PRODUCAO
 <Base titulo={titulo} descricao={descricao}>
   {ld && <script type="application/ld+json" set:html={ld} />}
   <Hero />
+  <SlotVideo id="convite" render={renderConvite()} eyebrow="Apresentação" titulo={slots.conviteVideo.titulo} formato="vertical" />
   <Sobre />
   <Desenvolvimento />
   <Tea />
   <Atendimento />
-  <Videos />
+  <SlotVideo
+    id="videos"
+    render={renderCompilado()}
+    eyebrow="No atendimento"
+    titulo={slots.compilado.titulo}
+    texto="Registros publicados com autorização por escrito do responsável legal, que pode ser retirada a qualquer momento."
+    formato="paisagem"
+  />
   <Contato />
 </Base>

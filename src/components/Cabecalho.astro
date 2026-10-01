@@ -1,23 +1,27 @@
 ---
 import Marca from './Marca.astro';
 import Icone from './Icone.astro';
-import { profissional } from '../data/profissional.ts';
+import { profile } from '../config/profile.config.ts';
+import { renderCompilado, renderConvite } from '../lib/slots.ts';
 import { whatsappUrl } from '../lib/contato.ts';
 const base = Astro.url.pathname === '/' ? '' : '/';
-const links = [
+// Itens de slot de vídeo só entram no menu quando o slot renderiza.
+const links: (readonly [string, string])[] = [
+  ...(renderConvite() ? [['Apresentação', 'convite'] as const] : []),
   ['Sobre', 'sobre'],
   ['Desenvolvimento', 'desenvolvimento'],
   ['TEA', 'tea'],
   ['Atendimento', 'atendimento'],
+  ...(renderCompilado() ? [['Vídeos', 'videos'] as const] : []),
   ['Contato', 'contato'],
-] as const;
+];
 ---
 <header class="cab" data-cab>
   <div class="wrap cab__in">
-    <a class="cab__marca" href="/" aria-label={`${profissional.nomeCurto.valor}, página inicial`}>
+    <a class="cab__marca" href="/" aria-label={`${profile.nomeMarca.valor}, página inicial`}>
       <Marca class="cab__logo" />
       <span class="cab__nome">
-        <strong>{profissional.nomeCurto.valor}</strong>
+        <strong>{profile.nomeMarca.valor}</strong>
         <small>Fisioterapia neuropediátrica</small>
       </span>
     </a>

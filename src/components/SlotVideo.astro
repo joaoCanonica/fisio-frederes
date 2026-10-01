@@ -1,0 +1,133 @@
+---
+// Slot de vídeo configurado em src/config/slots-video.config.ts.
+// Regras de exibição em src/lib/slots.ts. Junto a cada vídeo: data do registro
+// e identificação do profissional (COFFITO).
+import Provisorio from './Provisorio.astro';
+import Identificacao from './Identificacao.astro';
+import Marca from './Marca.astro';
+import type { Render } from '../lib/slots.ts';
+import { urlDerivado } from '../lib/manifesto.ts';
+
+interface Props {
+  id: string;
+  render: Render;
+  eyebrow: string;
+  titulo: string;
+  texto?: string;
+  formato: 'vertical' | 'paisagem';
+}
+const { id, render, eyebrow, titulo, texto, formato } = Astro.props;
+const data = (iso: string | null) =>
+  iso ? new Date(`${iso}T12:00:00`).toLocaleDateString('pt-BR') : 'data a registrar';
+---
+{render && (
+  <section id={id} class={`sec slot slot--${formato}`} aria-labelledby={`${id}-titulo`}>
+    <div class="wrap">
+      <div class="slot__topo" data-revelar>
+        <p class="eyebrow">{eyebrow}</p>
+        <h2 id={`${id}-titulo`} class="titulo">{titulo}</h2>
+        {texto && <p class="lead">{texto}</p>}
+      </div>
+
+      {render.tipo === 'placeholder' ? (
+        <figure class="slot__vago" data-revelar>
+          <div class="slot__poster" aria-hidden="true">
+            <Marca class="slot__marca" />
+            <span class="slot__emb">Vídeo em breve</span>
+            <span class="slot__tit">{titulo}</span>
+          </div>
+          <figcaption>
+            <Provisorio ativo titulo="Slot vago: aparece só em preview e some em produção" />
+            Espaço reservado para vídeo. Em produção, esta seção não aparece enquanto o slot estiver vago.
+          </figcaption>
+        </figure>
+      ) : (
+        <ul class="slot__grade">
+          {render.itens.map(({ item, provisorio }, i) => (
+            <li data-revelar style={`--i:${i}`}>
+              <figure class="video">
+                <div class="video__midia">
+                  <video
+                    controls
+                    preload="none"
+                    playsinline
+                    muted={item.legenda?.status === 'nao-se-aplica'}
+                    poster={urlDerivado(item, 'poster', 'webp') ?? undefined}
+                    aria-label={item.alt}
+                  >
+                    {urlDerivado(item, 'secao', 'webm') && <source src={urlDerivado(item, 'secao', 'webm')} type="video/webm" />}
+                    {urlDerivado(item, 'secao', 'mp4') && <source src={urlDerivado(item, 'secao', 'mp4')} type="video/mp4" />}
+                    {item.legenda?.status === 'revisada' && item.legenda.arquivo && (
+                      <track kind="captions" srclang="pt-BR" label="Português" src={urlDerivado(item, 'secao', 'vtt') ?? ''} default />
+                    )}
+                  </video>
+                  {provisorio && <span class="video__selo"><Provisorio ativo titulo="Mídia ainda não liberada para produção" /></span>}
+                </div>
+                <figcaption>
+                  <p>{item.alt}.</p>
+                  <p class="video__meta">Registro de {data(item.dataRegistro)}{item.legenda?.status === 'nao-se-aplica' ? ' · vídeo sem áudio' : ''}</p>
+                  <Identificacao variante="linha" />
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+)}
+
+<style>
+  .slot { background: var(--gelo-100); }
+  .slot__topo { max-width: 44rem; }
+  .slot__grade {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  }
+  .video { margin: 0; }
+  .video__midia {
+    position: relative;
+    border-radius: var(--raio);
+    overflow: hidden;
+    background: var(--vinho-900);
+  }
+  .slot--paisagem .video__midia { aspect-ratio: 9 / 5; }
+  .slot--vertical .video__midia { aspect-ratio: 9 / 16; max-width: 24rem; }
+  .video__midia video { width: 100%; height: 100%; object-fit: cover; }
+  .video__selo { position: absolute; top: 0.75rem; left: 0.5rem; }
+  figcaption { margin-top: 1rem; display: grid; gap: 0.3rem; }
+  .video__meta { font-size: 0.82rem; color: var(--suave); }
+
+  .slot__vago { margin: 3rem 0 0; }
+  .slot__poster {
+    position: relative;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: var(--raio-g);
+    overflow: hidden;
+    text-align: center;
+    color: var(--gelo-50);
+    background:
+      radial-gradient(40rem 24rem at 85% 0%, rgb(154 58 82 / 0.55), transparent 60%),
+      repeating-linear-gradient(90deg, transparent 0 46px, rgb(232 201 207 / 0.06) 46px 47px),
+      var(--vinho-900);
+  }
+  .slot--paisagem .slot__poster { aspect-ratio: 16 / 7; }
+  .slot--vertical .slot__poster { aspect-ratio: 9 / 16; max-width: 24rem; }
+  .slot__poster :global(.slot__marca) { width: 3.5rem; height: 3.5rem; }
+  .slot__emb {
+    font: 700 0.72rem/1 var(--sans);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rosa-200);
+  }
+  .slot__tit { font: italic 300 clamp(1.6rem, 1rem + 2.6vw, 2.8rem)/1.1 var(--serif); max-width: 22ch; }
+  .slot__vago figcaption { font-size: 0.85rem; color: var(--suave); display: block; }
+</style>

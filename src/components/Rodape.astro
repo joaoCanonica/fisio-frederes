@@ -2,11 +2,12 @@
 import Marca from './Marca.astro';
 import Identificacao from './Identificacao.astro';
 import Provisorio from './Provisorio.astro';
-import { profissional } from '../data/profissional.ts';
+import { profile, sede } from '../config/profile.config.ts';
 import { exibir, provisorio } from '../lib/modo.ts';
 import { instagramUrl, whatsappUrl } from '../lib/contato.ts';
-const p = profissional;
-const lattes = exibir(p.lattesUrl);
+const p = profile;
+const lattes = exibir(p.lattes);
+const endereco = sede().endereco;
 const ano = new Date().getFullYear();
 ---
 <footer class="rod">
@@ -21,7 +22,7 @@ const ano = new Date().getFullYear();
     </div>
     <div>
       <h2 class="rod__h">Endereço</h2>
-      <address>{p.endereco.linha.valor}<Provisorio ativo={provisorio(p.endereco.linha)} /></address>
+      <address>{sede().nome} · {endereco.valor}<Provisorio ativo={provisorio(endereco)} /></address>
       <h2 class="rod__h">Links</h2>
       <ul class="rod__links">
         <li><a href={whatsappUrl()} target="_blank" rel="noopener">WhatsApp</a></li>

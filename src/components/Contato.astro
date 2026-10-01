@@ -2,11 +2,13 @@
 import Icone from './Icone.astro';
 import Incorporacao from './Incorporacao.astro';
 import Provisorio from './Provisorio.astro';
-import { profissional } from '../data/profissional.ts';
-import { provisorio } from '../lib/modo.ts';
+import { profile, sede } from '../config/profile.config.ts';
+import { exibir, provisorio } from '../lib/modo.ts';
 import { instagramUrl, instagramUser, whatsappUrl } from '../lib/contato.ts';
-const p = profissional;
-const mapa = p.endereco.consultaMapa.valor;
+const p = profile;
+// O mapa só existe com endereço confirmado (e só carrega após consentimento).
+const enderecoSede = sede().endereco;
+const mapa = enderecoSede.status === 'confirmado' ? `${sede().nome}, ${enderecoSede.valor}` : '';
 const mapaSrc = mapa ? `https://www.google.com/maps?q=${encodeURIComponent(mapa)}&output=embed` : null;
 ---
 <section id="contato" class="sec contato" aria-labelledby="contato-titulo">
@@ -31,7 +33,18 @@ const mapaSrc = mapa ? `https://www.google.com/maps?q=${encodeURIComponent(mapa)
     <div class="contato__grade">
       <div data-revelar>
         <h3 class="contato__h3"><Icone nome="mapa" /> Onde atende</h3>
-        <address>{p.endereco.linha.valor}<Provisorio ativo={provisorio(p.endereco.linha)} /></address>
+        <ul class="unidades">
+          {p.unidades.map((u) => {
+            const maps = exibir(u.mapsUrl);
+            return (
+              <li>
+                <strong>{u.nome}{u.id === p.sedePrincipal && <span class="unidades__sede"> · principal</span>}</strong>
+                <address>{u.endereco.valor}<Provisorio ativo={provisorio(u.endereco)} /></address>
+                {maps && <a href={maps} target="_blank" rel="noopener">Abrir no Google Maps<span class="sr-only"> (abre em nova aba)</span></a>}
+              </li>
+            );
+          })}
+        </ul>
         {mapaSrc ? (
           <Incorporacao src={mapaSrc} titulo="Mapa com o local de atendimento" servico="Google Maps" altura="20rem" />
         ) : (
@@ -73,7 +86,11 @@ const mapaSrc = mapa ? `https://www.google.com/maps?q=${encodeURIComponent(mapa)
     margin-bottom: 1rem;
   }
   .contato__h3 :global(svg) { width: 1.1rem; height: 1.1rem; }
-  address { font-style: normal; margin-bottom: 1.25rem; }
+  address { font-style: normal; }
+  .unidades { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: 1rem; }
+  .unidades strong { font-weight: 600; }
+  .unidades__sede { font-weight: 400; color: var(--rosa-200); font-size: 0.85rem; }
+  .contato a { color: var(--rosa-200); }
   .contato__aviso { color: var(--rosa-100); font-size: 0.9rem; }
   .contato :global(.inc) { background: rgb(251 252 252 / 0.92); --suave: #5c4a4f; }
 </style>

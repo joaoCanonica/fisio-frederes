@@ -6,19 +6,19 @@ Astro + TypeScript strict, JS mínimo (ilhas pequenas: cabeçalho, revelação a
 ## Comandos
 | Comando | O que faz |
 |---|---|
-| `pnpm dev` | desenvolvimento (selos PROVISÓRIO ativos, página `/pendencias`) |
-| `pnpm build:preview` | build de revisão: `noindex`, selos ativos, mídia sem TCLE visível com selo |
-| `pnpm build` | build de **produção**: falha se houver pendência bloqueante |
-| `pnpm pendencias` | relatório de bloqueantes e avisos |
-| `pnpm check` | typecheck |
+| `npm run dev` | desenvolvimento (selos PROVISÓRIO, slots vagos desenhados, página `/pendencias`) |
+| `npm run build:preview` | build de revisão: `noindex`, selos ativos, mídia `previewOk` incluída |
+| `npm run build` | build de **produção**: falha com mensagem clara se houver pendência BLOQUEANTE |
+| `npm run pendencias` | relatório agrupado (identidade e registro, consentimentos, autorizações, vídeos, legendas…) |
+| `npm run check` | typecheck + validação do media.manifest.json |
 
-Todo build roda `scripts/conformidade.mjs`, que varre o texto renderizado atrás de termos proibidos pelo COFFITO (preço, grátis, cura, garantia, superlativos, "especialista", "sessão", "avaliação", "aluno", "treino"). Negações explícitas ("não cura") são aceitas.
-
-Node 22 (`.nvmrc`), pnpm 10.28 (`packageManager`).
+Depois de todo build, `scripts/conformidade.ts` varre o HTML final com os termos vetados de `src/config/compliance.config.ts` e exige nome completo + CREFITO em toda página.
 
 ## Onde editar
-- `src/data/profissional.ts`: nome, CREFITO, formação, RQE, endereço, contatos. Cada campo é `confirmado(...)`, `bloqueante(...)` ou `aviso(...)`.
-- `src/data/midia.ts`: manifesto de vídeos/fotos. **Só `pacienteRef`, nunca nome.** O TCLE fica fora do repo.
+- `src/config/profile.config.ts`: identidade, CREFITO, títulos, vínculos, unidades, contatos. Campos `bloqueante(...)` / `aviso(...)` / `confirmado(...)`.
+- `src/config/compliance.config.ts`: perfil COFFITO (termos vetados, identificação, antes e depois, crianças).
+- `src/config/slots-video.config.ts`: slots `conviteVideo` (após o hero) e `compilado` (atendimentos).
+- `media.manifest.json`: mídia (só `pacienteRef`, nunca nome). Derivados em `assets-originais/*/derivados/`.
 - `docs/pesquisa/`: fontes de todo conteúdo de saúde.
 
 ## Regras automatizadas

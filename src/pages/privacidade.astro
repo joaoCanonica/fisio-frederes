@@ -1,10 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import Identificacao from '../components/Identificacao.astro';
-import { profissional } from '../data/profissional.ts';
-const p = profissional;
+import { profile } from '../config/profile.config.ts';
+const p = profile;
 ---
-<Base titulo={`Política de privacidade · ${p.nomeCurto.valor}`} descricao="Como este site trata dados pessoais e conteúdo de terceiros.">
+<Base titulo={`Política de privacidade · ${p.nomeMarca.valor}`} descricao="Como este site trata dados pessoais e conteúdo de terceiros.">
   <article class="sec wrap texto">
     <p class="eyebrow">Privacidade</p>
     <h1 class="titulo">Política de privacidade</h1>
