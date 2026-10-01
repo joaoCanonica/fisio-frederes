@@ -1,7 +1,7 @@
 # Copy deck: landing de João Pedro Frederes
 
 **Status: APROVADO e integrado em 2026-10-01 (fonte no site: `src/config/copy.config.ts`).**
-Versão 1, de 2026-10-01. Revisores: cliente e João Pedro Frederes.
+Versão 2, de 2026-10-01 (v1 aprovada; v2 = dados confirmados e foco na NeuroKids). Revisores: cliente e João Pedro Frederes.
 
 Legenda:
 - 🟥 **CONFIRMAR (bloqueante)**: sem isso, o site não vai para produção.
@@ -15,7 +15,7 @@ Regras aplicadas em todo o texto: identificação COFFITO (nome, profissão, CRE
 ## 0. Identificação (fixa no topo, no hero e no rodapé)
 
 > **João Pedro Frederes** · Fisioterapeuta · CREFITO 369113-F
-> 🟥 Nome completo como consta no registro · 🟥 Região do CREFITO (CREFITO-10?)
+> ✅ Nome completo confirmado · ✅ CREFITO-10 (SC)
 
 ## 0.1 Hero
 
@@ -23,7 +23,7 @@ Regras aplicadas em todo o texto: identificação COFFITO (nome, profissão, CRE
 - **Título:** Fisioterapia para o desenvolvimento motor de crianças 🟨 *(título proposto: aprovar)*
 - **Subtítulo:** Atendimento neuropediátrico com foco no desenvolvimento infantil, em Lages, Santa Catarina.
 - **Botões:** "Conversar pelo WhatsApp" · "@fisiofrederes.ped"
-- **Mensagem pronta do WhatsApp:** "Olá, gostaria de agendar uma consulta fisioterapêutica." 🟥 número real
+- **Mensagem pronta do WhatsApp:** "Olá, gostaria de agendar uma consulta fisioterapêutica." ✅ +55 54 99659-3170
 
 ---
 
@@ -32,7 +32,7 @@ Regras aplicadas em todo o texto: identificação COFFITO (nome, profissão, CRE
 **Título:** Quem é João Pedro Frederes
 
 **Texto:**
-Fisioterapeuta formado pela Uniplac, com pós-graduação em Fisioterapia Neuropediátrica e mestrado em Ambiente e Saúde. Atende bebês e crianças na NeuroKids e no Centro de Reabilitação da Uniplac, em Lages (SC), com foco no desenvolvimento motor e nas condições neurológicas da infância.
+Fisioterapeuta formado pela Uniplac, com pós-graduação em Fisioterapia Neuropediátrica e mestrado em Ambiente e Saúde. Atende bebês e crianças principalmente na NeuroKids, em Lages (SC), e também no Centro de Reabilitação da Uniplac, com foco no desenvolvimento motor e nas condições neurológicas da infância.
 
 🟨 Instituição da pós-graduação · 🟨 Instituição do mestrado: Uniplac? · 🟨 Anos de conclusão (opcional) · 🟨 Há mais alguma formação que ele queira listar?
 
@@ -108,8 +108,9 @@ A fisioterapia é uma parte do cuidado. Ela não substitui o acompanhamento com 
 ## 5. Onde atua
 
 **Título:** Onde atende
-- **NeuroKids** (local principal): 🟥 **endereço por extenso: o cliente cola** · Mapa estático com link "Abrir no Google Maps" 🟨 link do Maps
-- **Centro de Reabilitação da Uniplac**: 🟥 **endereço por extenso: o cliente cola**
+**Texto:** Os atendimentos acontecem principalmente na NeuroKids, em Lages (SC). O fisioterapeuta também atua no Centro de Reabilitação da Uniplac.
+- **NeuroKids** (local principal de atendimento, cartão em destaque): ✅ R. Frei Rogério, 394, Centro, Lages (SC), CEP 88502-161 · cartão de localização com link "Abrir no Google Maps" 🟨 link exato do Maps
+- **Centro de Reabilitação da Uniplac** ("Também atua"): ✅ Av. Castelo Branco, 140, Universitário, Lages (SC), CEP 88509-900 🟨 *fonte pública de 2016 (COSEMS-SC): confirmar se segue atual*
 - **Região:** Lages e região (SC).
 - **RS:** não aparece (`atendimentoRS.divulgar = false`).
 
@@ -146,7 +147,7 @@ Sim. A família faz parte do plano terapêutico: ajuda a definir os objetivos, r
 A duração do acompanhamento fisioterapêutico varia de criança para criança e depende dos objetivos do plano terapêutico. O plano é revisto periodicamente com a família e ajustado conforme a resposta da criança. Por isso, não é possível prometer prazos; o que se combina são objetivos claros e momentos de revisão. 🟨 *duração de cada atendimento: confirmar*
 
 **9. Onde são os atendimentos?**
-Os atendimentos de fisioterapia de João Pedro Frederes acontecem em Lages, Santa Catarina, na NeuroKids e no Centro de Reabilitação da Uniplac. Os endereços completos e o link para o mapa estão na seção "Onde atende" desta página. Para combinar horários, o contato é feito pelo WhatsApp. 🟥 endereços
+Os atendimentos de fisioterapia de João Pedro Frederes acontecem principalmente na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro de Reabilitação da Uniplac. O endereço completo e o link para o mapa estão na seção "Onde atende". Para combinar horários, use o WhatsApp.
 
 **10. Como entrar em contato?**
 O contato com o fisioterapeuta João Pedro Frederes é feito pelo WhatsApp, pelo botão desta página, ou pelo Instagram @fisiofrederes.ped. Por privacidade, evite enviar exames ou informações de saúde da criança por mensagem antes da consulta fisioterapêutica; esses dados são tratados pessoalmente.
@@ -157,12 +158,12 @@ O contato com o fisioterapeuta João Pedro Frederes é feito pelo WhatsApp, pelo
 
 **Título:** Vamos conversar?
 **Texto:** O contato é feito pelo WhatsApp. Para proteger a privacidade da criança, evite enviar exames ou relatórios por mensagem antes da consulta fisioterapêutica.
-**Botões:** Conversar pelo WhatsApp 🟥 número · Instagram @fisiofrederes.ped
+**Botões:** Conversar pelo WhatsApp ✅ · Instagram @fisiofrederes.ped
 **Instagram (bloco):** "Rotina, dicas de desenvolvimento e bastidores no Instagram @fisiofrederes.ped." *(as publicações só carregam depois que o visitante aceita conteúdo de terceiros)*
 
 ## 8. Rodapé
 
-> João Pedro Frederes · Fisioterapeuta · CREFITO 369113-F 🟥
+> João Pedro Frederes · Fisioterapeuta · CREFITO-10 369113-F ✅
 > As informações deste site têm caráter educativo e não substituem a consulta com profissional de saúde. Este site não agenda atendimentos nem coleta dados de saúde.
 
 ---
@@ -171,10 +172,10 @@ O contato com o fisioterapeuta João Pedro Frederes é feito pelo WhatsApp, pelo
 
 | # | Item | Nível |
 |---|---|---|
-| 1 | Nome completo (registro) | 🟥 |
-| 2 | Região do CREFITO | 🟥 |
-| 3 | Endereços por extenso (NeuroKids e CER Uniplac) | 🟥 |
-| 4 | Número do WhatsApp | 🟥 |
+| 1 | Nome completo (registro) | ✅ |
+| 2 | Região do CREFITO | ✅ CREFITO-10 |
+| 3 | Endereços por extenso (NeuroKids e CER Uniplac) | ✅ (CER: confirmar se segue atual 🟨) |
+| 4 | Número do WhatsApp | ✅ |
 | 5 | Título do hero | 🟨 |
 | 6 | Duração e frequência dos atendimentos | 🟨 |
 | 7 | "Reavaliação" ou "revisão do plano" | 🟨 |
