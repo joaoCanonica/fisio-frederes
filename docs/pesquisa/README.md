@@ -16,3 +16,6 @@ Arquivos:
 - [marcos-motores.md](marcos-motores.md)
 - [tea-aspectos-motores.md](tea-aspectos-motores.md)
 - [regulacao-coffito.md](regulacao-coffito.md)
+- [fisioterapia-neuropediatrica.md](fisioterapia-neuropediatrica.md)
+- [estimulacao-precoce.md](estimulacao-precoce.md)
+- [familia-plano-terapeutico.md](familia-plano-terapeutico.md)

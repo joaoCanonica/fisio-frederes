@@ -20,3 +20,15 @@
 - **Consultado em:** pendente de leitura integral
 - **Nível:** C/A (documento de sociedade científica)
 - **Uso no site:** nenhum ainda. Não citar até a leitura ser registrada aqui.
+
+## 4. Intervenções motoras em crianças autistas: o que se sabe e com que força
+- **Fonte:** Ruggeri A, Dancel A, Johnson R, Sargent B. *The effect of motor and physical activity intervention on motor outcomes of children with autism spectrum disorder: A systematic review.* Autism, 2020;24(3):544–568.
+- **Consultado em:** 2026-10-01
+- **Nível:** A (revisão sistemática), mas com **qualidade da evidência BAIXA**, nas palavras dos próprios autores
+- **O que sustenta:** 41 estudos, 1.173 crianças de 3 a 19 anos. Quase todos os estudos mostraram melhora de equilíbrio, corrida ou habilidades com bola depois dos programas motores.
+- **Limite:** os resultados são sobre **habilidades motoras**, não sobre o autismo. Como a evidência é limitada, o site não promete resultado; diz só que existem estudos com melhora de habilidades motoras e que a qualidade dessa evidência ainda é baixa.
+- **Uso no site:** seção "Em que atua" (TEA) e FAQ do TEA.
+
+## 5. Manual da SBP sobre TEA (2019)
+- **Status:** a busca confirmou a existência do *Manual de Orientação: Transtorno do Espectro do Autismo* (SBP, Departamento de Pediatria do Desenvolvimento e Comportamento, 2019). Ele foi citado por terceiros quanto ao atraso no diagnóstico, mas **não foi lido na íntegra**.
+- **Uso no site:** nenhum, até a leitura completa ser registrada aqui.
