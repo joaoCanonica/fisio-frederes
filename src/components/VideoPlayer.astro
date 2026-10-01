@@ -68,6 +68,8 @@ const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, 
     border: 6px solid var(--superficie);
     box-shadow: var(--sombra-suave);
   }
+  /* O vídeo fica dentro de overflow:hidden: o anel de foco vai na moldura. */
+  .vp__midia:has(video:focus-visible), .vp__midia:focus-within { outline: 3px solid var(--foco); outline-offset: 3px; }
   .vp--vertical .vp__midia { aspect-ratio: 9 / 16; }
   .vp--paisagem .vp__midia { aspect-ratio: 9 / 5; }
   .vp--arco .vp__midia { border-radius: 999px 999px var(--raio-g) var(--raio-g); }

@@ -64,9 +64,9 @@ const canonico = new URL(Astro.url.pathname, Astro.site);
     {landing && <Entrada />}
     <a class="pular" href="#conteudo">Pular para o conteúdo</a>
     {!EM_PRODUCAO && (
-      <a class="faixa-preview" href="/pendencias">
-        Preview · {nBloq} pendência(s) bloqueante(s) para produção · ver lista
-      </a>
+      <aside aria-label="Versão em revisão"><a class="faixa-preview" href="/pendencias">
+        Em revisão · versão provisória, não indexada · {nBloq} pendência(s) bloqueante(s) · ver lista
+      </a></aside>
     )}
     <Cabecalho />
     <main id="conteudo" tabindex="-1">

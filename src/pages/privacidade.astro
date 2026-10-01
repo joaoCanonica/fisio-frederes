@@ -35,6 +35,7 @@ const atualizada = '01/10/2026';
     <p>Endereço profissional: {sede().nome}, {sede().endereco.valor}.</p>
 
     <h2 id="dados">2. Dados tratados e finalidades</h2>
+    <div class="tab-rolagem" tabindex="0" role="region" aria-label="Tabela: dados, finalidades e bases legais">
     <table class="tab">
       <caption class="sr-only">Dados, finalidades e bases legais</caption>
       <thead><tr><th scope="col">Situação</th><th scope="col">Dados</th><th scope="col">Finalidade</th><th scope="col">Base legal (LGPD)</th></tr></thead>
@@ -46,6 +47,7 @@ const atualizada = '01/10/2026';
         <tr><td>Imagens e vídeos de pacientes</td><td>Imagem e voz, sem nome, escola, cidade ou rotina</td><td>Mostrar o trabalho fisioterapêutico</td><td>Consentimento específico e por escrito do responsável legal (arts. 11, I e 14, §1º), por meio do TCLE</td></tr>
       </tbody>
     </table>
+    </div>
     <p>O site não tem formulários e não pede dados de saúde. Por privacidade, evite enviar exames ou informações de saúde da criança por mensagem antes da consulta.</p>
 
     <h2 id="cookies">3. Cookies e preferências</h2>
@@ -89,6 +91,7 @@ const atualizada = '01/10/2026';
   .atualizada { font-size: 0.85rem; color: var(--texto-suave); margin-top: 0.75rem; }
   .indice { margin-top: 2rem; padding: 1.25rem 1.5rem; border: 1px solid var(--linha); border-radius: var(--raio); background: var(--superficie); }
   .cartao { margin: 1.25rem 0; padding: 1.25rem; border: 1px solid var(--linha); border-radius: var(--raio); background: var(--superficie); }
-  .tab { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; display: block; overflow-x: auto; }
+  .tab-rolagem { overflow-x: auto; margin: 1rem 0; }
+  .tab { width: 100%; min-width: 36rem; border-collapse: collapse; font-size: 0.88rem; }
   .tab th, .tab td { text-align: left; vertical-align: top; padding: 0.6rem; border-bottom: 1px solid var(--linha); }
 </style>

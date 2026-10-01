@@ -32,8 +32,10 @@ function portaoDePendencias(): AstroIntegration {
 }
 
 export default defineConfig({
-  // Substituir pelo domínio definitivo (ver src/data/profissional.ts → site).
-  site: 'https://example.com',
+  // Domínio: SITE_URL (definitivo) > URL de produção da Vercel > provisório.
+  site:
+    process.env.SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'https://example.com'),
   integrations: [portaoDePendencias()],
   build: { inlineStylesheets: 'auto' },
   vite: {
