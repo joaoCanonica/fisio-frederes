@@ -50,23 +50,23 @@ const etapas = [
   .etapas li {
     position: relative;
     padding: 2rem 1.5rem 1.75rem;
-    background: var(--gelo-0);
+    background: var(--superficie);
     border: 1px solid var(--linha);
     border-radius: var(--raio);
     transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
   }
-  .etapas li:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -28px rgb(61 15 27 / 0.4); }
+  .etapas li:hover { transform: translateY(-4px); box-shadow: var(--sombra-suave); }
   .etapas__n {
     display: grid;
     place-items: center;
     width: 2.75rem;
     height: 2.75rem;
     border-radius: 50%;
-    border: 1px solid var(--vinho-700);
-    color: var(--vinho-700);
-    font: italic 400 1.25rem/1 var(--serif);
+    border: 1px solid var(--destaque);
+    color: var(--destaque);
+    font: 400 1.25rem/1 var(--fonte-display);
     margin-bottom: 1.5rem;
   }
-  .etapas h3 { font-size: 1.35rem; font-weight: 450; }
-  .etapas p { color: var(--suave); margin-top: 0.6rem; font-size: 0.97rem; }
+  .etapas h3 { font-size: 1.15rem; }
+  .etapas p { color: var(--texto-suave); margin-top: 0.6rem; font-size: 0.97rem; }
 </style>

@@ -1,11 +1,15 @@
 ---
 // Primeira dobra: os pais precisam entender em 2 segundos que é fisioterapia
-// PEDIÁTRICA (ver docs/design/REFERENCIAS-PEDIATRIA.md).
-// Grafismo próprio: arco de empilhar, bolinhas da coluna do logo e bloco, em tons da marca.
-import Icone from './Icone.astro';
+// PEDIÁTRICA (docs/design/REFERENCIAS-PEDIATRIA.md). O lúdico vem da FOTO
+// (brinquedo, ambiente); o grafismo é só da marca: arco e coluna de pontos.
 import Identificacao from './Identificacao.astro';
 import Provisorio from './Provisorio.astro';
 import Marca from './Marca.astro';
+import Button from './ui/Button.astro';
+import Eyebrow from './ui/Eyebrow.astro';
+import Tag from './ui/Tag.astro';
+import MediaFrame from './ui/MediaFrame.astro';
+import Pontos from './ui/Pontos.astro';
 import { profile } from '../config/profile.config.ts';
 import { whatsappUrl, instagramUrl } from '../lib/contato.ts';
 import { imagemLiberada, srcsetImagem } from '../lib/manifesto.ts';
@@ -16,46 +20,29 @@ const avif = foto ? srcsetImagem(foto, 'avif') : null;
 const webp = foto ? srcsetImagem(foto, 'webp') : null;
 const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
 ---
-<section class="hero" aria-labelledby="hero-titulo">
+<section class="hero tom-claro" aria-labelledby="hero-titulo">
   <div class="wrap hero__grade">
     <div class="hero__texto">
-      <p class="hero__selo">
-        <span class="hero__ponto" aria-hidden="true"></span>
-        Fisioterapia pediátrica · {profile.regioesAtendimento[0]}
-      </p>
+      <Eyebrow>Fisioterapia pediátrica · {profile.regioesAtendimento[0]}</Eyebrow>
       <h1 id="hero-titulo" class="hero__h1">
-        Fisioterapia para <em>bebês e crianças</em>.
+        Fisioterapia para <span>bebês e crianças</span>
       </h1>
-      <p class="lead hero__lead">
+      <p class="lead">
         Desenvolvimento motor e neuropediatria, com atendimento pensado para o jeito de a
         criança aprender: brincando, no ritmo dela e com a família por perto.
       </p>
       <ul class="hero__publicos" aria-label="Para quem é o atendimento">
-        {publicos.map((p) => <li>{p}</li>)}
+        {publicos.map((p, i) => <li><Tag variante={i === 0 ? 'acento' : 'neutra'}>{p}</Tag></li>)}
       </ul>
       <div class="hero__acoes">
-        <a class="btn" href={whatsappUrl()} target="_blank" rel="noopener">
-          <Icone nome="whatsapp" /> Conversar pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span>
-        </a>
-        <a class="btn btn--linha" href={instagramUrl()} target="_blank" rel="noopener">
-          <Icone nome="instagram" /> @{profile.instagram.valor}<span class="sr-only"> (abre em nova aba)</span>
-        </a>
+        <Button href={whatsappUrl()} icone="whatsapp" externo>Conversar pelo WhatsApp</Button>
+        <Button href={instagramUrl()} icone="instagram" variante="secundario" externo>@{profile.instagram.valor}</Button>
       </div>
     </div>
 
     <div class="hero__visual">
-      <!-- Brinquedos desenhados (decorativos) -->
-      <svg class="hero__arco" viewBox="0 0 200 110" aria-hidden="true">
-        <path d="M10 105a90 90 0 0 1 180 0" fill="none" stroke="var(--vinho-700)" stroke-width="16" stroke-linecap="round" />
-        <path d="M38 105a62 62 0 0 1 124 0" fill="none" stroke="var(--rosa-200)" stroke-width="16" stroke-linecap="round" />
-        <path d="M66 105a34 34 0 0 1 68 0" fill="none" stroke="var(--salvia-300)" stroke-width="16" stroke-linecap="round" />
-      </svg>
-      <div class="hero__bolinhas" aria-hidden="true">
-        {[10, 14, 18, 22, 16, 26].map((d, i) => <span style={`--d:${d}px;--i:${i}`}></span>)}
-      </div>
-      <span class="hero__bloco" aria-hidden="true"></span>
-
-      <figure class="hero__foto">
+      <div class="hero__coluna"><Pontos variante="marcador" /></div>
+      <MediaFrame formato="4:5" arco>
         {foto && avif && webp ? (
           <picture>
             <source type="image/avif" srcset={avif.srcset} sizes="(min-width: 60rem) 30rem, 90vw" />
@@ -78,8 +65,7 @@ const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
         {foto && !foto.publicavel && (
           <span class="hero__prov"><Provisorio ativo titulo="Foto em baixa resolução, aguardando o original" /></span>
         )}
-      </figure>
-
+      </MediaFrame>
       <div class="hero__cartao">
         <Identificacao />
       </div>
@@ -93,140 +79,43 @@ const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
     padding-block: clamp(2.5rem, 6vw, 5rem) var(--sec);
     overflow: clip;
     background:
-      radial-gradient(48rem 36rem at 100% 0%, var(--rosa-100), transparent 65%),
-      radial-gradient(30rem 24rem at 0% 100%, var(--salvia-100), transparent 70%),
-      var(--gelo-50);
+      radial-gradient(46rem 34rem at 100% 0%, var(--superficie-alt), transparent 65%),
+      var(--fundo);
   }
   .hero__grade { display: grid; gap: 3.5rem; align-items: center; }
   @media (min-width: 60rem) {
-    .hero__grade { grid-template-columns: 1.1fr 1fr; gap: 4rem; }
-  }
-
-  .hero__selo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.45rem 0.95rem 0.45rem 0.7rem;
-    border-radius: 999px;
-    background: var(--gelo-0);
-    border: 1px solid var(--linha);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--vinho-800);
-  }
-  .hero__ponto {
-    width: 0.65rem;
-    height: 0.65rem;
-    border-radius: 50%;
-    background: var(--vinho-700);
-    box-shadow: 0.9rem 0 0 -0.1rem var(--rosa-200);
-    margin-right: 0.8rem;
+    .hero__grade { grid-template-columns: 1.15fr 1fr; gap: 4.5rem; }
   }
   .hero__h1 {
-    font-size: clamp(2.7rem, 1.4rem + 5.4vw, 5.6rem);
-    font-weight: 330;
-    letter-spacing: -0.03em;
-    margin-top: 1.4rem;
+    font-size: clamp(2.3rem, 1.2rem + 4.4vw, 4.6rem);
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    margin-top: 1.5rem;
   }
-  .hero__h1 em {
-    font-style: italic;
-    font-variation-settings: 'SOFT' 100, 'WONK' 1;
-    color: var(--vinho-700);
-  }
-  .hero__lead { max-width: 34rem; }
-  .hero__publicos {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1.75rem 0 0;
-    padding: 0;
-  }
-  .hero__publicos li {
-    padding: 0.4rem 0.9rem;
-    border-radius: 999px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--vinho-900);
-    background: var(--gelo-0);
-    border: 1px solid var(--linha);
-  }
-  .hero__publicos li:nth-child(1) { background: var(--rosa-100); }
-  .hero__publicos li:nth-child(2) { background: var(--salvia-100); }
-  .hero__publicos li:nth-child(3) { background: var(--damasco-200); }
+  .hero__h1 span { display: block; color: var(--destaque); }
+  .hero__publicos { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.75rem 0 0; padding: 0; }
   .hero__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
 
-  /* Visual */
-  .hero__visual { position: relative; justify-self: center; width: min(100%, 30rem); padding: 2rem 1rem 0; }
-  .hero__foto {
-    position: relative;
-    margin: 0;
-    aspect-ratio: 685 / 860;
-    border-radius: 999px 999px var(--raio-g) var(--raio-g); /* arco */
-    overflow: hidden;
-    background: var(--rosa-100);
-    box-shadow: 0 40px 80px -40px rgb(61 15 27 / 0.45);
-    border: 6px solid var(--gelo-0);
-  }
-  .hero__foto img { width: 100%; height: 100%; object-fit: cover; }
+  .hero__visual { position: relative; justify-self: center; width: min(100%, 29rem); }
+  .hero__coluna { position: absolute; z-index: 2; right: -1.6rem; top: 22%; }
+  .hero__coluna :global(.pontos--marcador) { gap: 0.35rem; }
+  .hero__coluna :global(.pontos i) { width: calc(var(--d) * 2.2); height: calc(var(--d) * 2.2); }
   .hero__semfoto { height: 100%; display: grid; place-items: center; }
-  .hero__foto :global(.hero__marca) { width: 45%; height: auto; color: var(--vinho-800); }
+  .hero__visual :global(.hero__marca) { width: 45%; height: auto; color: var(--marca); }
   .hero__prov { position: absolute; top: 18%; left: 50%; transform: translateX(-50%); }
-
-  .hero__arco { position: absolute; z-index: 2; width: 9.5rem; left: -2.5rem; bottom: 7rem; filter: drop-shadow(0 10px 14px rgb(61 15 27 / 0.15)); }
-  .hero__bloco {
-    position: absolute;
-    z-index: 2;
-    width: 3rem;
-    height: 3rem;
-    right: 0.5rem;
-    top: 3.5rem;
-    border-radius: 0.6rem;
-    background: var(--damasco-200);
-    border: 2px solid var(--gelo-0);
-    transform: rotate(12deg);
-  }
-  .hero__bolinhas {
-    position: absolute;
-    z-index: 2;
-    right: -1.5rem;
-    top: 8rem;
-    display: grid;
-    justify-items: center;
-    gap: 0.55rem;
-  }
-  .hero__bolinhas span {
-    width: var(--d);
-    height: var(--d);
-    border-radius: 50%;
-    background: var(--vinho-700);
-    animation: quicar 0.9s var(--ease) both;
-    animation-delay: calc(0.4s + var(--i) * 0.09s);
-  }
-  .hero__bolinhas span:nth-child(even) { background: var(--vinho-500); }
-  @keyframes quicar {
-    0% { transform: translateY(-1.8rem); opacity: 0; }
-    60% { transform: translateY(0.25rem); opacity: 1; }
-    100% { transform: none; }
-  }
-
   .hero__cartao {
     position: relative;
     z-index: 3;
-    margin: -4rem -0.5rem 0 auto;
+    margin: -4.5rem -0.5rem 0 auto;
     width: min(100%, 21rem);
-    background: color-mix(in oklab, var(--gelo-0) 94%, transparent);
+    background: color-mix(in oklab, var(--superficie) 94%, transparent);
     backdrop-filter: blur(10px);
     border: 1px solid var(--linha);
     border-radius: var(--raio);
     padding: 1.25rem 1.4rem;
-    box-shadow: 0 30px 60px -30px rgb(61 15 27 / 0.35);
+    box-shadow: var(--sombra-suave);
   }
   @media (max-width: 30rem) {
-    .hero__arco { width: 7rem; left: -1rem; bottom: 9rem; }
-    .hero__bolinhas { right: -0.5rem; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero__bolinhas span { animation: none; }
+    .hero__coluna { right: -0.4rem; }
   }
 </style>

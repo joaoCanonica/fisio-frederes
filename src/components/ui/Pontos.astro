@@ -1,0 +1,39 @@
+---
+// Motivo de marca: a "coluna de pontos" (vértebras) do monograma JF.
+//  - divisor:  linha horizontal com os pontos em sequência (separa blocos);
+//  - marcador: coluna vertical pequena (eyebrow, listas);
+//  - loader:   pontos pulsando em sequência (estático com reduced-motion).
+import { theme } from '../../config/theme.config.ts';
+interface Props { variante?: 'divisor' | 'marcador' | 'loader'; rotulo?: string }
+const { variante = 'divisor', rotulo = 'Carregando' } = Astro.props;
+const max = Math.max(...theme.pontos);
+---
+{variante === 'loader' ? (
+  <span class="pontos pontos--loader" role="status" aria-label={rotulo}>
+    {theme.pontos.map((d, i) => <i style={`--d:${(d / max) * 0.9}rem;--i:${i}`}></i>)}
+  </span>
+) : (
+  <span class:list={['pontos', `pontos--${variante}`]} aria-hidden="true">
+    {(variante === 'marcador' ? theme.pontos.slice(1, 4) : theme.pontos).map((d, i) => (
+      <i style={`--d:${variante === 'marcador' ? (d / max) * 0.5 : (d / max) * 0.8}rem;--i:${i}`}></i>
+    ))}
+  </span>
+)}
+<style>
+  .pontos { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--destaque); }
+  .pontos i { display: block; width: var(--d); height: var(--d); border-radius: 50%; background: currentColor; flex: none; }
+  .pontos--marcador { flex-direction: column; gap: 0.18rem; }
+  .pontos--divisor {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+  }
+  .pontos--divisor::before,
+  .pontos--divisor::after { content: ''; flex: 1; height: 1px; background: var(--linha); margin-inline: 0.75rem; }
+  .pontos--loader i { animation: pulsar 1.4s var(--ease) infinite; animation-delay: calc(var(--i) * 0.12s); opacity: 0.25; }
+  @keyframes pulsar { 0%, 100% { opacity: 0.25; transform: scale(0.85); } 40% { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .pontos--loader i { animation: none; opacity: 1; }
+  }
+</style>

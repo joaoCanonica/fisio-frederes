@@ -1,0 +1,19 @@
+---
+// Sobretítulo com o marcador "coluna de pontos" do monograma.
+import Pontos from './Pontos.astro';
+interface Props { as?: 'p' | 'span' }
+const { as: Tag = 'p' } = Astro.props;
+---
+<Tag class="eyebrow-ui"><Pontos variante="marcador" /><span><slot /></span></Tag>
+<style>
+  .eyebrow-ui {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    font: 700 0.76rem/1.2 var(--fonte-texto);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--destaque);
+  }
+</style>

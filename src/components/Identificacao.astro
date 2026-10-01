@@ -2,7 +2,7 @@
 // Bloco de identificação exigido pelo COFFITO: nome completo, profissão e CREFITO,
 // com link para a consulta pública do registro (quando informado).
 import Provisorio from './Provisorio.astro';
-import Icone from './Icone.astro';
+import Icone from './ui/Icon.astro';
 import { profile, registroCrefito, tituloProfissional } from '../config/profile.config.ts';
 import { exibir, provisorio } from '../lib/modo.ts';
 interface Props { variante?: 'cartao' | 'linha' }
@@ -50,7 +50,7 @@ const verificacao = exibir(p.linkVerificacaoCrefito);
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--suave);
+    color: var(--texto-suave);
   }
   dd { margin: 0; font-weight: 500; }
   .id__link {
@@ -62,5 +62,5 @@ const verificacao = exibir(p.linkVerificacaoCrefito);
     font-weight: 600;
   }
   .id__link :global(svg) { width: 0.95rem; height: 0.95rem; }
-  .id-linha { font-size: 0.85rem; color: var(--suave); }
+  .id-linha { font-size: 0.85rem; color: var(--texto-suave); }
 </style>

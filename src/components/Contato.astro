@@ -1,5 +1,5 @@
 ---
-import Icone from './Icone.astro';
+import Icone from './ui/Icon.astro';
 import Incorporacao from './Incorporacao.astro';
 import Provisorio from './Provisorio.astro';
 import { profile, sede } from '../config/profile.config.ts';
@@ -11,7 +11,7 @@ const enderecoSede = sede().endereco;
 const mapa = enderecoSede.status === 'confirmado' ? `${sede().nome}, ${enderecoSede.valor}` : '';
 const mapaSrc = mapa ? `https://www.google.com/maps?q=${encodeURIComponent(mapa)}&output=embed` : null;
 ---
-<section id="contato" class="sec contato" aria-labelledby="contato-titulo">
+<section id="contato" class="sec contato tom-vinho" aria-labelledby="contato-titulo">
   <div class="wrap">
     <div class="contato__cta" data-revelar>
       <p class="eyebrow eyebrow--claro">Contato</p>
@@ -60,37 +60,28 @@ const mapaSrc = mapa ? `https://www.google.com/maps?q=${encodeURIComponent(mapa)
 </section>
 
 <style>
-  .contato {
-    background:
-      radial-gradient(50rem 30rem at -10% 0%, rgb(154 58 82 / 0.4), transparent 60%),
-      var(--vinho-800);
-    color: var(--gelo-50);
-    --linha: rgb(232 201 207 / 0.22);
-  }
-  .contato :global(.titulo em) { color: var(--rosa-200); }
-  .eyebrow--claro { color: var(--rosa-200); }
+  .contato { --linha: color-mix(in oklab, var(--borda) 90%, transparent); }
+  .contato :global(.titulo em) { color: var(--destaque); }
   .contato__cta { max-width: 46rem; }
-  .contato__txt { color: var(--rosa-100); margin-top: 1.25rem; max-width: 36rem; }
+  .contato__txt { color: var(--texto-suave); margin-top: 1.25rem; max-width: 36rem; }
   .contato__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-  .contato__ig { --fg: var(--gelo-50); }
-  .contato__ig:hover { --fg: var(--vinho-900); }
   .contato__grade { display: grid; gap: 2.5rem; margin-top: 5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
   .contato__h3 {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font: 700 0.75rem/1 var(--sans);
+    font: 700 0.75rem/1 var(--fonte-texto);
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--rosa-200);
+    color: var(--destaque);
     margin-bottom: 1rem;
   }
   .contato__h3 :global(svg) { width: 1.1rem; height: 1.1rem; }
   address { font-style: normal; }
   .unidades { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: 1rem; }
   .unidades strong { font-weight: 600; }
-  .unidades__sede { font-weight: 400; color: var(--rosa-200); font-size: 0.85rem; }
-  .contato a { color: var(--rosa-200); }
-  .contato__aviso { color: var(--rosa-100); font-size: 0.9rem; }
-  .contato :global(.inc) { background: rgb(251 252 252 / 0.92); --suave: #5c4a4f; }
+  .unidades__sede { font-weight: 400; color: var(--destaque); font-size: 0.85rem; }
+  .contato a { color: var(--destaque); }
+  .contato__aviso { color: var(--texto-suave); font-size: 0.9rem; }
+  .contato :global(.inc) { background: var(--superficie); }
 </style>

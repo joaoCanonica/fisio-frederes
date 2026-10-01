@@ -72,14 +72,14 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
   .grafico {
     margin: 3.5rem 0 0;
     padding: clamp(1.25rem, 3vw, 2.5rem);
-    background: var(--gelo-0);
+    background: var(--superficie);
     border: 1px solid var(--linha);
     border-radius: var(--raio-g);
   }
   .grafico__leg { font-weight: 600; margin-bottom: 1.5rem; }
   .grafico__tab { width: 100%; border-collapse: collapse; }
   .grafico__tab tfoot tr { border: 0; }
-  .grafico__tab tr { display: grid; grid-template-columns: minmax(7.5rem, 12rem) 1fr; align-items: center; gap: 1rem; padding-block: 0.55rem; border-bottom: 1px solid var(--gelo-100); }
+  .grafico__tab tr { display: grid; grid-template-columns: minmax(7.5rem, 12rem) 1fr; align-items: center; gap: 1rem; padding-block: 0.55rem; border-bottom: 1px solid var(--superficie-alt); }
   .grafico__tab th { text-align: left; font-weight: 500; font-size: 0.92rem; }
   .grafico__trilho { position: relative; height: 2.1rem; padding: 0; }
   .grafico__barra {
@@ -93,13 +93,13 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
     align-items: center;
     padding-inline: 0.6rem;
     border-radius: 999px;
-    background: linear-gradient(90deg, var(--rosa-200), var(--vinho-700));
-    color: var(--gelo-50);
+    background: linear-gradient(90deg, var(--destaque), var(--destaque));
+    color: var(--acao-texto);
     font-size: 0.75rem;
     font-weight: 700;
     transform-origin: left;
   }
-  .grafico__barra .grafico__n:first-of-type { color: var(--vinho-900); }
+  .grafico__barra .grafico__n:first-of-type { color: var(--acento-texto); }
   .js .grafico[data-revelar] .grafico__barra { transform: scaleX(0); transition: transform 1.1s var(--ease); transition-delay: calc(0.2s + var(--i) * 0.08s); }
   .js .grafico.visivel .grafico__barra { transform: none; }
   .grafico__eixo {
@@ -107,16 +107,16 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
     height: 1.5rem;
     padding: 0;
     font-size: 0.72rem;
-    color: var(--suave);
+    color: var(--texto-suave);
   }
   .grafico__eixo span { position: absolute; left: var(--x); transform: translateX(-50%); top: 0.4rem; }
-  .fonte { margin-top: 1.5rem; font-size: 0.82rem; color: var(--suave); }
+  .fonte { margin-top: 1.5rem; font-size: 0.82rem; color: var(--texto-suave); }
   .dev__nota {
     margin-top: 2.5rem;
     max-width: 44rem;
     padding-left: 1.25rem;
-    border-left: 3px solid var(--vinho-700);
-    color: var(--suave);
+    border-left: 3px solid var(--destaque);
+    color: var(--texto-suave);
   }
   @media (max-width: 34rem) {
     .grafico__tab tr { grid-template-columns: 1fr; gap: 0.4rem; }

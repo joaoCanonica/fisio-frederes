@@ -1,6 +1,6 @@
 ---
 import Marca from './Marca.astro';
-import Icone from './Icone.astro';
+import Icone from './ui/Icon.astro';
 import { profile } from '../config/profile.config.ts';
 import { renderCompilado, renderConvite } from '../lib/slots.ts';
 import { whatsappUrl } from '../lib/contato.ts';
@@ -41,7 +41,7 @@ const links: (readonly [string, string])[] = [
     position: sticky;
     top: 0;
     z-index: 50;
-    background: color-mix(in oklab, var(--gelo-50) 82%, transparent);
+    background: color-mix(in oklab, var(--fundo) 85%, transparent);
     backdrop-filter: saturate(1.4) blur(14px);
     -webkit-backdrop-filter: saturate(1.4) blur(14px);
     border-bottom: 1px solid transparent;
@@ -59,13 +59,13 @@ const links: (readonly [string, string])[] = [
     align-items: center;
     gap: 0.75rem;
     text-decoration: none;
-    color: var(--tinta);
+    color: var(--texto);
     margin-right: auto;
   }
-  .cab :global(.cab__logo) { width: 2.6rem; height: 2.4rem; flex: none; color: var(--vinho-800); }
+  .cab :global(.cab__logo) { width: 2.6rem; height: 2.4rem; flex: none; color: var(--destaque); }
   .cab__nome { display: grid; line-height: 1.15; }
-  .cab__nome strong { font: 500 1.05rem/1.2 var(--serif); }
-  .cab__nome small { font-size: 0.72rem; color: var(--suave); letter-spacing: 0.04em; }
+  .cab__nome strong { font: 500 1.05rem/1.2 var(--fonte-display); }
+  .cab__nome small { font-size: 0.72rem; color: var(--texto-suave); letter-spacing: 0.04em; }
   .cab__nav {
     display: flex;
     gap: 1.75rem;
@@ -74,12 +74,12 @@ const links: (readonly [string, string])[] = [
     padding: 0;
   }
   .cab__nav a {
-    color: var(--tinta);
+    color: var(--texto);
     text-decoration: none;
     font-size: 0.92rem;
     font-weight: 500;
     padding-block: 0.5rem;
-    background: linear-gradient(var(--vinho-700), var(--vinho-700)) left bottom / 0 1px no-repeat;
+    background: linear-gradient(var(--destaque), var(--destaque)) left bottom / 0 1px no-repeat;
     transition: background-size 0.4s var(--ease);
   }
   .cab__nav a:hover { background-size: 100% 1px; }

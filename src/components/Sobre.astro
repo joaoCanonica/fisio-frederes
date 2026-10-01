@@ -1,6 +1,6 @@
 ---
 import Provisorio from './Provisorio.astro';
-import Icone from './Icone.astro';
+import Icone from './ui/Icon.astro';
 import { profile, tituloProfissional } from '../config/profile.config.ts';
 import { exibir, provisorio } from '../lib/modo.ts';
 import { instagramUrl } from '../lib/contato.ts';
@@ -59,7 +59,7 @@ const lattes = exibir(p.lattes);
 </section>
 
 <style>
-  .sobre { background: var(--gelo-0); border-block: 1px solid var(--linha); }
+  .sobre { background: var(--superficie); border-block: 1px solid var(--linha); }
   .sobre__grade { display: grid; gap: 3.5rem; }
   @media (min-width: 60rem) {
     .sobre__grade { grid-template-columns: 1fr 1fr; gap: 6rem; }
@@ -67,10 +67,10 @@ const lattes = exibir(p.lattes);
   }
   .sobre__lattes { margin-top: 2rem; }
   .sobre__h3 {
-    font: 700 0.75rem/1 var(--sans);
+    font: 700 0.75rem/1 var(--fonte-texto);
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--suave);
+    color: var(--texto-suave);
     margin-bottom: 1.25rem;
   }
   .sobre__h3:not(:first-child) { margin-top: 3rem; }
@@ -91,11 +91,11 @@ const lattes = exibir(p.lattes);
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    background: var(--gelo-0);
-    border: 2px solid var(--vinho-700);
+    background: var(--superficie);
+    border: 2px solid var(--destaque);
   }
-  .linha-tempo strong { font: 450 1.3rem/1.25 var(--serif); }
-  .linha-tempo span { color: var(--suave); font-size: 0.95rem; }
+  .linha-tempo strong { font: 400 1.25rem/1.3 var(--fonte-display); }
+  .linha-tempo span { color: var(--texto-suave); font-size: 0.95rem; }
   .vinculos { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
   .vinculos li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; font-size: 1.05rem; }
   .vinculos a { font-size: 0.9rem; }
