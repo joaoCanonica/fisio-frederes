@@ -1,4 +1,4 @@
-import { aviso, bloqueante, confirmado, type Campo } from './campo.ts';
+import { aviso, confirmado, type Campo } from './campo.ts';
 
 /**
  * Perfil profissional: fonte única de verdade para a identificação exigida pelo
@@ -114,7 +114,8 @@ export const profile = {
       vinculoId: 'cer-uniplac',
       mapsUrl: aviso<string | null>(null, 'Informar o link do Google Maps do CER Uniplac.'),
       ftid: aviso<string | null>(null, 'Informar o ftid do Google Maps do CER Uniplac.'),
-      endereco: bloqueante('Lages (SC)', 'Endereço do CER Uniplac por extenso (rua, número, bairro, CEP).'),
+      // Endereço de fonte pública (COSEMS-SC, 2016); conferir se segue atual.
+      endereco: confirmado('Av. Castelo Branco, 140, Universitário, Lages (SC), CEP 88509-900'),
     },
   ] satisfies readonly Unidade[],
 

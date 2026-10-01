@@ -40,7 +40,7 @@ export const copy = {
     eyebrow: 'Quem é',
     titulo: 'Quem é João Pedro Frederes',
     texto:
-      'Fisioterapeuta formado pela Uniplac, com pós-graduação em Fisioterapia Neuropediátrica e mestrado em Ambiente e Saúde. Atende bebês e crianças na NeuroKids e no Centro de Reabilitação da Uniplac, em Lages (SC), com foco no desenvolvimento motor e nas condições neurológicas da infância.',
+      'Fisioterapeuta formado pela Uniplac, com pós-graduação em Fisioterapia Neuropediátrica e mestrado em Ambiente e Saúde. Atende bebês e crianças principalmente na NeuroKids, em Lages (SC), e também no Centro de Reabilitação da Uniplac, com foco no desenvolvimento motor e nas condições neurológicas da infância.',
     verifique: 'O registro profissional pode ser conferido no Conselho Regional de Fisioterapia e Terapia Ocupacional (CREFITO).',
   },
 
@@ -118,7 +118,7 @@ export const copy = {
   onde: {
     eyebrow: 'Onde atende',
     titulo: 'Onde atende',
-    regiao: 'Lages e região (SC).',
+    regiao: 'Os atendimentos acontecem principalmente na NeuroKids, em Lages (SC). O fisioterapeuta também atua no Centro de Reabilitação da Uniplac.',
     notaMapa: 'O mapa abre no Google Maps, fora deste site.',
   },
 
@@ -174,7 +174,7 @@ export const copy = {
       {
         pergunta: 'Onde são os atendimentos?',
         resposta:
-          'Os atendimentos de fisioterapia de João Pedro Frederes acontecem em Lages, Santa Catarina, na NeuroKids e no Centro de Reabilitação da Uniplac. Os endereços completos e o link para o mapa estão na seção "Onde atende" desta página. Para combinar horários, o contato é feito pelo WhatsApp.',
+          'Os atendimentos de fisioterapia de João Pedro Frederes acontecem principalmente na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro de Reabilitação da Uniplac. O endereço completo e o link para o mapa estão na seção "Onde atende". Para combinar horários, use o WhatsApp.',
       },
       {
         pergunta: 'Como entrar em contato?',
