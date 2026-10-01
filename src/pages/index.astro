@@ -7,11 +7,10 @@ import Atua from '../components/Atua.astro';
 import Onde from '../components/Onde.astro';
 import Faq from '../components/Faq.astro';
 import Atendimento from '../components/Atendimento.astro';
-import SlotVideo from '../components/SlotVideo.astro';
+import SlotConvite from '../components/SlotConvite.astro';
+import SlotAtendimentos from '../components/SlotAtendimentos.astro';
 import Contato from '../components/Contato.astro';
 import { profile, registroCrefito, sede } from '../config/profile.config.ts';
-import { slots } from '../config/slots-video.config.ts';
-import { renderCompilado, renderConvite } from '../lib/slots.ts';
 import { poseDaSecao, SIZES_HERO } from '../lib/retrato.ts';
 import { EM_PRODUCAO } from '../lib/modo.ts';
 const p = profile;
@@ -41,18 +40,11 @@ const ld = EM_PRODUCAO
 <Base titulo={titulo} descricao={descricao} landing preload={preload}>
   {ld && <script type="application/ld+json" set:html={ld} />}
   <Hero />
+  <SlotConvite />
   <Sobre />
-  <SlotVideo id="convite" render={renderConvite()} eyebrow="Apresentação" titulo={slots.conviteVideo.titulo} formato="vertical" />
   <Atua />
   <Atendimento />
-  <SlotVideo
-    id="videos"
-    render={renderCompilado()}
-    eyebrow="No atendimento"
-    titulo={slots.compilado.titulo}
-    texto="Registros publicados com autorização por escrito do responsável legal, que pode ser retirada a qualquer momento."
-    formato="paisagem"
-  />
+  <SlotAtendimentos />
   <Desenvolvimento />
   <Onde />
   <Faq />

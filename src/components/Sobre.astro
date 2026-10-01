@@ -7,6 +7,8 @@ import { exibir, provisorio } from '../lib/modo.ts';
 import { instagramUrl } from '../lib/contato.ts';
 import Pose from './Pose.astro';
 import { poseDaSecao } from '../lib/retrato.ts';
+import VideoPlayer from './VideoPlayer.astro';
+import { videoApresentacao } from '../lib/slots.ts';
 const p = profile;
 const { graduacao, posGraduacao, mestrado } = p.titulos;
 const mest = exibir(mestrado);
@@ -20,6 +22,8 @@ const formacao = [
 const lattes = exibir(p.lattes);
 const verificacao = exibir(p.linkVerificacaoCrefito);
 const pose = poseDaSecao('sobre');
+// Vídeo de apresentação: em produção só quando liberado; em preview, com selo.
+const apresentacao = videoApresentacao();
 ---
 <section id="sobre" class="sec sobre" aria-labelledby="sobre-titulo">
   <div class="wrap sobre__grade">
@@ -60,6 +64,12 @@ const pose = poseDaSecao('sobre');
           </li>
         ))}
       </ul>
+      {apresentacao && (
+        <>
+          <h3 class="sobre__h3">Apresentação em vídeo</h3>
+          <div class="sobre__video" data-revelar><VideoPlayer video={apresentacao} formato="9:16" /></div>
+        </>
+      )}
     </div>
   </div>
 </section>
@@ -74,6 +84,7 @@ const pose = poseDaSecao('sobre');
   .sobre__lattes { margin-top: 2rem; }
   .sobre__verifique { margin-top: 1.25rem; font-size: 0.92rem; color: var(--texto-suave); max-width: 36rem; }
   .sobre__pose { width: min(70%, 18rem); margin-bottom: 2rem; }
+  .sobre__video { width: min(100%, 20rem); }
   .sobre__h3 {
     font: 700 0.75rem/1 var(--fonte-texto);
     letter-spacing: 0.16em;

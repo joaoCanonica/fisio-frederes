@@ -93,6 +93,9 @@ function checarTextos(out: Pendencia[]): void {
   const fontes: [string, string][] = [
     ['slots.conviteVideo.titulo', slots.conviteVideo.titulo],
     ['slots.compilado.titulo', slots.compilado.titulo],
+    ...[...(slots.conviteVideo.item ? [slots.conviteVideo.item] : []), ...slots.compilado.itens, slots.apresentacao.item].flatMap(
+      (it): [string, string][] => [[`slots.${it.midiaId}.titulo`, it.titulo], ...it.capitulos.map((c, i): [string, string] => [`slots.${it.midiaId}.capitulos[${i}]`, c.titulo])],
+    ),
     ['copy.hero.titulo', copy.hero.titulo.valor],
     ['copy.hero.subtitulo', copy.hero.subtitulo.valor],
     ...profile.areasAtuacao.map((a, i): [string, string] => [`areasAtuacao[${i}]`, a]),
@@ -139,8 +142,8 @@ function avisosMidia(m: ItemManifesto, out: Pendencia[]): void {
 function checarSlots(out: Pendencia[]): void {
   const { conviteVideo, compilado } = slots;
   const lista: [string, string, readonly string[]][] = [
-    ['slots.conviteVideo', conviteVideo.estado, conviteVideo.midiaId ? [conviteVideo.midiaId] : []],
-    ['slots.compilado', compilado.estado, compilado.midiaIds],
+    ['slots.conviteVideo', conviteVideo.estado, conviteVideo.item ? [conviteVideo.item.midiaId] : []],
+    ['slots.compilado', compilado.estado, compilado.itens.map((i) => i.midiaId)],
   ];
   for (const [campo, estado, ids] of lista) {
     if (estado === 'vago') {
@@ -158,11 +161,10 @@ function checarSlots(out: Pendencia[]): void {
       out.push(...impedimentosMidia(m).map((p) => ({ ...p, campo: `${campo} → ${p.campo}` })));
     }
   }
-  if (conviteVideo.estado === 'preenchido' && conviteVideo.legendaVtt === null) {
-    const m = conviteVideo.midiaId ? midiaPorId(conviteVideo.midiaId) : undefined;
-    if (m?.legenda?.status !== 'nao-se-aplica')
-      out.push({ nivel: 'bloqueante', grupo: 'Legendas', campo: 'slots.conviteVideo.legendaVtt', nota: 'Convite com fala exige legenda .vtt revisada.' });
-  }
+  // O vídeo de apresentação ("Quem é") não bloqueia: só aparece quando liberado.
+  const ap = midiaPorId(slots.apresentacao.item.midiaId);
+  if (ap && impedimentosMidia(ap).length)
+    out.push({ nivel: 'aviso', grupo: 'Vídeos', campo: 'slots.apresentacao', nota: `Vídeo de apresentação fora da produção até ser liberado: ${impedimentosMidia(ap).map((p) => p.nota).join(' ')}` });
 }
 
 export function listarPendencias(): Pendencia[] {

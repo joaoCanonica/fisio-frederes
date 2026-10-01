@@ -33,3 +33,10 @@ Depois de todo build, `scripts/conformidade.ts` varre o HTML final com os termos
 3. Conferir os valores da OMS na tabela original (`docs/pesquisa/marcos-motores.md`).
 4. Substituir o monograma provisório pelo logo oficial e reajustar os tons de vinho a partir dele.
 5. Atualizar `site` em `astro.config.ts`.
+
+## Vídeos: como preencher um slot
+1. Coloque o original em `assets-originais/videos/` e cadastre-o em `media.manifest.json` (com `pacienteRef`, `tcleRef`, `dataRegistro`, `legenda` e derivados MP4/WebM/poster/.vtt em `assets-originais/videos/derivados/`).
+2. Em `src/config/slots-video.config.ts`: mude `estado` para `'preenchido'` e aponte `midiaId`, `titulo` neutro (`{data}` vira a data do registro) e `capitulos`.
+3. Rode `npm run pendencias`: se faltar algo (TCLE, data, legenda, autorização), a produção bloqueia e o preview mostra o vídeo com selo PROVISÓRIO.
+
+As trilhas de capítulos e "[Vídeo sem áudio]" são geradas no build (`/midia/<id>.capitulos.vtt`, `/midia/<id>.sem-audio.vtt`).

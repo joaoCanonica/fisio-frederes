@@ -10,6 +10,7 @@ export interface ItemManifesto {
   readonly tipo: 'imagem' | 'video' | 'audio';
   readonly largura: number;
   readonly altura: number;
+  readonly duracaoSeg?: number;
   readonly descricao: string;
   readonly alt: string;
   readonly autoria: 'propria' | 'terceiro' | 'desconhecida' | 'CONFIRMAR';
