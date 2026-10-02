@@ -1,0 +1,64 @@
+---
+// Formas de brinquedo (círculo, meia-lua, triângulo, estrela, rabisco, confete)
+// espalhadas nos cantos de uma seção. Simples, coloridas e decorativas (aria-hidden).
+// A seção-mãe precisa de position: relative (a classe .com-formas já cuida disso).
+interface Props { variante?: 'a' | 'b' | 'c' | 'd' }
+const { variante = 'a' } = Astro.props;
+type F = { f: 'circulo' | 'meialua' | 'triangulo' | 'estrela' | 'rabisco' | 'confete'; cor: string; x: string; y: string; t: number; r?: number };
+const C = { rose: 'var(--ilustra-rose)', salvia: 'var(--ilustra-salvia)', sol: 'var(--ilustra-sol)', ceu: 'var(--ilustra-ceu)' };
+const presets: Record<string, F[]> = {
+  a: [
+    { f: 'circulo', cor: C.sol, x: '3%', y: '12%', t: 44 },
+    { f: 'estrela', cor: C.rose, x: '92%', y: '8%', t: 36, r: 12 },
+    { f: 'triangulo', cor: C.ceu, x: '88%', y: '82%', t: 40, r: -10 },
+    { f: 'confete', cor: C.salvia, x: '6%', y: '84%', t: 60 },
+  ],
+  b: [
+    { f: 'meialua', cor: C.salvia, x: '94%', y: '14%', t: 56, r: 90 },
+    { f: 'rabisco', cor: C.rose, x: '2%', y: '30%', t: 80 },
+    { f: 'circulo', cor: C.ceu, x: '90%', y: '88%', t: 28 },
+    { f: 'estrela', cor: C.sol, x: '8%', y: '90%', t: 30, r: -8 },
+  ],
+  c: [
+    { f: 'triangulo', cor: C.sol, x: '4%', y: '10%', t: 38, r: 14 },
+    { f: 'confete', cor: C.rose, x: '90%', y: '20%', t: 64 },
+    { f: 'meialua', cor: C.ceu, x: '3%', y: '86%', t: 50, r: -90 },
+    { f: 'circulo', cor: C.salvia, x: '94%', y: '80%', t: 36 },
+  ],
+  d: [
+    { f: 'estrela', cor: C.ceu, x: '4%', y: '16%', t: 34, r: 6 },
+    { f: 'circulo', cor: C.rose, x: '93%', y: '24%', t: 40 },
+    { f: 'rabisco', cor: C.sol, x: '86%', y: '88%', t: 84 },
+  ],
+};
+const formas = presets[variante] ?? [];
+---
+<div class="formas" aria-hidden="true">
+  {formas.map((s, i) => (
+    <svg
+      class="forma"
+      viewBox="0 0 100 100"
+      style={`left:${s.x};top:${s.y};width:${s.t}px;--r:${s.r ?? 0}deg;--i:${i}`}
+      focusable="false"
+    >
+      {s.f === 'circulo' && <circle cx="50" cy="50" r="46" fill={s.cor} />}
+      {s.f === 'meialua' && <path d="M4 60a46 46 0 0 1 92 0z" fill={s.cor} />}
+      {s.f === 'triangulo' && <path d="M50 8q5 0 8 5l36 66q3 7-5 8H11q-8-1-5-8l36-66q3-5 8-5z" fill={s.cor} />}
+      {s.f === 'estrela' && <path d="M50 6l12 28 30 3-23 20 7 30-26-16-26 16 7-30L8 37l30-3z" fill={s.cor} stroke-linejoin="round" />}
+      {s.f === 'rabisco' && <path d="M6 60q11-30 22 0t22 0 22 0 22 0" fill="none" stroke={s.cor} stroke-width="9" stroke-linecap="round" />}
+      {s.f === 'confete' && (
+        <g fill={s.cor}>
+          <circle cx="16" cy="20" r="9" /><circle cx="58" cy="12" r="6" /><circle cx="84" cy="44" r="8" />
+          <circle cx="34" cy="62" r="7" /><circle cx="72" cy="84" r="9" />
+        </g>
+      )}
+    </svg>
+  ))}
+</div>
+<style>
+  .formas { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .forma { position: absolute; height: auto; transform: translate(-50%, -50%) rotate(var(--r)); opacity: 0.9; animation: flutuar 7s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -1.7s); }
+  @keyframes flutuar { to { transform: translate(-50%, calc(-50% - 8px)) rotate(calc(var(--r) + 6deg)); } }
+  @media (max-width: 40rem) { .forma { scale: 0.65; opacity: 0.75; } .forma:nth-child(n + 3) { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .forma { animation: none; } }
+</style>

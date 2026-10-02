@@ -2,6 +2,7 @@
 // Primeira dobra: deixa claro em 2 s que é fisioterapia PEDIÁTRICA e já mostra a
 // identificação (nome completo, profissão, CREFITO). O lúdico vem da foto.
 // A foto vem das poses do retrato (src/config/retrato.config.ts).
+import Formas from './ui/Formas.astro';
 import Button from './ui/Button.astro';
 import Eyebrow from './ui/Eyebrow.astro';
 import BadgeId from './ui/BadgeId.astro';
@@ -20,7 +21,8 @@ import { provisorio } from '../lib/modo.ts';
 const pose = poseDaSecao('inicio');
 const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
 ---
-<section id="inicio" class="hero tom-claro" aria-labelledby="hero-titulo">
+<section id="inicio" class="hero tom-claro com-formas" aria-labelledby="hero-titulo">
+  <Formas variante="a" />
   <div class="wrap hero__grade">
     <div class="hero__texto">
       <Eyebrow>Fisioterapia pediátrica · Lages (SC)</Eyebrow>

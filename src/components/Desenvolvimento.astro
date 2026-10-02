@@ -1,5 +1,6 @@
 ---
 // Fontes: docs/pesquisa/marcos-motores.md
+import Formas from './ui/Formas.astro';
 import { FONTE_MARCOS, marcos } from '../data/marcos.ts';
 import Fontes from './ui/Fontes.astro';
 import Ilustracao from './ui/Ilustracao.astro';
@@ -9,7 +10,8 @@ const MAX = 18;
 const pct = (m: number) => `${((m / MAX) * 100).toFixed(2)}%`;
 const fmt = (n: number) => n.toLocaleString('pt-BR');
 ---
-<section id="porque" class="sec" aria-labelledby="dev-titulo">
+<section id="porque" class="sec com-formas" aria-labelledby="dev-titulo">
+  <Formas variante="d" />
   <div class="wrap dev__caminho" data-revelar><Ilustracao nome="caminho" /></div>
   <div class="wrap">
     <div class="dev__topo" data-revelar>

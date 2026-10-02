@@ -1,4 +1,5 @@
 ---
+import Formas from './ui/Formas.astro';
 import Provisorio from './Provisorio.astro';
 import Fontes from './ui/Fontes.astro';
 import Ilustracao from './ui/Ilustracao.astro';
@@ -7,8 +8,10 @@ import { exibir, provisorio } from '../lib/modo.ts';
 const c = copy.atendimento;
 const duracao = exibir(c.duracaoFrequencia);
 const icones = ['mao', 'blocos', 'bola', 'escada', 'pegadas'] as const;
+const cores = ['rose', 'ceu', 'sol', 'salvia'];
 ---
-<section id="atendimento" class="sec" aria-labelledby="atend-titulo">
+<section id="atendimento" class="sec com-formas" aria-labelledby="atend-titulo">
+  <Formas variante="c" />
   <div class="wrap">
     <div class="atend__topo" data-revelar>
       <p class="eyebrow">{c.eyebrow}</p>
@@ -18,7 +21,7 @@ const icones = ['mao', 'blocos', 'bola', 'escada', 'pegadas'] as const;
     <ol class="etapas">
       {c.etapas.map((e, i) => (
         <li data-revelar style={`--i:${i}`}>
-          <div class="etapas__ilu"><Ilustracao nome={icones[i] ?? 'cubo'} /></div>
+          <div class="etapas__ilu adesivo" style={`--cor-adesivo:var(--ilustra-${cores[i % cores.length]})`}><Ilustracao nome={icones[i] ?? 'cubo'} /></div>
           <div>
             <h3><span class="etapas__n">{i + 1}.</span> {e.titulo}</h3>
             <p>{e.texto}</p>
@@ -40,8 +43,8 @@ const icones = ['mao', 'blocos', 'bola', 'escada', 'pegadas'] as const;
   .atend__topo { max-width: 40rem; }
   .etapas { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; gap: 2.25rem 3rem; }
   @media (min-width: 52rem) { .etapas { grid-template-columns: 1fr 1fr; } }
-  .etapas li { display: grid; grid-template-columns: 4rem 1fr; gap: 1.25rem; align-items: start; }
-  .etapas__ilu { width: 4rem; }
+  .etapas li { display: grid; grid-template-columns: 5rem 1fr; gap: 1.25rem; align-items: start; }
+  .etapas__ilu { width: 5rem; }
   .etapas h3 { font-size: 1.25rem; }
   .etapas__n { color: var(--destaque); }
   .etapas p { color: var(--texto-suave); margin-top: 0.4rem; }

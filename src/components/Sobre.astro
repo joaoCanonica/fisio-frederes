@@ -1,4 +1,5 @@
 ---
+import Formas from './ui/Formas.astro';
 import Provisorio from './Provisorio.astro';
 import Icone from './ui/Icon.astro';
 import { profile } from '../config/profile.config.ts';
@@ -25,7 +26,8 @@ const pose = poseDaSecao('sobre');
 // Vídeo de apresentação: em produção só quando liberado; em preview, com selo.
 const apresentacao = videoApresentacao();
 ---
-<section id="sobre" class="sec sobre" aria-labelledby="sobre-titulo">
+<section id="sobre" class="sec sobre com-formas" aria-labelledby="sobre-titulo">
+  <Formas variante="b" />
   <div class="wrap sobre__grade">
     <div class="sobre__intro" data-revelar>
       {pose && <div class="sobre__pose"><Pose pose={pose} sizes="(min-width: 60rem) 18rem, 70vw" /></div>}

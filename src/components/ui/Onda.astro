@@ -1,0 +1,14 @@
+---
+// Divisória em onda entre seções. `de` = cor da seção de cima; `para` = de baixo.
+interface Props { de: string; para: string; invertida?: boolean }
+const { de, para, invertida = false } = Astro.props;
+---
+<div class="onda" aria-hidden="true" style={`background:${para}`}>
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" focusable="false" style={invertida ? 'transform:scaleX(-1)' : undefined}>
+    <path d="M0 0h1440v18c-120 22-240 30-360 18S840 4 720 14 480 44 360 40 120 14 0 22z" fill={de} />
+  </svg>
+</div>
+<style>
+  .onda { line-height: 0; }
+  .onda svg { display: block; width: 100%; height: clamp(18px, 3vw, 44px); }
+</style>

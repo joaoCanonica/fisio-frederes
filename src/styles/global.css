@@ -246,3 +246,10 @@ a:hover {
     transform: none;
   }
 }
+
+/* Seções com formas decorativas (ui/Formas.astro): o conteúdo fica acima delas. */
+.com-formas { position: relative; isolation: isolate; }
+.com-formas > :not(.formas) { position: relative; z-index: 1; }
+
+/* "Adesivo": ilustração sobre círculo colorido (ui/Ilustracao em listas). */
+.adesivo { display: block; aspect-ratio: 1; border-radius: 50%; padding: 16%; background: color-mix(in oklab, var(--cor-adesivo, var(--ilustra-sol)) 55%, var(--superficie)); }

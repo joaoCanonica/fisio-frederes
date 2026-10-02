@@ -1,13 +1,16 @@
 ---
 // Para quem é o atendimento. Limite inegociável no TEA: só o que a fisioterapia faz
 // (movimento e participação), nunca tratar/curar/reduzir o autismo. Fontes: docs/pesquisa/.
+import Formas from './ui/Formas.astro';
 import Fontes from './ui/Fontes.astro';
 import Ilustracao from './ui/Ilustracao.astro';
 import { copy } from '../config/copy.config.ts';
 const c = copy.atua;
 const icones = ['pegadas', 'blocos', 'bola'] as const;
+const cores = ['salvia', 'ceu', 'sol'];
 ---
-<section id="atua" class="sec atua tom-claro" aria-labelledby="atua-titulo">
+<section id="atua" class="sec atua tom-claro com-formas" aria-labelledby="atua-titulo">
+  <Formas variante="c" />
   <div class="wrap">
     <div class="atua__topo" data-revelar>
       <p class="eyebrow">{c.eyebrow}</p>
@@ -18,7 +21,7 @@ const icones = ['pegadas', 'blocos', 'bola'] as const;
     <ul class="atua__lista">
       {c.areas.map((a, i) => (
         <li data-revelar style={`--i:${i}`}>
-          <div class="atua__ilu"><Ilustracao nome={icones[i] ?? 'cubo'} /></div>
+          <div class="atua__ilu adesivo" style={`--cor-adesivo:var(--ilustra-${cores[i]})`}><Ilustracao nome={icones[i] ?? 'cubo'} /></div>
           <h3>{a.titulo}</h3>
           <p>{a.texto}</p>
           <Fontes fontes={a.fontes} />
@@ -41,7 +44,7 @@ const icones = ['pegadas', 'blocos', 'bola'] as const;
   .atua__topo { max-width: 40rem; }
   .atua__lista { list-style: none; margin: 3.5rem 0 0; padding: 0; display: grid; gap: 3rem; }
   @media (min-width: 60rem) { .atua__lista { grid-template-columns: repeat(3, 1fr); gap: 3.5rem; } }
-  .atua__ilu { width: 5.5rem; margin-bottom: 1.25rem; }
+  .atua__ilu { width: 7.5rem; margin-bottom: 1.5rem; }
   .atua__lista h3 { font-size: 1.45rem; color: var(--destaque); }
   .atua__lista p { color: var(--texto-suave); margin-top: 0.6rem; }
   .atua__dado {

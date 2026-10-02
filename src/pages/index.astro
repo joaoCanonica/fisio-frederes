@@ -6,6 +6,7 @@ import Desenvolvimento from '../components/Desenvolvimento.astro';
 import Atua from '../components/Atua.astro';
 import Onde from '../components/Onde.astro';
 import Faq from '../components/Faq.astro';
+import Onda from '../components/ui/Onda.astro';
 import Atendimento from '../components/Atendimento.astro';
 import SlotConvite from '../components/SlotConvite.astro';
 import SlotAtendimentos from '../components/SlotAtendimentos.astro';
@@ -42,11 +43,14 @@ const ld = EM_PRODUCAO
   <Hero />
   <SlotConvite />
   <Sobre />
+  <Onda de="var(--fundo)" para="var(--superficie-alt)" />
   <Atua />
+  <Onda de="var(--superficie-alt)" para="var(--fundo)" invertida />
   <Atendimento />
   <SlotAtendimentos />
   <Desenvolvimento />
   <Onde />
   <Faq />
+  <Onda de="var(--superficie)" para="var(--superficie-alt)" invertida />
   <Contato />
 </Base>
