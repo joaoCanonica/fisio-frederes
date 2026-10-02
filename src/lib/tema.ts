@@ -19,7 +19,14 @@ export function cssDoTema(): string {
   const aviso = Object.entries(theme.aviso)
     .map(([k, v]) => `--aviso-${k}:${hex(v)};`)
     .join('');
+  // Tokens de composição (seção vinho, ondas, topo do hero) por esquema.
+  const compClaro = `--secao-vinho:${hex('vinhoProfundo')};--onda-borda:transparent;--hero-topo:${hex('roseNevoa')};--arco:${hex('vinhoProfundo')};`;
+  const compEscuro = `--secao-vinho:${hex('vinhoProfundo')};--onda-borda:${hex('vinhoMedio')};--hero-topo:${hex('grafiteNoite3')};--arco:${hex('vinhoClaro')};`;
   return [
+    `:root{${compClaro}}`,
+    `@media (prefers-color-scheme: dark){:root{${compEscuro}}}`,
+    `[data-tema="claro"]{${compClaro}}`,
+    `[data-tema="escuro"]{${compEscuro}}`,
     `:root{color-scheme:light dark;${aviso}--marca:${hex('vinhoProfundo')};--ilustra-rose:${hex('ilustraRose')};--ilustra-salvia:${hex('ilustraSalvia')};--ilustra-sol:${hex('ilustraSol')};--ilustra-ceu:${hex('ilustraCeu')};}`,
     `:root,.tom-claro{color-scheme:light;${bloco(claro)}}`,
     `@media (prefers-color-scheme: dark){:root,.tom-claro{color-scheme:dark;${bloco(escuro)}--marca:${hex('vinhoClaro')};}}`,

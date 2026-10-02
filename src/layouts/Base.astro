@@ -52,6 +52,11 @@ const canonico = new URL(Astro.url.pathname, Astro.site);
         var h = document.documentElement;
         h.classList.add('js');
         try {
+          // Tema escolhido pela pessoa (só existe depois de um clique no seletor).
+          var t = localStorage.getItem('jpf-tema');
+          if (t === 'claro' || t === 'escuro') h.setAttribute('data-tema', t);
+        } catch (e) {}
+        try {
           if (h.dataset.entrada === 'on' && !matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('jpf-entrada')) {
             sessionStorage.setItem('jpf-entrada', '1');
             h.classList.add('entrada');

@@ -7,6 +7,9 @@ import Atua from '../components/Atua.astro';
 import Onde from '../components/Onde.astro';
 import Faq from '../components/Faq.astro';
 import Onda from '../components/ui/Onda.astro';
+import { renderCompilado } from '../lib/slots.ts';
+// Cor da seção que vem antes de "Por que o movimento importa" (vídeos, se houver).
+const antesDoPorque = renderCompilado() ? 'var(--superficie-alt)' : 'var(--fundo)';
 import Atendimento from '../components/Atendimento.astro';
 import SlotConvite from '../components/SlotConvite.astro';
 import SlotAtendimentos from '../components/SlotAtendimentos.astro';
@@ -48,9 +51,12 @@ const ld = EM_PRODUCAO
   <Onda de="var(--superficie-alt)" para="var(--fundo)" invertida />
   <Atendimento />
   <SlotAtendimentos />
+  <Onda de={antesDoPorque} para="var(--secao-vinho)" />
   <Desenvolvimento />
+  <Onda de="var(--secao-vinho)" para="var(--fundo)" invertida />
   <Onde />
   <Faq />
-  <Onda de="var(--superficie)" para="var(--superficie-alt)" invertida />
+  <Onda de="var(--superficie)" para="var(--secao-vinho)" invertida />
   <Contato />
+  <Onda de="var(--secao-vinho)" para="var(--fundo)" />
 </Base>

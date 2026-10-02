@@ -49,8 +49,8 @@ const pose = poseDaSecao('inicio');
     position: relative;
     padding-block: clamp(2rem, 5vw, 4.5rem) var(--sec);
     overflow: clip;
-    background:
-        var(--fundo);
+    /* Suave: roseNevoa → branco no claro; grafite levemente mais claro → fundo no escuro. */
+    background: linear-gradient(180deg, var(--hero-topo) 0%, var(--fundo) 85%);
   }
   .hero__grade { display: grid; gap: 2.5rem; align-items: center; }
   @media (min-width: 60rem) {
@@ -65,18 +65,22 @@ const pose = poseDaSecao('inicio');
   .hero__sub { margin-top: 1.1rem; }
   .hero__id { margin-top: 1.75rem; }
   .hero__local { font-weight: 700; color: var(--destaque); font-size: 0.95rem; }
-  .hero__publicos { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0 0; padding: 0; }
   .hero__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
   .hero__visual { position: relative; justify-self: center; width: min(100%, 28rem); }
-  .hero__ilu { position: absolute; z-index: 2; }
-  .hero__ilu--blocos { width: 7rem; left: -3rem; bottom: 2.5rem; }
-  .hero__ilu--bola { width: 4.5rem; right: -1.5rem; top: 10%; }
-  @media (max-width: 40rem) { .hero__ilu--blocos { width: 5rem; left: -1rem; } .hero__ilu--bola { width: 3.5rem; right: -0.5rem; } }
+  /* Arco do retrato com contorno vinho (vinhoClaro no escuro, via --arco). */
+  .hero__visual :global(.mf__midia) { border: 3px solid var(--arco); outline: 6px solid var(--superficie); outline-offset: 0; }
   .hero__semfoto { height: 100%; display: grid; place-items: center; }
   .hero__visual :global(.hero__marca) { width: 45%; height: auto; color: var(--marca); }
-  /* Mobile: foto antes do texto? Não: texto primeiro (o título é o que diz "pediatria"),
-     foto logo abaixo, reduzida para aparecer cedo. */
+
+  /* Mobile (até 60rem): retrato primeiro, no máximo 40svh, e o CTA do WhatsApp
+     ainda visível sem rolar (o título sozinho já diz "crianças"). */
   @media (max-width: 59.99rem) {
-    .hero__visual { width: min(78%, 22rem); }
+    .hero { padding-top: 1rem; }
+    .hero__grade { gap: 1.25rem; }
+    .hero__visual { order: -1; width: min(78%, calc(40svh * 0.8)); }
+    .hero__h1 { font-size: clamp(1.6rem, 1.2rem + 2.2vw, 2.4rem); margin-top: 0.5rem; }
+    .hero__sub { margin-top: 0.6rem; font-size: 1rem; }
+    .hero__acoes { margin-top: 1rem; }
+    .hero__id { margin-top: 1rem; }
   }
 </style>

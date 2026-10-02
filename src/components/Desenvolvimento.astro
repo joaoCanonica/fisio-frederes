@@ -17,7 +17,7 @@ const MAX = 18;
 const pct = (m: number) => `${((m / MAX) * 100).toFixed(2)}%`;
 const fmt = (n: number) => n.toLocaleString('pt-BR');
 ---
-<section id="porque" class="sec" aria-labelledby="dev-titulo">
+<section id="porque" class="sec tom-vinho" aria-labelledby="dev-titulo">
   <div class="wrap" data-revelar>
     <ol class="dev__faixa" aria-label="Alguns marcos do desenvolvimento motor">
       {faixa.map(([pose, rotulo, cor]) => (<li><Crianca pose={pose} cor={cor} /><span>{rotulo}</span></li>))}
@@ -94,7 +94,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
   .dev__faixa :global(.crianca) { width: min(100%, 8.5rem); }
   .dev__faixa li span { font-weight: 700; color: var(--destaque); font-size: 0.9rem; }
   @media (max-width: 34rem) { .dev__faixa { grid-template-columns: repeat(3, 1fr); row-gap: 1.25rem; } }
-  .dev__caderneta { padding-left: 1.25rem; border-left: 3px solid var(--ilustra-sol); }
+  .dev__caderneta { padding-left: 1.25rem; border-left: 3px solid var(--destaque); }
   .dev__caderneta .dev__h3 { margin-top: 0; }
   .grafico {
     margin: 3.5rem 0 0;
@@ -126,7 +126,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
     font-weight: 700;
     transform-origin: left;
   }
-  .grafico__barra .grafico__n:first-of-type { color: var(--acento-texto); }
+  /* Barras no destaque do tom (rose sobre vinho) com números na cor do texto de ação. */
   .js .grafico[data-revelar] .grafico__barra { transform: scaleX(0); transition: transform 1.1s var(--ease); transition-delay: calc(0.2s + var(--i) * 0.08s); }
   .js .grafico.visivel .grafico__barra { transform: none; }
   .grafico__eixo {
