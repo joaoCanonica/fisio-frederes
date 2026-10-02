@@ -10,6 +10,7 @@ import MediaFrame from './ui/MediaFrame.astro';
 import Pose from './Pose.astro';
 import Marca from './Marca.astro';
 import Provisorio from './Provisorio.astro';
+import Ilustracao from './ui/Ilustracao.astro';
 import { profile } from '../config/profile.config.ts';
 import { copy } from '../config/copy.config.ts';
 import { whatsappUrl, instagramUrl } from '../lib/contato.ts';
@@ -38,6 +39,8 @@ const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
     </div>
 
     <div class="hero__visual">
+      <div class="hero__ilu hero__ilu--blocos" aria-hidden="true"><Ilustracao nome="blocos" /></div>
+      <div class="hero__ilu hero__ilu--bola" aria-hidden="true"><Ilustracao nome="bola" /></div>
       {pose ? (
         <Pose pose={pose} sizes={SIZES_HERO} prioridade />
       ) : (
@@ -72,7 +75,11 @@ const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
   .hero__id { margin-top: 1.4rem; }
   .hero__publicos { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0 0; padding: 0; }
   .hero__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
-  .hero__visual { justify-self: center; width: min(100%, 28rem); }
+  .hero__visual { position: relative; justify-self: center; width: min(100%, 28rem); }
+  .hero__ilu { position: absolute; z-index: 2; }
+  .hero__ilu--blocos { width: 7rem; left: -3rem; bottom: 2.5rem; }
+  .hero__ilu--bola { width: 4.5rem; right: -1.5rem; top: 10%; }
+  @media (max-width: 40rem) { .hero__ilu--blocos { width: 5rem; left: -1rem; } .hero__ilu--bola { width: 3.5rem; right: -0.5rem; } }
   .hero__semfoto { height: 100%; display: grid; place-items: center; }
   .hero__visual :global(.hero__marca) { width: 45%; height: auto; color: var(--marca); }
   /* Mobile: foto antes do texto? Não: texto primeiro (o título é o que diz "pediatria"),

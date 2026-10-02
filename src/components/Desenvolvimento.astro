@@ -2,6 +2,7 @@
 // Fontes: docs/pesquisa/marcos-motores.md
 import { FONTE_MARCOS, marcos } from '../data/marcos.ts';
 import Fontes from './ui/Fontes.astro';
+import Ilustracao from './ui/Ilustracao.astro';
 import { copy } from '../config/copy.config.ts';
 const c = copy.porque;
 const MAX = 18;
@@ -9,6 +10,7 @@ const pct = (m: number) => `${((m / MAX) * 100).toFixed(2)}%`;
 const fmt = (n: number) => n.toLocaleString('pt-BR');
 ---
 <section id="porque" class="sec" aria-labelledby="dev-titulo">
+  <div class="wrap dev__caminho" data-revelar><Ilustracao nome="caminho" /></div>
   <div class="wrap">
     <div class="dev__topo" data-revelar>
       <p class="eyebrow">{c.eyebrow}</p>
@@ -61,6 +63,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
 
     <div class="dev__blocos">
       <div class="dev__caderneta" data-revelar>
+        <div class="dev__ilu"><Ilustracao nome="chocalho" /></div>
         <h3 class="dev__h3">{c.caderneta.titulo}</h3>
         <p class="dev__p">{c.caderneta.texto}</p>
         <Fontes fontes={[c.caderneta.fonte]} />
@@ -76,7 +79,10 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
   .dev__p { margin-top: 0.6rem; color: var(--texto-suave); }
   .dev__blocos { display: grid; gap: 2rem; margin-top: 3rem; }
   @media (min-width: 60rem) { .dev__blocos { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; } }
-  .dev__caderneta { padding: 1.5rem; border-radius: var(--raio); background: var(--superficie); border: 1px solid var(--linha); }
+  .dev__caminho { margin-bottom: 3rem; max-width: 36rem; }
+  .dev__caderneta { display: grid; grid-template-columns: 4rem 1fr; gap: 0 1.25rem; }
+  .dev__caderneta > :not(.dev__ilu) { grid-column: 2; }
+  .dev__ilu { grid-row: span 3; width: 4rem; }
   .dev__caderneta .dev__h3 { margin-top: 0; }
   .grafico {
     margin: 3.5rem 0 0;

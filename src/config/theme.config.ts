@@ -19,6 +19,14 @@ export const primitivas = {
   roseSuave: '#f6ebe8',
   gelo: '#f4f3f3', // fundo (branco-gelo do mockup do logo)
   geloClaro: '#fbfafa',
+  branco: '#ffffff',
+  offWhite: '#fdfbfa', // fundo claro (mais leve que o branco-gelo do logo)
+  roseNevoa: '#fbf4f2', // fundo alternado de seção, muito suave
+  // Ilustrações (decorativas, nunca texto): tons suaves para o universo infantil.
+  ilustraRose: '#efc9c4',
+  ilustraSalvia: '#bcd8cc',
+  ilustraSol: '#f3d9a4',
+  ilustraCeu: '#c4d8ea',
   grafite: '#262123', // texto
   grafiteMedio: '#5b5053',
   grafiteNoite: '#1a1416',
@@ -30,7 +38,6 @@ export const primitivas = {
   avisoFundo: '#fff1d6',
   avisoTexto: '#5a3b00',
   avisoBorda: '#8a5a00',
-  branco: '#ffffff',
 } as const;
 
 type P = keyof typeof primitivas;
@@ -56,9 +63,9 @@ export interface Tokens {
 }
 
 const claro: Tokens = {
-  fundo: 'gelo',
-  superficie: 'geloClaro',
-  superficieAlt: 'roseSuave',
+  fundo: 'offWhite',
+  superficie: 'branco',
+  superficieAlt: 'roseNevoa',
   texto: 'grafite',
   textoSuave: 'grafiteMedio',
   borda: 'cinzaQuente',

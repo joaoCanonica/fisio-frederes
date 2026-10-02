@@ -10,11 +10,11 @@ const lattes = exibir(p.lattes);
 const endereco = sede().endereco;
 const ano = new Date().getFullYear();
 ---
-<footer class="rod tom-escuro">
+<footer class="rod tom-claro">
   <div class="wrap rod__grade">
     <div class="rod__marca">
       <Marca class="rod__logo" />
-      <p class="rod__frase">Movimento, brincadeira e participação no dia a dia da criança.</p>
+      <p class="rod__frase">Fisioterapia para bebês e crianças, em Lages (SC).</p>
     </div>
     <div>
       <h2 class="rod__h">Identificação profissional</h2>
@@ -50,7 +50,7 @@ const ano = new Date().getFullYear();
 <style>
   .rod {
     padding-block: 4.5rem 2rem;
-    --linha: color-mix(in oklab, var(--borda) 90%, transparent);
+    border-top: 1px solid var(--linha);
   }
   .rod a { color: var(--destaque); }
   .rod :global(dt) { color: var(--texto-suave); }
@@ -62,9 +62,7 @@ const ano = new Date().getFullYear();
   }
   .rod :global(.rod__logo) { width: 4.5rem; height: 4.1rem; color: var(--destaque); }
   .rod__frase {
-    font: 400 1.2rem/1.35 var(--fonte-display);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font: 400 1.25rem/1.4 var(--fonte-display);
     margin-top: 1.25rem;
     max-width: 18rem;
     color: var(--texto);

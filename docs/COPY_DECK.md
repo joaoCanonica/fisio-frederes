@@ -1,6 +1,6 @@
 # Copy deck: landing de João Pedro Frederes
 
-**Status: APROVADO e integrado em 2026-10-01 (fonte no site: `src/config/copy.config.ts`).**
+**Status: v3 (2026-10-02): textos revisados em primeira pessoa e com linguagem mais natural; fonte no site: `src/config/copy.config.ts`.**
 Versão 2, de 2026-10-01 (v1 aprovada; v2 = dados confirmados e foco na NeuroKids). Revisores: cliente e João Pedro Frederes.
 
 Legenda:

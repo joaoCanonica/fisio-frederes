@@ -20,7 +20,7 @@ export function cssDoTema(): string {
     .map(([k, v]) => `--aviso-${k}:${hex(v)};`)
     .join('');
   return [
-    `:root{color-scheme:light dark;${aviso}--marca:${hex('vinhoProfundo')};}`,
+    `:root{color-scheme:light dark;${aviso}--marca:${hex('vinhoProfundo')};--ilustra-rose:${hex('ilustraRose')};--ilustra-salvia:${hex('ilustraSalvia')};--ilustra-sol:${hex('ilustraSol')};--ilustra-ceu:${hex('ilustraCeu')};}`,
     `:root,.tom-claro{color-scheme:light;${bloco(claro)}}`,
     `@media (prefers-color-scheme: dark){:root,.tom-claro{color-scheme:dark;${bloco(escuro)}--marca:${hex('vinhoClaro')};}}`,
     `[data-tema="claro"],[data-tema="claro"] .tom-claro{color-scheme:light;${bloco(claro)}--marca:${hex('vinhoProfundo')};}`,

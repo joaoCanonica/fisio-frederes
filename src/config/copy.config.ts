@@ -32,39 +32,39 @@ export const copy = {
       'Título do hero proposto: confirmar com o cliente.',
     ),
     subtitulo: confirmado(
-      'Atendimento neuropediátrico com foco no desenvolvimento infantil, em Lages, Santa Catarina.',
+      'Atendo bebês e crianças em Lages (SC), ajudando cada uma a se movimentar, brincar e participar do dia a dia.',
     ),
   },
 
   sobre: {
-    eyebrow: 'Quem é',
-    titulo: 'Quem é João Pedro Frederes',
+    eyebrow: 'Quem sou',
+    titulo: 'Prazer, sou o João Pedro',
     texto:
-      'Fisioterapeuta formado pela Uniplac, com pós-graduação em Fisioterapia Neuropediátrica e mestrado em Ambiente e Saúde. Atende bebês e crianças principalmente na NeuroKids, em Lages (SC), e também no Centro de Reabilitação da Uniplac, com foco no desenvolvimento motor e nas condições neurológicas da infância.',
-    verifique: 'O registro profissional pode ser conferido no Conselho Regional de Fisioterapia e Terapia Ocupacional (CREFITO).',
+      'Sou fisioterapeuta formado pela Uniplac, pós-graduado em Fisioterapia Neuropediátrica e mestre em Ambiente e Saúde. Atendo bebês e crianças na NeuroKids, em Lages, e também no Centro de Reabilitação da Uniplac. Meu trabalho é olhar para o movimento de cada criança e encontrar, junto com a família, o que ajuda ela a brincar, explorar e ganhar autonomia.',
+    verifique: 'Meu registro pode ser conferido no Conselho Regional de Fisioterapia e Terapia Ocupacional (CREFITO).',
   },
 
   atua: {
-    eyebrow: 'Em que atua',
-    titulo: 'Em que atua',
-    intro: 'O foco é o movimento: como a criança se move, brinca e participa do dia a dia.',
+    eyebrow: 'Com quem trabalho',
+    titulo: 'Para quem é o atendimento',
+    intro: 'Bebês e crianças que precisam de ajuda com o movimento, cada uma no seu tempo.',
     areas: [
       {
         titulo: 'Desenvolvimento motor',
         texto:
-          'Bebês e crianças com atraso ou dificuldade para sentar, engatinhar, ficar em pé, andar, correr ou pular. Os marcos motores acontecem dentro de janelas de idade, e o acompanhamento observa o ritmo de cada criança.',
+          'Para quem está demorando para sentar, engatinhar, ficar em pé ou andar, ou tem dificuldade para correr e pular. Cada marco tem uma janela de idade, e eu acompanho o ritmo de cada criança.',
         fontes: [OMS],
       },
       {
         titulo: 'Neuropediatria',
         texto:
-          'Crianças com condições neurológicas que afetam o movimento, como a paralisia cerebral. Nesses casos, as diretrizes atuais recomendam começar a intervenção assim que o risco é identificado.',
+          'Para crianças com condições neurológicas que afetam o movimento, como a paralisia cerebral. Nesses casos, as diretrizes recomendam começar cedo, assim que o risco é identificado.',
         fontes: [NOVAK, MORGAN],
       },
       {
         titulo: 'Fisioterapia no TEA',
         texto:
-          'A fisioterapia trabalha coordenação, equilíbrio, aspectos sensório-motores e participação nas atividades. Ela não trata o autismo em si: o objetivo é o movimento, dentro de um cuidado feito em equipe. Dificuldades motoras são frequentes em crianças autistas e, muitas vezes, passam despercebidas.',
+          'Trabalho coordenação, equilíbrio, aspectos sensório-motores e a participação nas brincadeiras e na rotina. A fisioterapia não trata o autismo em si; ela cuida do movimento, junto com a equipe que acompanha a criança. Dificuldades motoras são comuns em crianças autistas e muitas vezes passam despercebidas.',
         fontes: [LICARI, MS_TEA],
       },
     ],
@@ -76,49 +76,49 @@ export const copy = {
   },
 
   atendimento: {
-    eyebrow: 'Como funciona',
-    titulo: 'Como é o atendimento',
-    intro: 'Cada etapa é combinada com a família.',
+    eyebrow: 'Passo a passo',
+    titulo: 'Como funciona o atendimento',
+    intro: 'Tudo começa com uma boa conversa com a família.',
     etapas: [
-      { titulo: 'Consulta fisioterapêutica', texto: 'Conversa sobre a história e a rotina da criança, e observação do movimento durante o brincar.' },
-      { titulo: 'Diagnóstico fisioterapêutico e plano terapêutico', texto: 'Objetivos ligados ao dia a dia da criança, definidos com a família.' },
-      { titulo: 'Atendimentos', texto: 'Brincadeiras e atividades com propósito, de acordo com o plano.' },
-      { titulo: 'Reavaliação do plano', texto: 'O plano é revisto periodicamente e ajustado conforme a resposta da criança.' },
-      { titulo: 'Participação da família', texto: 'Orientações para o dia a dia em casa. As diretrizes recomendam metas definidas com os pais.' },
+      { titulo: 'Consulta fisioterapêutica', texto: 'Converso com vocês sobre a história e a rotina da criança e observo como ela se movimenta brincando.' },
+      { titulo: 'Diagnóstico fisioterapêutico e plano terapêutico', texto: 'Juntos, definimos objetivos ligados ao dia a dia, como subir a escada da escola ou brincar no parquinho.' },
+      { titulo: 'Atendimentos', texto: 'Para a criança, parece brincadeira. Cada atividade tem um propósito dentro do plano.' },
+      { titulo: 'Reavaliação do plano', texto: 'De tempos em tempos revemos o plano e ajustamos o que for preciso.' },
+      { titulo: 'A família junto', texto: 'Vocês saem com orientações simples para casa. As diretrizes recomendam definir as metas junto com os pais.' },
     ],
     duracaoFrequencia: aviso(
       'Duração de cada atendimento e frequência semanal definidas no plano terapêutico.',
       'Duração e frequência dos atendimentos: confirmar com o cliente.',
     ),
-    nota: 'Quando a família autoriza, há troca de informações com os outros profissionais que acompanham a criança.',
+    nota: 'Se a família autorizar, converso também com os outros profissionais que acompanham a criança.',
     fontes: [MORGAN],
   },
 
   porque: {
-    eyebrow: 'Desenvolvimento infantil',
+    eyebrow: 'Para os pais',
     titulo: 'Por que o movimento importa',
     texto:
-      'É pelo movimento que a criança explora, brinca e se torna mais independente. Os primeiros anos são uma fase de grande plasticidade do sistema nervoso. Por isso, quando há risco ou atraso identificado, as diretrizes recomendam não esperar para começar a intervenção.',
+      'A criança conhece o mundo se mexendo: rolando, engatinhando, subindo, caindo e levantando de novo. Nos primeiros anos o sistema nervoso está em plena formação, e por isso, quando há atraso ou risco, as diretrizes recomendam não esperar.',
     fontes: [NOVAK, MORGAN],
     ritmo: {
       titulo: 'Cada criança tem seu ritmo',
       texto:
-        'A Organização Mundial da Saúde acompanhou crianças saudáveis em cinco países e mostrou que sentar, engatinhar, ficar em pé e andar acontecem em janelas de idade que podem durar vários meses.',
+        'Sentar, engatinhar, ficar em pé e andar não têm data marcada. Um estudo da Organização Mundial da Saúde com crianças saudáveis de cinco países mostrou que cada marco acontece dentro de uma janela de vários meses.',
     },
     caderneta: {
-      titulo: 'Acompanhe com a Caderneta',
+      titulo: 'Use a Caderneta da Criança',
       texto:
-        'A Caderneta da Criança, do Ministério da Saúde, tem uma ficha para acompanhar os marcos do desenvolvimento. Leve-a às consultas do pediatra.',
+        'A Caderneta da Criança, do Ministério da Saúde, tem uma página para acompanhar os marcos do desenvolvimento. Vale levar nas consultas com o pediatra.',
       fonte: CADERNETA,
     },
     honestidade:
-      'A fisioterapia é uma parte do cuidado. Ela não substitui o acompanhamento com o pediatra nem promete prazos: cada plano terapêutico é ajustado ao ritmo da criança.',
+      'A fisioterapia é uma parte do cuidado, não o todo. Ela não substitui o pediatra e não tem prazo prometido. O plano acompanha o ritmo de cada criança.',
   },
 
   onde: {
-    eyebrow: 'Onde atende',
-    titulo: 'Onde atende',
-    regiao: 'Os atendimentos acontecem principalmente na NeuroKids, em Lages (SC). O fisioterapeuta também atua no Centro de Reabilitação da Uniplac.',
+    eyebrow: 'Endereços',
+    titulo: 'Onde atendo',
+    regiao: 'Atendo principalmente na NeuroKids, no Centro de Lages. Também atuo no Centro de Reabilitação da Uniplac.',
     notaMapa: 'O mapa abre no Google Maps, fora deste site.',
   },
 
@@ -174,7 +174,7 @@ export const copy = {
       {
         pergunta: 'Onde são os atendimentos?',
         resposta:
-          'Os atendimentos de fisioterapia de João Pedro Frederes acontecem principalmente na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro de Reabilitação da Uniplac. O endereço completo e o link para o mapa estão na seção "Onde atende". Para combinar horários, use o WhatsApp.',
+          'Os atendimentos de fisioterapia de João Pedro Frederes acontecem principalmente na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro de Reabilitação da Uniplac. O endereço completo e o link para o mapa estão na seção "Onde atendo". Para combinar horários, use o WhatsApp.',
       },
       {
         pergunta: 'Como entrar em contato?',
@@ -188,7 +188,7 @@ export const copy = {
     eyebrow: 'Contato',
     titulo: 'Vamos conversar?',
     texto:
-      'O contato é feito pelo WhatsApp. Para proteger a privacidade da criança, evite enviar exames ou relatórios por mensagem antes da consulta fisioterapêutica.',
-    instagram: 'Rotina, dicas de desenvolvimento e bastidores no Instagram @fisiofrederes.ped.',
+      'É só chamar no WhatsApp. Para proteger a privacidade da criança, deixe exames e relatórios para o dia da consulta fisioterapêutica.',
+    instagram: 'No Instagram eu compartilho dicas sobre desenvolvimento e um pouco da rotina dos atendimentos.',
   },
 } as const;

@@ -1,10 +1,12 @@
 ---
 import Provisorio from './Provisorio.astro';
 import Fontes from './ui/Fontes.astro';
+import Ilustracao from './ui/Ilustracao.astro';
 import { copy } from '../config/copy.config.ts';
 import { exibir, provisorio } from '../lib/modo.ts';
 const c = copy.atendimento;
 const duracao = exibir(c.duracaoFrequencia);
+const icones = ['mao', 'blocos', 'bola', 'escada', 'pegadas'] as const;
 ---
 <section id="atendimento" class="sec" aria-labelledby="atend-titulo">
   <div class="wrap">
@@ -16,12 +18,14 @@ const duracao = exibir(c.duracaoFrequencia);
     <ol class="etapas">
       {c.etapas.map((e, i) => (
         <li data-revelar style={`--i:${i}`}>
-          <span class="etapas__n" aria-hidden="true">{i + 1}</span>
-          <h3>{e.titulo}</h3>
-          <p>{e.texto}</p>
-          {i === 2 && duracao && (
-            <p class="etapas__extra">{duracao}<Provisorio ativo={provisorio(c.duracaoFrequencia)} titulo="Duração e frequência a confirmar" /></p>
-          )}
+          <div class="etapas__ilu"><Ilustracao nome={icones[i] ?? 'cubo'} /></div>
+          <div>
+            <h3><span class="etapas__n">{i + 1}.</span> {e.titulo}</h3>
+            <p>{e.texto}</p>
+            {i === 2 && duracao && (
+              <p class="etapas__extra">{duracao}<Provisorio ativo={provisorio(c.duracaoFrequencia)} titulo="Duração e frequência a confirmar" /></p>
+            )}
+          </div>
         </li>
       ))}
     </ol>
@@ -34,37 +38,13 @@ const duracao = exibir(c.duracaoFrequencia);
 
 <style>
   .atend__topo { max-width: 40rem; }
-  .etapas {
-    list-style: none;
-    margin: 3.5rem 0 0;
-    padding: 0;
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
-  }
-  .etapas li {
-    position: relative;
-    padding: 1.75rem 1.4rem 1.6rem;
-    background: var(--superficie);
-    border: 1px solid var(--linha);
-    border-radius: var(--raio);
-    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
-  }
-  .etapas li:hover { transform: translateY(-4px); box-shadow: var(--sombra-suave); }
-  .etapas__n {
-    display: grid;
-    place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    border: 1px solid var(--destaque);
-    color: var(--destaque);
-    font: 400 1.1rem/1 var(--fonte-display);
-    margin-bottom: 1.25rem;
-  }
-  .etapas h3 { font-size: 1rem; }
-  .etapas p { color: var(--texto-suave); margin-top: 0.6rem; font-size: 0.95rem; }
+  .etapas { list-style: none; margin: 3rem 0 0; padding: 0; display: grid; gap: 2.25rem 3rem; }
+  @media (min-width: 52rem) { .etapas { grid-template-columns: 1fr 1fr; } }
+  .etapas li { display: grid; grid-template-columns: 4rem 1fr; gap: 1.25rem; align-items: start; }
+  .etapas__ilu { width: 4rem; }
+  .etapas h3 { font-size: 1.25rem; }
+  .etapas__n { color: var(--destaque); }
+  .etapas p { color: var(--texto-suave); margin-top: 0.4rem; }
   .etapas__extra { font-weight: 700; }
-  .atend__rodape { margin-top: 2.5rem; max-width: 44rem; padding-left: 1.25rem; border-left: 3px solid var(--destaque); color: var(--texto-suave); }
-  @media (prefers-reduced-motion: reduce) { .etapas li:hover { transform: none; } }
+  .atend__rodape { margin-top: 3rem; max-width: 44rem; color: var(--texto-suave); }
 </style>

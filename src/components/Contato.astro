@@ -1,14 +1,16 @@
 ---
 import Button from './ui/Button.astro';
 import Icon from './ui/Icon.astro';
+import Ilustracao from './ui/Ilustracao.astro';
 import InstagramBloco from './InstagramBloco.astro';
 import { copy } from '../config/copy.config.ts';
 import { whatsappUrl } from '../lib/contato.ts';
 const c = copy.contato;
 ---
-<section id="contato" class="sec contato tom-vinho" aria-labelledby="contato-titulo">
+<section id="contato" class="sec contato tom-claro" aria-labelledby="contato-titulo">
   <div class="wrap contato__grade">
     <div class="contato__cta" data-revelar>
+      <div class="contato__ilu" aria-hidden="true"><Ilustracao nome="blocos" /></div>
       <p class="eyebrow">{c.eyebrow}</p>
       <h2 id="contato-titulo" class="titulo">{c.titulo}</h2>
       <p class="contato__txt">{c.texto}</p>
@@ -25,7 +27,8 @@ const c = copy.contato;
 </section>
 
 <style>
-  .contato { --linha: color-mix(in oklab, var(--borda) 90%, transparent); }
+  .contato { background: var(--superficie-alt); }
+  .contato__ilu { width: 5rem; margin-bottom: 1.5rem; }
   .contato__grade { display: grid; gap: 3.5rem; }
   @media (min-width: 60rem) { .contato__grade { grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: start; } }
   .contato__txt { color: var(--texto-suave); margin-top: 1.1rem; max-width: 36rem; }
