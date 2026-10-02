@@ -1,7 +1,6 @@
 ---
 // SLOT A "Conheça o João Pedro": logo após o hero. Vertical 9:16 em arco + CTA.
 import Button from './ui/Button.astro';
-import Eyebrow from './ui/Eyebrow.astro';
 import VideoPlayer from './VideoPlayer.astro';
 import VideoVago from './VideoVago.astro';
 import { slots } from '../config/slots-video.config.ts';
@@ -14,11 +13,10 @@ const r = renderConvite();
   <section id="convite" class="sec convite tom-claro" aria-labelledby="convite-titulo">
     <div class="wrap convite__grade">
       <div class="convite__texto" data-revelar>
-        <Eyebrow>Vídeo</Eyebrow>
         <h2 id="convite-titulo" class="titulo">{s.titulo}</h2>
         <p class="lead">{s.texto}</p>
         <div class="convite__cta">
-          <Button href={whatsappUrl()} icone="whatsapp" externo>{s.cta}</Button>
+          <Button href={whatsappUrl()} externo>{s.cta}</Button>
         </div>
       </div>
       <div class="convite__video" data-revelar style="--i:1">

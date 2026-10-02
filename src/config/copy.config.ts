@@ -118,7 +118,7 @@ export const copy = {
   onde: {
     eyebrow: 'Endereços',
     titulo: 'Onde atendo',
-    regiao: 'Atendo principalmente na NeuroKids, no Centro de Lages. Também atuo no Centro de Reabilitação da Uniplac.',
+    regiao: 'Os atendimentos acontecem na NeuroKids, no Centro de Lages.',
     notaMapa: 'O mapa abre no Google Maps, fora deste site.',
   },
 
@@ -174,7 +174,7 @@ export const copy = {
       {
         pergunta: 'Onde são os atendimentos?',
         resposta:
-          'Os atendimentos de fisioterapia de João Pedro Frederes acontecem principalmente na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro de Reabilitação da Uniplac. O endereço completo e o link para o mapa estão na seção "Onde atendo". Para combinar horários, use o WhatsApp.',
+          'Os atendimentos de fisioterapia de João Pedro Frederes acontecem na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro de Reabilitação da Uniplac. O endereço e o link do mapa estão na seção "Onde atendo" desta página. Para combinar horários, basta chamar no WhatsApp.',
       },
       {
         pergunta: 'Como entrar em contato?',

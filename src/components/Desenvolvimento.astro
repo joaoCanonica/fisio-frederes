@@ -1,21 +1,30 @@
 ---
 // Fontes: docs/pesquisa/marcos-motores.md
-import Formas from './ui/Formas.astro';
 import { FONTE_MARCOS, marcos } from '../data/marcos.ts';
 import Fontes from './ui/Fontes.astro';
-import Ilustracao from './ui/Ilustracao.astro';
+import Crianca from './ui/Crianca.astro';
+const faixa = [
+  ['deitada', 'De bruços', 'var(--ilustra-rose)'],
+  ['sentada', 'Sentar', 'var(--ilustra-sol)'],
+  ['engatinhando', 'Engatinhar', 'var(--ilustra-salvia)'],
+  ['empe', 'Ficar em pé', 'var(--ilustra-ceu)'],
+  ['andando', 'Andar', 'var(--ilustra-rose)'],
+  ['pulando', 'Pular', 'var(--ilustra-sol)'],
+] as const;
 import { copy } from '../config/copy.config.ts';
 const c = copy.porque;
 const MAX = 18;
 const pct = (m: number) => `${((m / MAX) * 100).toFixed(2)}%`;
 const fmt = (n: number) => n.toLocaleString('pt-BR');
 ---
-<section id="porque" class="sec com-formas" aria-labelledby="dev-titulo">
-  <Formas variante="d" />
-  <div class="wrap dev__caminho" data-revelar><Ilustracao nome="caminho" /></div>
+<section id="porque" class="sec" aria-labelledby="dev-titulo">
+  <div class="wrap" data-revelar>
+    <ol class="dev__faixa" aria-label="Alguns marcos do desenvolvimento motor">
+      {faixa.map(([pose, rotulo, cor]) => (<li><Crianca pose={pose} cor={cor} /><span>{rotulo}</span></li>))}
+    </ol>
+  </div>
   <div class="wrap">
     <div class="dev__topo" data-revelar>
-      <p class="eyebrow">{c.eyebrow}</p>
       <h2 id="dev-titulo" class="titulo">{c.titulo}</h2>
       <p class="lead">{c.texto}</p>
       <Fontes fontes={c.fontes} />
@@ -65,7 +74,6 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
 
     <div class="dev__blocos">
       <div class="dev__caderneta" data-revelar>
-        <div class="dev__ilu"><Ilustracao nome="chocalho" /></div>
         <h3 class="dev__h3">{c.caderneta.titulo}</h3>
         <p class="dev__p">{c.caderneta.texto}</p>
         <Fontes fontes={[c.caderneta.fonte]} />
@@ -81,10 +89,12 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
   .dev__p { margin-top: 0.6rem; color: var(--texto-suave); }
   .dev__blocos { display: grid; gap: 2rem; margin-top: 3rem; }
   @media (min-width: 60rem) { .dev__blocos { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; } }
-  .dev__caminho { margin-bottom: 3rem; max-width: 36rem; }
-  .dev__caderneta { display: grid; grid-template-columns: 4rem 1fr; gap: 0 1.25rem; }
-  .dev__caderneta > :not(.dev__ilu) { grid-column: 2; }
-  .dev__ilu { grid-row: span 3; width: 4rem; }
+  .dev__faixa { list-style: none; margin: 0 0 3.5rem; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; max-width: 64rem; }
+  .dev__faixa li { display: grid; justify-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--texto-suave); text-align: center; }
+  .dev__faixa :global(.crianca) { width: min(100%, 8.5rem); }
+  .dev__faixa li span { font-weight: 700; color: var(--destaque); font-size: 0.9rem; }
+  @media (max-width: 34rem) { .dev__faixa { grid-template-columns: repeat(3, 1fr); row-gap: 1.25rem; } }
+  .dev__caderneta { padding-left: 1.25rem; border-left: 3px solid var(--ilustra-sol); }
   .dev__caderneta .dev__h3 { margin-top: 0; }
   .grafico {
     margin: 3.5rem 0 0;

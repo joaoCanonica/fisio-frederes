@@ -17,7 +17,7 @@ const posts = instagram.posts
 const vagos = !EM_PRODUCAO && posts.length === 0 ? 6 : 0;
 ---
 <div class="ig">
-  <Button href={instagramUrl()} icone="instagram" variante="secundario" externo>Seguir @{instagram.usuario}</Button>
+  <Button href={instagramUrl()} variante="secundario" externo>Seguir @{instagram.usuario}</Button>
   {posts.length > 0 && (
     <ul class="ig__grade">
       {posts.map((p) => (

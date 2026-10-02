@@ -2,7 +2,7 @@
 import Marca from './Marca.astro';
 import Icone from './ui/Icon.astro';
 import { profile } from '../config/profile.config.ts';
-import { whatsappUrl } from '../lib/contato.ts';
+import { telefoneExibicao, whatsappUrl } from '../lib/contato.ts';
 import { secoes } from '../lib/secoes.ts';
 const base = Astro.url.pathname === '/' ? '' : '/';
 // Itens de slot de vídeo só entram quando o slot renderiza (ver lib/secoes.ts).
@@ -23,7 +23,7 @@ const links = secoes().filter((s) => s.noMenu).map((s) => [s.rotulo, s.id] as co
       </ul>
     </nav>
     <a class="btn cab__cta" href={whatsappUrl()} rel="noopener" target="_blank">
-      <Icone nome="whatsapp" /><span>WhatsApp</span><span class="sr-only"> (abre em nova aba)</span>
+      <Icone nome="whatsapp" /><span><span class="sr-only">WhatsApp </span>{telefoneExibicao()}</span><span class="sr-only"> (abre em nova aba)</span>
     </a>
   </div>
 </header>

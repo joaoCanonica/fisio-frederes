@@ -20,7 +20,7 @@ export const primitivas = {
   gelo: '#f4f3f3', // fundo (branco-gelo do mockup do logo)
   geloClaro: '#fbfafa',
   branco: '#ffffff',
-  offWhite: '#fdfbfa', // fundo claro (mais leve que o branco-gelo do logo)
+  offWhite: '#f8f6f4', // off-white neutro, só para alternar seções
   roseNevoa: '#fbf4f2', // fundo alternado de seção, muito suave
   // Ilustrações (decorativas, nunca texto): tons suaves para o universo infantil.
   ilustraRose: '#efc9c4',
@@ -63,9 +63,9 @@ export interface Tokens {
 }
 
 const claro: Tokens = {
-  fundo: 'offWhite',
+  fundo: 'branco',
   superficie: 'branco',
-  superficieAlt: 'roseNevoa',
+  superficieAlt: 'offWhite',
   texto: 'grafite',
   textoSuave: 'grafiteMedio',
   borda: 'cinzaQuente',

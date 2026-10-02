@@ -4,45 +4,35 @@
 // A foto vem das poses do retrato (src/config/retrato.config.ts).
 import Formas from './ui/Formas.astro';
 import Button from './ui/Button.astro';
-import Eyebrow from './ui/Eyebrow.astro';
 import BadgeId from './ui/BadgeId.astro';
-import Tag from './ui/Tag.astro';
 import MediaFrame from './ui/MediaFrame.astro';
 import Pose from './Pose.astro';
 import Marca from './Marca.astro';
 import Provisorio from './Provisorio.astro';
-import Ilustracao from './ui/Ilustracao.astro';
-import { profile } from '../config/profile.config.ts';
 import { copy } from '../config/copy.config.ts';
 import { whatsappUrl, instagramUrl } from '../lib/contato.ts';
 import { poseDaSecao, SIZES_HERO } from '../lib/retrato.ts';
 import { provisorio } from '../lib/modo.ts';
 
 const pose = poseDaSecao('inicio');
-const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
 ---
 <section id="inicio" class="hero tom-claro com-formas" aria-labelledby="hero-titulo">
   <Formas variante="a" />
   <div class="wrap hero__grade">
     <div class="hero__texto">
-      <Eyebrow>Fisioterapia pediátrica · Lages (SC)</Eyebrow>
+      <p class="hero__local">Fisioterapia pediátrica em Lages (SC)</p>
       <h1 id="hero-titulo" class="hero__h1">
         {copy.hero.titulo.valor}<Provisorio ativo={provisorio(copy.hero.titulo)} titulo="Título proposto: confirmar" />
       </h1>
       <p class="lead hero__sub">{copy.hero.subtitulo.valor}</p>
-      <div class="hero__id"><BadgeId /></div>
-      <ul class="hero__publicos" aria-label="Para quem é o atendimento">
-        {publicos.map((p, i) => <li><Tag variante={i === 0 ? 'acento' : 'neutra'}>{p}</Tag></li>)}
-      </ul>
       <div class="hero__acoes">
-        <Button href={whatsappUrl()} icone="whatsapp" externo>Conversar pelo WhatsApp</Button>
-        <Button href={instagramUrl()} icone="instagram" variante="secundario" externo>@{profile.instagram.valor}</Button>
+        <Button href={whatsappUrl()} externo>Chamar no WhatsApp</Button>
+        <Button href={instagramUrl()} variante="secundario" externo>Ver o Instagram</Button>
       </div>
+      <div class="hero__id"><BadgeId compacto /></div>
     </div>
 
     <div class="hero__visual">
-      <div class="hero__ilu hero__ilu--blocos" aria-hidden="true"><Ilustracao nome="blocos" /></div>
-      <div class="hero__ilu hero__ilu--bola" aria-hidden="true"><Ilustracao nome="bola" /></div>
       {pose ? (
         <Pose pose={pose} sizes={SIZES_HERO} prioridade />
       ) : (
@@ -60,8 +50,7 @@ const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
     padding-block: clamp(2rem, 5vw, 4.5rem) var(--sec);
     overflow: clip;
     background:
-      radial-gradient(46rem 34rem at 100% 0%, var(--superficie-alt), transparent 65%),
-      var(--fundo);
+        var(--fundo);
   }
   .hero__grade { display: grid; gap: 2.5rem; align-items: center; }
   @media (min-width: 60rem) {
@@ -74,7 +63,8 @@ const publicos = ['Bebês', 'Crianças', 'Crianças no espectro autista (TEA)'];
     margin-top: 1.25rem;
   }
   .hero__sub { margin-top: 1.1rem; }
-  .hero__id { margin-top: 1.4rem; }
+  .hero__id { margin-top: 1.75rem; }
+  .hero__local { font-weight: 700; color: var(--destaque); font-size: 0.95rem; }
   .hero__publicos { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0 0; padding: 0; }
   .hero__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
   .hero__visual { position: relative; justify-self: center; width: min(100%, 28rem); }

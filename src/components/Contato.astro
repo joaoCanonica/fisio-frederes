@@ -2,7 +2,6 @@
 import Formas from './ui/Formas.astro';
 import Button from './ui/Button.astro';
 import Icon from './ui/Icon.astro';
-import Ilustracao from './ui/Ilustracao.astro';
 import InstagramBloco from './InstagramBloco.astro';
 import { copy } from '../config/copy.config.ts';
 import { whatsappUrl } from '../lib/contato.ts';
@@ -12,12 +11,10 @@ const c = copy.contato;
   <Formas variante="a" />
   <div class="wrap contato__grade">
     <div class="contato__cta" data-revelar>
-      <div class="contato__ilu" aria-hidden="true"><Ilustracao nome="blocos" /></div>
-      <p class="eyebrow">{c.eyebrow}</p>
       <h2 id="contato-titulo" class="titulo">{c.titulo}</h2>
       <p class="contato__txt">{c.texto}</p>
       <div class="contato__acoes">
-        <Button href={whatsappUrl()} icone="whatsapp" externo>Conversar pelo WhatsApp</Button>
+        <Button href={whatsappUrl()} externo>Chamar no WhatsApp</Button>
       </div>
     </div>
     <div data-revelar style="--i:1">

@@ -1,7 +1,6 @@
 ---
 // Perguntas frequentes: <details> nativo (sem JS). Respostas autossuficientes,
 // também publicadas como FAQPage (JSON-LD) para busca e IA.
-import Formas from './ui/Formas.astro';
 import { copy } from '../config/copy.config.ts';
 const c = copy.faq;
 const ld = JSON.stringify({
@@ -10,12 +9,10 @@ const ld = JSON.stringify({
   mainEntity: c.itens.map((f) => ({ '@type': 'Question', name: f.pergunta, acceptedAnswer: { '@type': 'Answer', text: f.resposta } })),
 });
 ---
-<section id="faq" class="sec faq tom-claro com-formas" aria-labelledby="faq-titulo">
-  <Formas variante="b" />
+<section id="faq" class="sec faq tom-claro" aria-labelledby="faq-titulo">
   <script type="application/ld+json" set:html={ld} />
   <div class="wrap faq__grade">
     <div data-revelar>
-      <p class="eyebrow">{c.eyebrow}</p>
       <h2 id="faq-titulo" class="titulo">{c.titulo}</h2>
     </div>
     <div class="faq__lista">

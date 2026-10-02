@@ -1,6 +1,5 @@
 ---
 // SLOT B "Atendimentos": compilado com capítulos por conduta/tema, ou lista de vídeos.
-import Eyebrow from './ui/Eyebrow.astro';
 import VideoPlayer from './VideoPlayer.astro';
 import VideoVago from './VideoVago.astro';
 import { slots } from '../config/slots-video.config.ts';
@@ -12,7 +11,6 @@ const r = renderCompilado();
   <section id="videos" class="sec atend-v tom-claro" aria-labelledby="videos-titulo">
     <div class="wrap">
       <div class="atend-v__topo" data-revelar>
-        <Eyebrow>Vídeos</Eyebrow>
         <h2 id="videos-titulo" class="titulo">{s.titulo}</h2>
         <p class="lead">{s.texto}</p>
       </div>

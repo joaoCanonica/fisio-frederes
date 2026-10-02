@@ -104,18 +104,9 @@ export const profile = {
       id: 'neurokids-lages',
       nome: 'NeuroKids',
       vinculoId: 'neurokids',
-      mapsUrl: aviso<string | null>(null, 'Informar o link do Google Maps da NeuroKids.'),
-      ftid: aviso<string | null>(null, 'Informar o ftid do Google Maps da NeuroKids.'),
+      mapsUrl: confirmado<string | null>('https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjQ-5LYuZqXAxUAAAAAHQAAAAAQBQ..i&udm&fvr=1&pvq=Cg0vZy8xMXdxZDlqZngwIg8KCW5ldXJva2lkcxACGAM&lqi=CgluZXVyb2tpZHNIgO_gxNm7gIAIWg8QABgAIgluZXVyb2tpZHOSAQxwc3ljaG9sb2dpc3Q&cs=0&um=1&ie=UTF-8&fb=1&gl=br&sa=X&ftid=0x94e01f8509f8d6f9:0x40a9e7d3fe01acf5'),
+      ftid: confirmado<string | null>('0x94e01f8509f8d6f9:0x40a9e7d3fe01acf5'),
       endereco: confirmado('R. Frei Rogério, 394, Centro, Lages (SC), CEP 88502-161'),
-    },
-    {
-      id: 'cer-uniplac',
-      nome: 'Centro de reabilitação Uniplac',
-      vinculoId: 'cer-uniplac',
-      mapsUrl: aviso<string | null>(null, 'Informar o link do Google Maps do CER Uniplac.'),
-      ftid: aviso<string | null>(null, 'Informar o ftid do Google Maps do CER Uniplac.'),
-      // Endereço de fonte pública (COSEMS-SC, 2016); conferir se segue atual.
-      endereco: confirmado('Av. Castelo Branco, 140, Universitário, Lages (SC), CEP 88509-900'),
     },
   ] satisfies readonly Unidade[],
 
@@ -124,7 +115,8 @@ export const profile = {
   instagram: confirmado('fisiofrederes.ped'),
   /** Somente dígitos: 55 + DDD + número. */
   whatsapp: confirmado('5554996593170'),
-  lattes: aviso<string | null>(null, 'Informar o link do Currículo Lattes, se existir (opcional).'),
+  /** Não será usado (decisão do cliente). */
+  lattes: confirmado<string | null>(null),
 
   /** Domínio de produção, sem barra final. */
   dominio: aviso('https://example.com', 'Definir o domínio de produção.'),

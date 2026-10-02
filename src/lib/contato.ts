@@ -18,3 +18,9 @@ export const identificacao = (): string =>
 /** WhatsApp para pedido de retirada de imagem/vídeo (revogação do TCLE). */
 export const revogacaoUrl = (): string =>
   `https://wa.me/${profile.whatsapp.valor}?text=${encodeURIComponent(contato.revogacao.mensagemWhatsapp)}`;
+
+/** Telefone no formato brasileiro, ex.: (54) 99659-3170. */
+export const telefoneExibicao = (): string => {
+  const n = profile.whatsapp.valor.replace(/^55/, '');
+  return `(${n.slice(0, 2)}) ${n.slice(2, 7)}-${n.slice(7)}`;
+};

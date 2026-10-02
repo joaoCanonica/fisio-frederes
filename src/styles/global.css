@@ -179,12 +179,12 @@ a:hover {
   gap: 0.6rem;
   min-height: 3rem;
   padding: 0.8rem 1.5rem;
-  border-radius: 999px;
+  border-radius: 0.6rem;
   border: 1.5px solid var(--bd);
   background: var(--bg);
   color: var(--fg);
-  font: 700 0.95rem/1 var(--fonte-texto);
-  letter-spacing: 0.02em;
+  font: 700 1rem/1 var(--fonte-texto);
+  letter-spacing: 0;
   text-decoration: none;
   cursor: pointer;
   transition:
@@ -196,7 +196,6 @@ a:hover {
 .btn:hover {
   --bg: var(--acao-hover);
   --bd: var(--acao-hover);
-  transform: translateY(-2px);
 }
 .btn svg {
   width: 1.15rem;

@@ -2,15 +2,14 @@
 // Barra fixa no mobile (WhatsApp + Instagram). Não cobre conteúdo: o <body>
 // ganha padding-bottom do mesmo tamanho (--barra-mobile), e o banner de
 // privacidade sobe junto. Some em telas ≥ 48rem (lá o cabeçalho tem o CTA).
-import Icon from './ui/Icon.astro';
 import { whatsappUrl, instagramUrl } from '../lib/contato.ts';
 ---
 <nav class="barra" aria-label="Contato rápido">
   <a class="barra__wa" href={whatsappUrl()} target="_blank" rel="noopener">
-    <Icon nome="whatsapp" /> WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+    Chamar no WhatsApp<span class="sr-only"> (abre em nova aba)</span>
   </a>
   <a class="barra__ig" href={instagramUrl()} target="_blank" rel="noopener">
-    <Icon nome="instagram" /> Instagram<span class="sr-only"> (abre em nova aba)</span>
+    Instagram<span class="sr-only"> (abre em nova aba)</span>
   </a>
 </nav>
 <style>
