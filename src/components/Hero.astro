@@ -13,8 +13,11 @@ import { copy } from '../config/copy.config.ts';
 import { whatsappUrl, instagramUrl } from '../lib/contato.ts';
 import { poseDaSecao, SIZES_HERO } from '../lib/retrato.ts';
 import { provisorio } from '../lib/modo.ts';
+import { renderConvite } from '../lib/slots.ts';
 
 const pose = poseDaSecao('inicio');
+// Com o vídeo "Conheça o João Pedro" no ar, o segundo botão leva direto a ele.
+const temVideo = renderConvite()?.tipo === 'video';
 ---
 <section id="inicio" class="hero tom-claro com-formas" aria-labelledby="hero-titulo">
   <Formas variante="a" />
@@ -27,7 +30,11 @@ const pose = poseDaSecao('inicio');
       <p class="lead hero__sub">{copy.hero.subtitulo.valor}</p>
       <div class="hero__acoes">
         <Button href={whatsappUrl()} externo>Chamar no WhatsApp</Button>
-        <Button href={instagramUrl()} variante="secundario" externo>Ver o Instagram</Button>
+        {temVideo ? (
+          <Button href="#convite" variante="secundario" icone="play">Assistir ao vídeo</Button>
+        ) : (
+          <Button href={instagramUrl()} variante="secundario" externo>Ver o Instagram</Button>
+        )}
       </div>
       <div class="hero__id"><BadgeId compacto /></div>
     </div>

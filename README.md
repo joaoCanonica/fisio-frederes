@@ -36,14 +36,14 @@ Mídia: `assets-originais/` (originais intactos) + `media.manifest.json` (só `p
 Pesquisa de conteúdo de saúde: `docs/pesquisa/`. Conformidade: `docs/COMPLIANCE.md`.
 
 ## Vídeos: como preencher um slot
-1. Coloque o original em `assets-originais/videos/` e cadastre-o em `media.manifest.json` (com `pacienteRef`, `tcleRef`, `dataRegistro`, `legenda` e derivados MP4/WebM/poster/.vtt em `assets-originais/videos/derivados/`).
+1. Coloque o original em `assets-originais/videos/` (vídeo grande, como 4K do celular: deixe fora do repositório com `originalForaDoRepo: true`, ver `docs/midia/LOTE-03.md`) e cadastre-o em `media.manifest.json` (com `pacienteRef`, `tcleRef`, `dataRegistro`, `legenda` e derivados MP4/WebM/poster/.vtt em `assets-originais/videos/derivados/`).
 2. Em `src/config/slots-video.config.ts`: mude `estado` para `'preenchido'` e preencha `midiaId`, um `titulo` neutro (`{data}` vira a data do registro) e os `capitulos`.
 3. Rode `pnpm pendencias`. Se faltar algo, a produção bloqueia e o preview mostra o vídeo com selo PROVISÓRIO.
 
 ## Deploy (Vercel)
 - Projeto `fisio-frederes`, ligado ao GitHub. `vercel.json` define install/build, cabeçalhos de segurança, redirect www → domínio principal e cache.
 - Sem `SITE_ENV=production`, todo deploy sai **em revisão** (`noindex`, robots `Disallow: /`, faixa amarela).
-- Go-live: no painel, definir `SITE_ENV=production` e `SITE_URL=https://dominio` (ambiente Production), apontar o domínio e fazer um novo deploy.
+- Go-live: registrar **fisiojoaofrederes.com.br** no Registro.br, adicioná-lo em Settings → Domains na Vercel (seguir os DNS indicados), definir `SITE_ENV=production` no ambiente Production e fazer um novo deploy. `SITE_URL` é opcional (o domínio já é o padrão).
 
 ---
 

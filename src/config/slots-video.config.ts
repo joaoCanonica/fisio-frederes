@@ -53,12 +53,12 @@ export interface VideoApresentacao {
 }
 
 export const slots = {
-  /** SLOT A: começa VAGO. */
+  /** SLOT A: vídeo principal, logo após o hero (o botão do hero leva até ele). */
   conviteVideo: {
-    estado: 'vago',
-    item: null,
+    estado: 'preenchido',
+    item: { midiaId: 'video-conheca-joao', titulo: 'Conheça o João Pedro Frederes, fisioterapeuta', capitulos: [] },
     titulo: 'Conheça o João Pedro',
-    texto: 'Um convite para conhecer o trabalho e conversar sobre o desenvolvimento do seu filho.',
+    texto: 'Neste vídeo eu conto um pouco sobre mim e sobre o meu trabalho com bebês, crianças e as famílias. Depois de assistir, é só chamar no WhatsApp para conversarmos.',
     cta: 'Agendar uma consulta fisioterapêutica',
     posicao: 'apos-hero',
   } satisfies SlotConvite as SlotConvite,

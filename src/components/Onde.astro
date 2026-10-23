@@ -1,7 +1,6 @@
 ---
 // Onde atende. Sem mapa incorporado (nada de terceiros sem consentimento): um
 // cartão de localização desenhado e o link para abrir no Google Maps.
-// O RS só aparece se profile.atendimentoRS.divulgar for true.
 import Provisorio from './Provisorio.astro';
 import Icon from './ui/Icon.astro';
 import Pontos from './ui/Pontos.astro';
@@ -12,13 +11,12 @@ const p = profile;
 const c = copy.onde;
 const mapsDe = (nome: string, endereco: string, url: string | null) =>
   url ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${nome}, ${endereco}`)}`;
-const rs = p.atendimentoRS.divulgar ? exibir(p.atendimentoRS.observacao) : null;
 ---
 <section id="onde" class="sec onde" aria-labelledby="onde-titulo">
   <div class="wrap">
     <div data-revelar>
       <h2 id="onde-titulo" class="titulo">{c.titulo}</h2>
-      <p class="lead">{c.regiao}{rs && ` ${rs}`}</p>
+      <p class="lead">{c.regiao}</p>
     </div>
     <ul class="onde__grade">
       {p.unidades.map((u, i) => (

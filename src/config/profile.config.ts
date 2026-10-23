@@ -1,4 +1,4 @@
-import { aviso, confirmado, type Campo } from './campo.ts';
+import { confirmado, type Campo } from './campo.ts';
 
 /**
  * Perfil profissional: fonte única de verdade para a identificação exigida pelo
@@ -44,9 +44,8 @@ export const profile = {
   crefito: {
     numero: confirmado('369113-F'),
     regiao: confirmado('CREFITO-10'), // Santa Catarina
-    atuacaoUfs: ['SC', 'RS'] as const,
-    /** Registro no CREFITO-5 (RS) confirmado pelo cliente. */
-    comprovanteAtuacaoUfs: confirmado<string | null>('CREFITO-5: registro confirmado pelo cliente'),
+    /** Atua somente em Santa Catarina. */
+    atuacaoUfs: ['SC'] as const,
   },
 
   /**
@@ -62,7 +61,10 @@ export const profile = {
     mestrado: confirmado({ programa: 'Ambiente e Saúde', instituicao: 'Uniplac' as string | null, concluido: true }),
   },
 
-  /** Sem registro de especialista + RQE, o site nunca usa a palavra "especialista". */
+  /**
+   * RQE não será usado (decisão do cliente, 2026-10-23): o site diz "pós-graduado em
+   * Fisioterapia Neuropediátrica" e nunca usa a palavra "especialista".
+   */
   especialista: { registrado: false, rqe: null as string | null, especialidade: null as string | null },
 
   vinculos: [
@@ -70,15 +72,15 @@ export const profile = {
       id: 'neurokids',
       nome: 'NeuroKids',
       instagram: 'neurokidslages',
-      autorizacao: 'confirmada-pelo-cliente',
-      comprovante: null,
+      autorizacao: 'formal-arquivada',
+      comprovante: 'Autorização de uso do nome e do espaço confirmada pelo cliente em 2026-10-23 (arquivada com o cliente)',
     },
     {
       id: 'cer-uniplac',
-      nome: 'Centro de reabilitação Uniplac',
+      nome: 'Centro de Reabilitação Uniplac',
       instagram: 'ceruniplac',
-      autorizacao: 'confirmada-pelo-cliente',
-      comprovante: null,
+      autorizacao: 'formal-arquivada',
+      comprovante: 'Autorização de uso do nome e do espaço confirmada pelo cliente em 2026-10-23 (arquivada com o cliente)',
     },
   ] as const satisfies readonly Vinculo[],
 
@@ -89,15 +91,6 @@ export const profile = {
   ],
 
   regioesAtendimento: ['Lages e região (SC)'],
-
-  /** Não divulgado no site enquanto `divulgar` for false. */
-  atendimentoRS: {
-    divulgar: false,
-    observacao: aviso(
-      'Ocasional, quando está com a família.',
-      'Definir como comunicar o atendimento ocasional no RS (ou manter fora do site).',
-    ),
-  },
 
   unidades: [
     {
@@ -119,7 +112,8 @@ export const profile = {
   lattes: confirmado<string | null>(null),
 
   /** Domínio de produção, sem barra final. */
-  dominio: aviso('https://example.com', 'Definir o domínio de produção.'),
+  /** Escolhido pelo cliente (2026-10-23); registrar no Registro.br antes do go-live. */
+  dominio: confirmado('https://fisiojoaofrederes.com.br'),
 } as const;
 
 export type Profile = typeof profile;

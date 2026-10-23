@@ -33,7 +33,7 @@ const isCampo = (v: unknown): v is Campo<unknown> =>
 
 function grupoDoCampo(caminho: string): Grupo {
   if (/nomeCompleto|crefito|profissao|especialista|linkVerificacao|titulos/.test(caminho)) return 'Identidade e registro';
-  if (/unidades|whatsapp|instagram|regioes|atendimentoRS/.test(caminho)) return 'Endereço e contato';
+  if (/unidades|whatsapp|instagram|regioes/.test(caminho)) return 'Endereço e contato';
   if (caminho.startsWith('copy')) return 'Conteúdo e vocabulário';
   return 'Outros';
 }
@@ -74,8 +74,6 @@ function checarEspecialista(out: Pendencia[]): void {
   const e = profile.especialista;
   if (e.registrado && (!e.rqe || !e.especialidade))
     out.push({ nivel: 'bloqueante', grupo: 'Identidade e registro', campo: 'especialista', nota: '"Especialista" exige título registrado no COFFITO e RQE.' });
-  if (!e.registrado)
-    out.push({ nivel: 'aviso', grupo: 'Identidade e registro', campo: 'especialista', nota: 'Sem RQE: o site usa "pós-graduado em Fisioterapia Neuropediátrica".' });
 }
 
 /** Termos vetados aplicados a textos de configuração e do manifesto. */

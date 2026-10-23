@@ -42,7 +42,7 @@ Fisioterapeuta formado pela Uniplac, com pós-graduação em Fisioterapia Neurop
 - Mestrado em Ambiente e Saúde, Uniplac 🟨
 
 **Onde atua:** NeuroKids (@neurokidslages) · Centro de Reabilitação da Uniplac (@ceruniplac)
-🟨 Comprovantes de autorização das duas instituições a arquivar (baixa prioridade)
+✅ Autorizações das duas instituições confirmadas e arquivadas (2026-10-23)
 
 **Verifique o registro:**
 "O registro profissional pode ser conferido no Conselho Regional de Fisioterapia e Terapia Ocupacional (CREFITO)."
@@ -80,7 +80,7 @@ A fisioterapia trabalha coordenação, equilíbrio, aspectos sensório-motores e
 
 1. **Consulta fisioterapêutica**: conversa sobre a história e a rotina da criança, e observação do movimento durante o brincar.
 2. **Diagnóstico fisioterapêutico e plano terapêutico**: objetivos ligados ao dia a dia da criança, definidos com a família. 📚 `familia-plano-terapeutico.md#1`
-3. **Atendimentos**: brincadeiras e atividades com propósito, de acordo com o plano. Duração: 🟨 **CONFIRMAR (ex.: 50 min?)** · Frequência: 🟨 **CONFIRMAR (ex.: definida no plano, geralmente 1 a 2 vezes por semana?)**
+3. **Atendimentos**: brincadeiras e atividades com propósito, de acordo com o plano. ✅ Duração e frequência combinadas em conversa com o fisioterapeuta, sem números no site.
 4. **Reavaliação do plano**: o plano é revisto periodicamente e ajustado conforme a resposta da criança. 🟨 *Prefere "revisão do plano"? "Reavaliação" é termo técnico aceito, mas o site evita "avaliação" no sentido de consulta.*
 5. **Participação da família**: orientações para o dia a dia em casa. As diretrizes recomendam metas definidas com os pais. 📚 `familia-plano-terapeutico.md#1`
 
@@ -94,7 +94,7 @@ A fisioterapia trabalha coordenação, equilíbrio, aspectos sensório-motores e
 **Texto:**
 É pelo movimento que a criança explora, brinca e se torna mais independente. Os primeiros anos são uma fase de grande plasticidade do sistema nervoso. Por isso, quando há risco ou atraso identificado, as diretrizes recomendam não esperar para começar a intervenção. 📚 `fisioterapia-neuropediatrica.md#1`, `#2`
 
-**Bloco "Cada criança tem seu ritmo"** (já existe no site, com gráfico):
+**Bloco dos marcos** (sem o título "Cada criança tem seu ritmo", retirado a pedido do cliente; faixa de marcos começa em "Tummy"):
 A Organização Mundial da Saúde acompanhou crianças saudáveis em cinco países e mostrou que sentar, engatinhar, ficar em pé e andar acontecem em janelas de idade que podem durar vários meses. 📚 `marcos-motores.md#1`
 
 **Bloco "Acompanhe com a Caderneta"**:
@@ -112,7 +112,7 @@ A fisioterapia é uma parte do cuidado. Ela não substitui o acompanhamento com 
 - **NeuroKids** (local principal de atendimento, cartão em destaque): ✅ R. Frei Rogério, 394, Centro, Lages (SC), CEP 88502-161 · cartão de localização com link "Abrir no Google Maps" 🟨 link exato do Maps
 - **Centro de Reabilitação da Uniplac** ("Também atua"): ✅ Av. Castelo Branco, 140, Universitário, Lages (SC), CEP 88509-900 🟨 *fonte pública de 2016 (COSEMS-SC): confirmar se segue atual*
 - **Região:** Lages e região (SC).
-- **RS:** não aparece (`atendimentoRS.divulgar = false`).
+- Atua somente em Santa Catarina; nenhum outro estado aparece no site.
 
 *Nota técnica:* o mapa é uma imagem estática (sem cookies). O Google Maps só abre ao clicar.
 
@@ -144,7 +144,7 @@ Na primeira consulta fisioterapêutica, o fisioterapeuta conversa com a família
 Sim. A família faz parte do plano terapêutico: ajuda a definir os objetivos, recebe orientações para o dia a dia e acompanha a evolução. As diretrizes de intervenção precoce recomendam definir metas com os pais desde o início e fortalecer o papel da família no cuidado da criança. 📚 `familia-plano-terapeutico.md#1`
 
 **8. Quanto tempo dura o acompanhamento?**
-A duração do acompanhamento fisioterapêutico varia de criança para criança e depende dos objetivos do plano terapêutico. O plano é revisto periodicamente com a família e ajustado conforme a resposta da criança. Por isso, não é possível prometer prazos; o que se combina são objetivos claros e momentos de revisão. 🟨 *duração de cada atendimento: confirmar*
+A duração do acompanhamento fisioterapêutico varia de criança para criança e depende dos objetivos do plano terapêutico. O plano é revisto periodicamente com a família e ajustado conforme a resposta da criança. Por isso, não é possível prometer prazos; o que se combina são objetivos claros e momentos de revisão.
 
 **9. Onde são os atendimentos?**
 Os atendimentos de fisioterapia de João Pedro Frederes acontecem principalmente na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro de Reabilitação da Uniplac. O endereço completo e o link para o mapa estão na seção "Onde atende". Para combinar horários, use o WhatsApp.
@@ -176,8 +176,8 @@ O contato com o fisioterapeuta João Pedro Frederes é feito pelo WhatsApp, pelo
 | 2 | Região do CREFITO | ✅ CREFITO-10 |
 | 3 | Endereços por extenso (NeuroKids e CER Uniplac) | ✅ (CER: confirmar se segue atual 🟨) |
 | 4 | Número do WhatsApp | ✅ |
-| 5 | Título do hero | 🟨 |
-| 6 | Duração e frequência dos atendimentos | 🟨 |
+| 5 | Título do hero | ✅ |
+| 6 | Duração e frequência dos atendimentos | ✅ (combinadas em conversa) |
 | 7 | "Reavaliação" ou "revisão do plano" | 🟨 |
 | 8 | Instituição da pós e do mestrado; anos | 🟨 |
 | 9 | Link da consulta pública do CREFITO (opcional) e Lattes (opcional) | 🟨 |

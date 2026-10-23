@@ -66,7 +66,7 @@
       "alt": "João Pedro Frederes, de jaleco, sentado à mesa segurando um dinossauro de brinquedo",
       "autoria": "propria",
       "consentimento": "nao-se-aplica",
-      "publicavel": false,
+      "publicavel": true,
       "previewOk": true,
       "crop": {
         "x": 40,
@@ -90,7 +90,8 @@
         "Captura de tela do Instagram: seta de carrossel à esquerda e bolinhas de paginação no rodapé",
         "Resolução baixa (725x902) e compressão visível; insuficiente para hero em telas grandes",
         "Certificados ao fundo ilegíveis: não usar como comprovação de formação",
-        "Não há foto de corpo inteiro"
+        "Não há foto de corpo inteiro",
+        "Liberada para produção pelo cliente (2026-10-23) mesmo em resolução baixa; trocar por foto original quando houver"
       ],
       "usoSugerido": "hero",
       "legenda": {
@@ -110,7 +111,7 @@
       "alt": "João Pedro Frederes, de jaleco, sentado à mesa com uma caneca e um boneco em miniatura",
       "autoria": "propria",
       "consentimento": "nao-se-aplica",
-      "publicavel": false,
+      "publicavel": true,
       "previewOk": true,
       "crop": {
         "x": 0,
@@ -135,7 +136,8 @@
         "Resolução baixa (722x904) e compressão visível",
         "Certificados ao fundo ilegíveis: não usar como comprovação de formação",
         "A caneca tem um símbolo verde (parece um caduceu) diferente da marca vinho; confere com a identidade?",
-        "Não há foto de corpo inteiro"
+        "Não há foto de corpo inteiro",
+        "Liberada para produção pelo cliente (2026-10-23) mesmo em resolução baixa; trocar por foto original quando houver"
       ],
       "usoSugerido": "quem-e",
       "legenda": {
@@ -161,7 +163,7 @@
       "autoria": "propria",
       "consentimento": "nao-se-aplica",
       "tcleRef": null,
-      "publicavel": false,
+      "publicavel": true,
       "previewOk": true,
       "crop": null,
       "edicoes": [],
@@ -169,32 +171,27 @@
       "menorDeIdade": false,
       "dataRegistro": "2026-03-23",
       "autoriaInstituicao": "NeuroKids",
-      "autorizacaoInstituicao": "confirmada-pelo-cliente",
+      "autorizacaoInstituicao": "formal-arquivada",
       "ocr": {
         "status": "manual",
         "texto": []
       },
       "problemas": [
-        "Áudio não ouvido: conteúdo da fala não verificado quanto a vocabulário COFFITO e promessas",
-        "Brinquedos de marca registrada (Sr. Cabeça de Batata) em cena: uso incidental",
-        "Comprovante da autorização da NeuroKids a arquivar (baixa prioridade)",
-        "Legenda .vtt pendente (adiada pelo cliente)"
+        "Brinquedos de marca registrada (Sr. Cabeça de Batata) em cena: uso incidental"
       ],
       "derivados": [
         "assets-originais/videos/derivados/neurokids-poster.avif",
         "assets-originais/videos/derivados/neurokids-poster.webp",
         "assets-originais/videos/derivados/neurokids-secao.mp4",
-        "assets-originais/videos/derivados/neurokids-secao.pt-BR.vtt",
         "assets-originais/videos/derivados/neurokids-secao.webm"
       ],
       "usoSugerido": "quem-e",
       "legenda": {
-        "status": "pendente",
-        "arquivo": "assets-originais/videos/derivados/neurokids-secao.pt-BR.vtt",
-        "obs": "Cliente adiou a legenda. Sem legenda revisada, o vídeo não vai a um slot."
+        "status": "dispensada",
+        "obs": "Cliente dispensou a legenda (2026-10-23). Vídeo com fala, publicado sem trilha .vtt."
       },
       "vinculoId": "neurokids",
-      "comprovanteAutorizacao": null
+      "comprovanteAutorizacao": "Autorização da NeuroKids confirmada pelo cliente em 2026-10-23 (arquivada com o cliente)"
     },
     {
       "id": "video-P-001-marcha",
@@ -215,7 +212,7 @@
       "autoria": "propria",
       "consentimento": "ok",
       "tcleRef": "T-001",
-      "tcleArquivadoForaDoRepo": false,
+      "tcleArquivadoForaDoRepo": true,
       "publicavel": true,
       "previewOk": true,
       "crop": {
@@ -233,16 +230,14 @@
       "menorDeIdade": true,
       "dataRegistro": "2026-03-31",
       "autoriaInstituicao": "NeuroKids",
-      "autorizacaoInstituicao": "confirmada-pelo-cliente",
+      "autorizacaoInstituicao": "formal-arquivada",
       "ocr": {
         "status": "manual",
         "texto": []
       },
       "problemas": [
         "Original: rosto da criança visível (perfil e quase frontal) e refletido no espelho; resolvido no derivado recortado (aprovado)",
-        "Áudio é música de terceiros (Sparks, Coldplay): derivados sem áudio",
-        "TCLE T-001 a arquivar fora do repositório (baixa prioridade)",
-        "Comprovante da autorização da NeuroKids a arquivar (baixa prioridade)"
+        "Áudio é música de terceiros (Sparks, Coldplay): derivados sem áudio"
       ],
       "derivados": [
         "assets-originais/videos/derivados/P-001-loop-pernas.mp4",
@@ -258,10 +253,58 @@
         "obs": "Derivados sem áudio e sem fala."
       },
       "vinculoId": "neurokids",
-      "comprovanteAutorizacao": null,
+      "comprovanteAutorizacao": "Autorização da NeuroKids confirmada pelo cliente em 2026-10-23 (arquivada com o cliente)",
       "audio": {
         "conteudo": "música (Sparks, Coldplay), sem fala",
         "uso": "nunca: obra de terceiros sem licença; derivados sem áudio"
+      }
+    },
+    {
+      "id": "video-conheca-joao",
+      "arquivo": "assets-originais/videos/Vídeo-Fisio (converted by happyscribe.com).mp4",
+      "originalForaDoRepo": true,
+      "categoria": "videos",
+      "tipo": "video",
+      "largura": 2160,
+      "altura": 3840,
+      "bytes": 1576666452,
+      "sha256": "71c58057265bbe824e1ad4e6d5dec72248f65030aa6ea7b408e197203a917b6f",
+      "duracaoSeg": 162.6,
+      "codec": {
+        "video": "hevc 10 bits HDR (HLG) 60fps",
+        "audio": "aac 48 kHz estéreo"
+      },
+      "descricao": "O profissional, de camisa vermelha com o nome bordado, sentado à mesa de madeira com um notebook, falando para a câmera sobre ele e o seu trabalho. Ao fundo, parede cinza e um vaso de antúrio. Sem paciente e sem outras pessoas.",
+      "alt": "João Pedro Frederes, fisioterapeuta, sentado à mesa, fala para a câmera sobre ele e o seu trabalho",
+      "autoria": "propria",
+      "consentimento": "nao-se-aplica",
+      "tcleRef": null,
+      "publicavel": true,
+      "previewOk": true,
+      "crop": null,
+      "edicoes": [],
+      "pacienteRef": null,
+      "menorDeIdade": false,
+      "dataRegistro": "2026-10-22",
+      "ocr": {
+        "status": "manual",
+        "texto": [
+          "João Pedro Frederes · Fisioterapeuta (bordado na camisa)"
+        ]
+      },
+      "problemas": [
+        "Original 4K HDR de 1,5 GB guardado fora do repositório; derivados web em 720x1280, 30 fps, SDR (tone mapping HLG → BT.709)"
+      ],
+      "derivados": [
+        "assets-originais/videos/derivados/conheca-poster.avif",
+        "assets-originais/videos/derivados/conheca-poster.webp",
+        "assets-originais/videos/derivados/conheca-secao.mp4",
+        "assets-originais/videos/derivados/conheca-secao.webm"
+      ],
+      "usoSugerido": "slot A (Conheça o João Pedro), logo após o hero",
+      "legenda": {
+        "status": "dispensada",
+        "obs": "Sem legenda por enquanto. Se houver transcrição (ex.: exportar SRT do HappyScribe), vira .vtt e status 'revisada'."
       }
     }
   ],

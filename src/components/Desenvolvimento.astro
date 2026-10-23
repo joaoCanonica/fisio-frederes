@@ -4,7 +4,7 @@ import { FONTE_MARCOS, marcos } from '../data/marcos.ts';
 import Fontes from './ui/Fontes.astro';
 import Crianca from './ui/Crianca.astro';
 const faixa = [
-  ['deitada', 'De bruços', 'var(--ilustra-rose)'],
+  ['deitada', 'Tummy', 'var(--ilustra-rose)'],
   ['sentada', 'Sentar', 'var(--ilustra-sol)'],
   ['engatinhando', 'Engatinhar', 'var(--ilustra-salvia)'],
   ['empe', 'Ficar em pé', 'var(--ilustra-ceu)'],
@@ -28,8 +28,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
       <h2 id="dev-titulo" class="titulo">{c.titulo}</h2>
       <p class="lead">{c.texto}</p>
       <Fontes fontes={c.fontes} />
-      <h3 class="dev__h3">{c.ritmo.titulo}</h3>
-      <p class="dev__p">{c.ritmo.texto}</p>
+      <p class="dev__p dev__ritmo">{c.ritmo.texto}</p>
     </div>
 
     <figure class="grafico" data-revelar>
@@ -87,6 +86,7 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
   .dev__topo { max-width: 44rem; }
   .dev__h3 { font-size: 1.05rem; margin-top: 2.25rem; }
   .dev__p { margin-top: 0.6rem; color: var(--texto-suave); }
+  .dev__ritmo { margin-top: 1.75rem; max-width: 40rem; }
   .dev__blocos { display: grid; gap: 2rem; margin-top: 3rem; }
   @media (min-width: 60rem) { .dev__blocos { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; } }
   .dev__faixa { list-style: none; margin: 0 0 3.5rem; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; max-width: 64rem; }
