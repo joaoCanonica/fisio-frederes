@@ -66,7 +66,7 @@
       "alt": "João Pedro Frederes, de jaleco, sentado à mesa segurando um dinossauro de brinquedo",
       "autoria": "propria",
       "consentimento": "nao-se-aplica",
-      "publicavel": false,
+      "publicavel": true,
       "previewOk": true,
       "crop": {
         "x": 40,
@@ -90,7 +90,8 @@
         "Captura de tela do Instagram: seta de carrossel à esquerda e bolinhas de paginação no rodapé",
         "Resolução baixa (725x902) e compressão visível; insuficiente para hero em telas grandes",
         "Certificados ao fundo ilegíveis: não usar como comprovação de formação",
-        "Não há foto de corpo inteiro"
+        "Não há foto de corpo inteiro",
+        "Liberada para produção pelo cliente (2026-10-23) mesmo em resolução baixa; trocar por foto original quando houver"
       ],
       "usoSugerido": "hero",
       "legenda": {
@@ -110,7 +111,7 @@
       "alt": "João Pedro Frederes, de jaleco, sentado à mesa com uma caneca e um boneco em miniatura",
       "autoria": "propria",
       "consentimento": "nao-se-aplica",
-      "publicavel": false,
+      "publicavel": true,
       "previewOk": true,
       "crop": {
         "x": 0,
@@ -135,7 +136,8 @@
         "Resolução baixa (722x904) e compressão visível",
         "Certificados ao fundo ilegíveis: não usar como comprovação de formação",
         "A caneca tem um símbolo verde (parece um caduceu) diferente da marca vinho; confere com a identidade?",
-        "Não há foto de corpo inteiro"
+        "Não há foto de corpo inteiro",
+        "Liberada para produção pelo cliente (2026-10-23) mesmo em resolução baixa; trocar por foto original quando houver"
       ],
       "usoSugerido": "quem-e",
       "legenda": {
@@ -255,6 +257,55 @@
       "audio": {
         "conteudo": "música (Sparks, Coldplay), sem fala",
         "uso": "nunca: obra de terceiros sem licença; derivados sem áudio"
+      }
+    },
+    {
+      "id": "video-conheca-joao",
+      "arquivo": "assets-originais/videos/Vídeo-Fisio (converted by happyscribe.com).mp4",
+      "originalForaDoRepo": true,
+      "categoria": "videos",
+      "tipo": "video",
+      "largura": 2160,
+      "altura": 3840,
+      "bytes": 1576666452,
+      "sha256": "71c58057265bbe824e1ad4e6d5dec72248f65030aa6ea7b408e197203a917b6f",
+      "duracaoSeg": 162.6,
+      "codec": {
+        "video": "hevc 10 bits HDR (HLG) 60fps",
+        "audio": "aac 48 kHz estéreo"
+      },
+      "descricao": "O profissional, de camisa vermelha com o nome bordado, sentado à mesa de madeira com um notebook, falando para a câmera sobre ele e o seu trabalho. Ao fundo, parede cinza e um vaso de antúrio. Sem paciente e sem outras pessoas.",
+      "alt": "João Pedro Frederes, fisioterapeuta, sentado à mesa, fala para a câmera sobre ele e o seu trabalho",
+      "autoria": "propria",
+      "consentimento": "nao-se-aplica",
+      "tcleRef": null,
+      "publicavel": false,
+      "previewOk": true,
+      "crop": null,
+      "edicoes": [],
+      "pacienteRef": null,
+      "menorDeIdade": false,
+      "dataRegistro": null,
+      "dataRegistroObs": "Informar a data de gravação do vídeo \"Conheça o João Pedro\" (sem ela o vídeo não vai para produção). Ao receber: preencher dataRegistro e mudar publicavel para true.",
+      "ocr": {
+        "status": "manual",
+        "texto": [
+          "João Pedro Frederes · Fisioterapeuta (bordado na camisa)"
+        ]
+      },
+      "problemas": [
+        "Original 4K HDR de 1,5 GB guardado fora do repositório; derivados web em 720x1280, 30 fps, SDR (tone mapping HLG → BT.709)"
+      ],
+      "derivados": [
+        "assets-originais/videos/derivados/conheca-poster.avif",
+        "assets-originais/videos/derivados/conheca-poster.webp",
+        "assets-originais/videos/derivados/conheca-secao.mp4",
+        "assets-originais/videos/derivados/conheca-secao.webm"
+      ],
+      "usoSugerido": "slot A (Conheça o João Pedro), logo após o hero",
+      "legenda": {
+        "status": "dispensada",
+        "obs": "Sem legenda por enquanto. Se houver transcrição (ex.: exportar SRT do HappyScribe), vira .vtt e status 'revisada'."
       }
     }
   ],

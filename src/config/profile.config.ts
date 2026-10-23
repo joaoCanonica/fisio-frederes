@@ -61,7 +61,10 @@ export const profile = {
     mestrado: confirmado({ programa: 'Ambiente e Saúde', instituicao: 'Uniplac' as string | null, concluido: true }),
   },
 
-  /** Sem registro de especialista + RQE, o site nunca usa a palavra "especialista". */
+  /**
+   * RQE não será usado (decisão do cliente, 2026-10-23): o site diz "pós-graduado em
+   * Fisioterapia Neuropediátrica" e nunca usa a palavra "especialista".
+   */
   especialista: { registrado: false, rqe: null as string | null, especialidade: null as string | null },
 
   vinculos: [

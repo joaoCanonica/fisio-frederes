@@ -74,8 +74,6 @@ function checarEspecialista(out: Pendencia[]): void {
   const e = profile.especialista;
   if (e.registrado && (!e.rqe || !e.especialidade))
     out.push({ nivel: 'bloqueante', grupo: 'Identidade e registro', campo: 'especialista', nota: '"Especialista" exige título registrado no COFFITO e RQE.' });
-  if (!e.registrado)
-    out.push({ nivel: 'aviso', grupo: 'Identidade e registro', campo: 'especialista', nota: 'Sem RQE: o site usa "pós-graduado em Fisioterapia Neuropediátrica".' });
 }
 
 /** Termos vetados aplicados a textos de configuração e do manifesto. */

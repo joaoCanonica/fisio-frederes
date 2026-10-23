@@ -20,7 +20,7 @@ Os itens abaixo dependem de pessoas e documentos; o código não consegue verifi
 ### Registro e título profissional
 - [ ] **Região do CREFITO:** o site usa **CREFITO-10 (SC)**, nº 369113-F, confirmado pelo cliente. Conferir na consulta pública do CREFITO-10.
 - [x] **Estado de atuação:** somente Santa Catarina (CREFITO-10). O site não menciona outro estado (confirmado pelo cliente em 2026-10-23).
-- [ ] **Título de especialista / RQE:** não há RQE no momento (sem urgência). Se um dia houver, preencher `profile.especialista` (`registrado`, `rqe`, `especialidade`). Até lá, o site usa "Pós-graduado em Fisioterapia Neuropediátrica" e o validador bloqueia "especialista".
+- [x] **Título de especialista / RQE:** não será usado (decisão do cliente). Se um dia mudar, preencher `profile.especialista` (`registrado`, `rqe`, `especialidade`). Até lá, o site usa "Pós-graduado em Fisioterapia Neuropediátrica" e o validador bloqueia "especialista".
 - [ ] **Link de verificação do CREFITO (opcional):** se houver link de consulta pública, preencher `linkVerificacaoCrefito`.
 
 ### Consentimentos e autorizações (guardar fora do repositório)
@@ -43,7 +43,7 @@ Os itens abaixo dependem de pessoas e documentos; o código não consegue verifi
 - [x] Duração e frequência: combinadas em conversa com o fisioterapeuta; o site não promete números.
 - [x] Vídeo de apresentação da NeuroKids: legenda dispensada pelo cliente (`legenda.status: "dispensada"`).
 - [ ] Nomes dos capítulos do vídeo P-001 (propostos a partir dos quadros).
-- [ ] Fotos originais em alta resolução (as atuais são capturas do Instagram e ficam só no preview).
+- [x] Fotos: as capturas do Instagram foram liberadas para o site (trocar por originais em alta resolução quando houver).
 - [ ] Até 6 publicações selecionadas para o bloco do Instagram.
 - [ ] Domínio definitivo e links do Google Maps.
 

@@ -18,6 +18,8 @@ export interface ItemManifesto {
   readonly consentimento: Consentimento;
   readonly tcleRef?: string | null;
   readonly tcleArquivadoForaDoRepo?: boolean;
+  /** Original guardado fora do repositório (arquivo grande); só os derivados são versionados. */
+  readonly originalForaDoRepo?: boolean;
   readonly publicavel: boolean;
   readonly previewOk: boolean;
   readonly pacienteRef: string | null;

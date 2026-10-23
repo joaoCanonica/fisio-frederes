@@ -54,7 +54,12 @@ export function validar(man) {
     if (it.publicavel && it.pacienteRef && (it.consentimento !== 'ok' || !/^\d{4}-\d{2}-\d{2}$/.test(it.dataRegistro ?? ''))) e('publicável com paciente exige TCLE ok e dataRegistro');
     if (it.publicavel && it.autoria === 'CONFIRMAR') e('publicável exige autoria confirmada');
     if (it.antesDepois && !man.antesDepoisHabilitado) e('"antes e depois" desligado');
-    // Integridade do original
+    // Integridade do original. Vídeos grandes (ex.: 4K do celular) ficam fora do
+    // repositório (originalForaDoRepo): o sha256 registra qual arquivo gerou os derivados.
+    if (it.originalForaDoRepo) {
+      if (it.tipo !== 'video' || !it.derivados?.length) e('originalForaDoRepo só vale para vídeo com derivados');
+      continue;
+    }
     try {
       const b = readFileSync(it.arquivo);
       if (b.length !== it.bytes) e('bytes não conferem com o arquivo');
