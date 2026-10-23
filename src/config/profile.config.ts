@@ -44,9 +44,8 @@ export const profile = {
   crefito: {
     numero: confirmado('369113-F'),
     regiao: confirmado('CREFITO-10'), // Santa Catarina
-    atuacaoUfs: ['SC', 'RS'] as const,
-    /** Registro no CREFITO-5 (RS) confirmado pelo cliente. */
-    comprovanteAtuacaoUfs: confirmado<string | null>('CREFITO-5: registro confirmado pelo cliente'),
+    /** Atua somente em Santa Catarina. */
+    atuacaoUfs: ['SC'] as const,
   },
 
   /**
@@ -70,15 +69,15 @@ export const profile = {
       id: 'neurokids',
       nome: 'NeuroKids',
       instagram: 'neurokidslages',
-      autorizacao: 'confirmada-pelo-cliente',
-      comprovante: null,
+      autorizacao: 'formal-arquivada',
+      comprovante: 'Autorização de uso do nome e do espaço confirmada pelo cliente em 2026-10-23 (arquivada com o cliente)',
     },
     {
       id: 'cer-uniplac',
-      nome: 'Centro de reabilitação Uniplac',
+      nome: 'Centro de Reabilitação Uniplac',
       instagram: 'ceruniplac',
-      autorizacao: 'confirmada-pelo-cliente',
-      comprovante: null,
+      autorizacao: 'formal-arquivada',
+      comprovante: 'Autorização de uso do nome e do espaço confirmada pelo cliente em 2026-10-23 (arquivada com o cliente)',
     },
   ] as const satisfies readonly Vinculo[],
 
@@ -89,15 +88,6 @@ export const profile = {
   ],
 
   regioesAtendimento: ['Lages e região (SC)'],
-
-  /** Não divulgado no site enquanto `divulgar` for false. */
-  atendimentoRS: {
-    divulgar: false,
-    observacao: aviso(
-      'Ocasional, quando está com a família.',
-      'Definir como comunicar o atendimento ocasional no RS (ou manter fora do site).',
-    ),
-  },
 
   unidades: [
     {

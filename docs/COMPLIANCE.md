@@ -19,14 +19,14 @@ Os itens abaixo dependem de pessoas e documentos; o código não consegue verifi
 
 ### Registro e título profissional
 - [ ] **Região do CREFITO:** o site usa **CREFITO-10 (SC)**, nº 369113-F, confirmado pelo cliente. Conferir na consulta pública do CREFITO-10.
-- [ ] **Atuação em dois estados (SC e RS):** guardar o comprovante de que a atuação no RS está coberta (inscrição secundária ou autorização no CREFITO-5). O cliente confirmou que o registro existe. O RS **não** é divulgado no site (`atendimentoRS.divulgar = false`).
-- [ ] **Título de especialista / RQE:** quando chegar, preencher `profile.especialista` (`registrado`, `rqe`, `especialidade`). Até lá, o site usa "Pós-graduado em Fisioterapia Neuropediátrica" e o validador bloqueia "especialista".
+- [x] **Estado de atuação:** somente Santa Catarina (CREFITO-10). O site não menciona outro estado (confirmado pelo cliente em 2026-10-23).
+- [ ] **Título de especialista / RQE:** não há RQE no momento (sem urgência). Se um dia houver, preencher `profile.especialista` (`registrado`, `rqe`, `especialidade`). Até lá, o site usa "Pós-graduado em Fisioterapia Neuropediátrica" e o validador bloqueia "especialista".
 - [ ] **Link de verificação do CREFITO (opcional):** se houver link de consulta pública, preencher `linkVerificacaoCrefito`.
 
 ### Consentimentos e autorizações (guardar fora do repositório)
-- [ ] **TCLE T-001:** TCLE assinado pelo responsável legal da criança do vídeo `video-P-001-marcha`. Arquivar o original e, depois, marcar `tcleArquivadoForaDoRepo: true` no manifesto.
-- [ ] **Autorização da NeuroKids:** nome, marca e espaço (site e vídeos). Arquivar e preencher `comprovante` em `profile.vinculos`.
-- [ ] **Autorização do Centro de Reabilitação da Uniplac:** idem.
+- [x] **TCLE T-001:** consentimento do responsável legal da criança do vídeo `video-P-001-marcha` confirmado e arquivado com o cliente (2026-10-23).
+- [x] **Autorização da NeuroKids:** nome, marca e espaço (site e vídeos), confirmada e arquivada com o cliente (2026-10-23).
+- [x] **Autorização do Centro de Reabilitação da Uniplac:** idem (2026-10-23).
 - [ ] **Endereço do CER Uniplac:** veio de fonte pública de 2016 (COSEMS-SC). Confirmar se continua atual.
 
 ### Privacidade
@@ -39,9 +39,9 @@ Os itens abaixo dependem de pessoas e documentos; o código não consegue verifi
 - [ ] **"Antes e depois":** continua desligado (`compliance.antesDepois = false`) até o CREFITO confirmar o alcance da regra.
 
 ### Conteúdo ainda provisório (avisos, não bloqueiam)
-- [ ] Título do hero (oculto em produção até ser aprovado; aparece o padrão).
-- [ ] Duração e frequência dos atendimentos (ocultas em produção até confirmação).
-- [ ] Legenda `.vtt` do vídeo de apresentação (sem ela, o vídeo não vai para produção).
+- [x] Título do hero (aprovado pelo cliente).
+- [x] Duração e frequência: combinadas em conversa com o fisioterapeuta; o site não promete números.
+- [x] Vídeo de apresentação da NeuroKids: legenda dispensada pelo cliente (`legenda.status: "dispensada"`).
 - [ ] Nomes dos capítulos do vídeo P-001 (propostos a partir dos quadros).
 - [ ] Fotos originais em alta resolução (as atuais são capturas do Instagram e ficam só no preview).
 - [ ] Até 6 publicações selecionadas para o bloco do Instagram.

@@ -1,4 +1,4 @@
-import { aviso, confirmado } from './campo.ts';
+import { confirmado } from './campo.ts';
 
 /**
  * Todos os textos da landing (copy deck v1, aprovado em 2026-10-01; ver
@@ -27,10 +27,7 @@ const CADERNETA: Fonte = { texto: 'Ministério da Saúde, Caderneta da Criança,
 
 export const copy = {
   hero: {
-    titulo: aviso(
-      'Fisioterapia para o desenvolvimento motor de crianças',
-      'Título do hero proposto: confirmar com o cliente.',
-    ),
+    titulo: confirmado('Fisioterapia para o desenvolvimento motor de crianças'),
     subtitulo: confirmado(
       'Atendo bebês e crianças em Lages (SC), ajudando cada uma a se movimentar, brincar e participar do dia a dia.',
     ),
@@ -86,10 +83,7 @@ export const copy = {
       { titulo: 'Reavaliação do plano', texto: 'De tempos em tempos revemos o plano e ajustamos o que for preciso.' },
       { titulo: 'A família junto', texto: 'Vocês saem com orientações simples para casa. As diretrizes recomendam definir as metas junto com os pais.' },
     ],
-    duracaoFrequencia: aviso(
-      'Duração de cada atendimento e frequência semanal definidas no plano terapêutico.',
-      'Duração e frequência dos atendimentos: confirmar com o cliente.',
-    ),
+    duracaoFrequencia: confirmado('A duração e a frequência dos atendimentos a gente combina conversando, conforme o plano de cada criança.'),
     nota: 'Se a família autorizar, converso também com os outros profissionais que acompanham a criança.',
     fontes: [MORGAN],
   },
@@ -101,7 +95,6 @@ export const copy = {
       'A criança conhece o mundo se mexendo: rolando, engatinhando, subindo, caindo e levantando de novo. Nos primeiros anos o sistema nervoso está em plena formação, e por isso, quando há atraso ou risco, as diretrizes recomendam não esperar.',
     fontes: [NOVAK, MORGAN],
     ritmo: {
-      titulo: 'Cada criança tem seu ritmo',
       texto:
         'Sentar, engatinhar, ficar em pé e andar não têm data marcada. Um estudo da Organização Mundial da Saúde com crianças saudáveis de cinco países mostrou que cada marco acontece dentro de uma janela de vários meses.',
     },
@@ -169,7 +162,7 @@ export const copy = {
       {
         pergunta: 'Quanto tempo dura o acompanhamento?',
         resposta:
-          'A duração do acompanhamento fisioterapêutico varia de criança para criança e depende dos objetivos do plano terapêutico. O plano é revisto periodicamente com a família e ajustado conforme a resposta da criança. Por isso, não é possível prometer prazos; o que se combina são objetivos claros e momentos de revisão.',
+          'A duração do acompanhamento fisioterapêutico varia de criança para criança e depende dos objetivos do plano terapêutico. O plano é revisto periodicamente com a família e ajustado conforme a resposta da criança. Por isso, não é possível prometer prazos; o que se combina são objetivos claros e momentos de revisão. O tempo e a frequência de cada atendimento também são combinados em conversa com o fisioterapeuta.',
       },
       {
         pergunta: 'Onde são os atendimentos?',

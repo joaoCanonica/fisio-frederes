@@ -1,7 +1,8 @@
 import manifestoJson from '../../media.manifest.json' with { type: 'json' };
 
 export type Consentimento = 'ok' | 'pendente' | 'nao-se-aplica';
-export type StatusLegenda = 'pendente' | 'revisada' | 'nao-se-aplica';
+/** 'dispensada': vídeo com fala publicado sem legenda, por decisão do cliente. */
+export type StatusLegenda = 'pendente' | 'revisada' | 'nao-se-aplica' | 'dispensada';
 
 export interface ItemManifesto {
   readonly id: string;

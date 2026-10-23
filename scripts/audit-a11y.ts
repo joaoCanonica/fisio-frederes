@@ -70,7 +70,7 @@ for (const [nome, vp, cs] of [
     const linha = `${nome} ${caminho}: axe ${r.length} violação(ões), vídeos sem legenda ${semLegenda.length}, foco invisível ${semFoco.length}`;
     console.log((r.length || semFoco.length ? '✖ ' : '✔ ') + linha);
     r.forEach((v: string) => console.log('    ' + v));
-    semLegenda.forEach((v) => console.log(`    ⚠ vídeo sem legenda (aparece só em preview; em produção não renderiza): ${v}`));
+    semLegenda.forEach((v) => console.log(`    ⚠ vídeo sem legenda (confira se foi dispensada pelo cliente): ${v}`));
     [...new Set(semFoco)].forEach((v) => console.log('    foco invisível: ' + v));
     falhas += r.length + semFoco.length;
   }

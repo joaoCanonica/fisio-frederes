@@ -46,7 +46,7 @@ export function validar(man) {
     if (it.publicavel && it.tipo === 'video' && !dataOk) e('vídeo publicável exige dataRegistro (bloqueante)');
     if (it.publicavel && it.autoriaInstituicao && !['confirmada-pelo-cliente', 'formal-arquivada'].includes(it.autorizacaoInstituicao)) e('uso de instituição sem autorização');
     if (it.consentimento === 'ok' && it.pacienteRef && !/^T-\d{3,}$/.test(it.tcleRef ?? '')) e('consentimento ok exige tcleRef (T-001)');
-    if (it.tipo === 'video' && !['pendente', 'revisada', 'nao-se-aplica'].includes(it.legenda?.status)) e('legenda.status inválido');
+    if (it.tipo === 'video' && !['pendente', 'revisada', 'nao-se-aplica', 'dispensada'].includes(it.legenda?.status)) e('legenda.status inválido');
     // Privacidade e regras de paciente
     if (it.pacienteRef !== null && !/^P-\d{3,}$/.test(it.pacienteRef)) e('pacienteRef deve ser código opaco (P-001)');
     if (it.menorDeIdade && !it.pacienteRef) e('menor de idade exige pacienteRef');

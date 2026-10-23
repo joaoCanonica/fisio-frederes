@@ -33,7 +33,7 @@ const isCampo = (v: unknown): v is Campo<unknown> =>
 
 function grupoDoCampo(caminho: string): Grupo {
   if (/nomeCompleto|crefito|profissao|especialista|linkVerificacao|titulos/.test(caminho)) return 'Identidade e registro';
-  if (/unidades|whatsapp|instagram|regioes|atendimentoRS/.test(caminho)) return 'Endereço e contato';
+  if (/unidades|whatsapp|instagram|regioes/.test(caminho)) return 'Endereço e contato';
   if (caminho.startsWith('copy')) return 'Conteúdo e vocabulário';
   return 'Outros';
 }

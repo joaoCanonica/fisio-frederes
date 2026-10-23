@@ -161,7 +161,7 @@
       "autoria": "propria",
       "consentimento": "nao-se-aplica",
       "tcleRef": null,
-      "publicavel": false,
+      "publicavel": true,
       "previewOk": true,
       "crop": null,
       "edicoes": [],
@@ -169,32 +169,27 @@
       "menorDeIdade": false,
       "dataRegistro": "2026-03-23",
       "autoriaInstituicao": "NeuroKids",
-      "autorizacaoInstituicao": "confirmada-pelo-cliente",
+      "autorizacaoInstituicao": "formal-arquivada",
       "ocr": {
         "status": "manual",
         "texto": []
       },
       "problemas": [
-        "Áudio não ouvido: conteúdo da fala não verificado quanto a vocabulário COFFITO e promessas",
-        "Brinquedos de marca registrada (Sr. Cabeça de Batata) em cena: uso incidental",
-        "Comprovante da autorização da NeuroKids a arquivar (baixa prioridade)",
-        "Legenda .vtt pendente (adiada pelo cliente)"
+        "Brinquedos de marca registrada (Sr. Cabeça de Batata) em cena: uso incidental"
       ],
       "derivados": [
         "assets-originais/videos/derivados/neurokids-poster.avif",
         "assets-originais/videos/derivados/neurokids-poster.webp",
         "assets-originais/videos/derivados/neurokids-secao.mp4",
-        "assets-originais/videos/derivados/neurokids-secao.pt-BR.vtt",
         "assets-originais/videos/derivados/neurokids-secao.webm"
       ],
       "usoSugerido": "quem-e",
       "legenda": {
-        "status": "pendente",
-        "arquivo": "assets-originais/videos/derivados/neurokids-secao.pt-BR.vtt",
-        "obs": "Cliente adiou a legenda. Sem legenda revisada, o vídeo não vai a um slot."
+        "status": "dispensada",
+        "obs": "Cliente dispensou a legenda (2026-10-23). Vídeo com fala, publicado sem trilha .vtt."
       },
       "vinculoId": "neurokids",
-      "comprovanteAutorizacao": null
+      "comprovanteAutorizacao": "Autorização da NeuroKids confirmada pelo cliente em 2026-10-23 (arquivada com o cliente)"
     },
     {
       "id": "video-P-001-marcha",
@@ -215,7 +210,7 @@
       "autoria": "propria",
       "consentimento": "ok",
       "tcleRef": "T-001",
-      "tcleArquivadoForaDoRepo": false,
+      "tcleArquivadoForaDoRepo": true,
       "publicavel": true,
       "previewOk": true,
       "crop": {
@@ -233,16 +228,14 @@
       "menorDeIdade": true,
       "dataRegistro": "2026-03-31",
       "autoriaInstituicao": "NeuroKids",
-      "autorizacaoInstituicao": "confirmada-pelo-cliente",
+      "autorizacaoInstituicao": "formal-arquivada",
       "ocr": {
         "status": "manual",
         "texto": []
       },
       "problemas": [
         "Original: rosto da criança visível (perfil e quase frontal) e refletido no espelho; resolvido no derivado recortado (aprovado)",
-        "Áudio é música de terceiros (Sparks, Coldplay): derivados sem áudio",
-        "TCLE T-001 a arquivar fora do repositório (baixa prioridade)",
-        "Comprovante da autorização da NeuroKids a arquivar (baixa prioridade)"
+        "Áudio é música de terceiros (Sparks, Coldplay): derivados sem áudio"
       ],
       "derivados": [
         "assets-originais/videos/derivados/P-001-loop-pernas.mp4",
@@ -258,7 +251,7 @@
         "obs": "Derivados sem áudio e sem fala."
       },
       "vinculoId": "neurokids",
-      "comprovanteAutorizacao": null,
+      "comprovanteAutorizacao": "Autorização da NeuroKids confirmada pelo cliente em 2026-10-23 (arquivada com o cliente)",
       "audio": {
         "conteudo": "música (Sparks, Coldplay), sem fala",
         "uso": "nunca: obra de terceiros sem licença; derivados sem áudio"
