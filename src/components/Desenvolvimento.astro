@@ -13,7 +13,7 @@ const faixa = [
 ] as const;
 import { copy } from '../config/copy.config.ts';
 const c = copy.porque;
-const MAX = 18;
+const MAX = 30;
 const pct = (m: number) => `${((m / MAX) * 100).toFixed(2)}%`;
 const fmt = (n: number) => n.toLocaleString('pt-BR');
 ---
@@ -33,24 +33,20 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
 
     <figure class="grafico" data-revelar>
       <figcaption class="grafico__leg">
-        Janelas de idade em que crianças saudáveis alcançaram cada marco (meses)
+        Até que idade pelo menos 3 em cada 4 crianças já alcançaram cada marco (meses)
       </figcaption>
       <table class="grafico__tab">
-        <caption class="sr-only">Idade, em meses, do início e do fim da janela de cada marco motor</caption>
+        <caption class="sr-only">Idade, em meses, até a qual pelo menos 75% das crianças já alcançaram cada marco motor</caption>
         <thead class="sr-only">
-          <tr><th scope="col">Marco</th><th scope="col">Início (meses)</th><th scope="col">Fim (meses)</th></tr>
+          <tr><th scope="col">Marco</th><th scope="col">Até a idade (meses)</th></tr>
         </thead>
         <tbody>
           {marcos.map((m, i) => (
             <tr style={`--i:${i}`}>
               <th scope="row">{m.nome}</th>
-              <td class="grafico__trilho" colspan="2">
-                <span class="grafico__barra" style={`--ini:${pct(m.inicio)};--fim:${pct(m.fim)}`}>
-                  <span class="sr-only">de </span>
-                  <span class="grafico__n">{fmt(m.inicio)}</span>
-                  <span class="sr-only"> a </span>
-                  <span class="grafico__n">{fmt(m.fim)}</span>
-                  <span class="sr-only"> meses</span>
+              <td class="grafico__trilho">
+                <span class="grafico__barra" style={`--fim:${pct(m.idade)}`}>
+                  <span class="grafico__n"><span class="sr-only">até </span>{fmt(m.idade)}<span class="sr-only"> meses</span></span>
                 </span>
               </td>
             </tr>
@@ -60,14 +56,14 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
           <tr>
             <td></td>
             <td class="grafico__eixo">
-              {[0, 3, 6, 9, 12, 15, 18].map((m) => <span style={`--x:${pct(m)}`}>{m}</span>)}
+              {[0, 6, 12, 18, 24, 30].map((m) => <span style={`--x:${pct(m)}`}>{m}</span>)}
             </td>
           </tr>
         </tfoot>
       </table>
       <p class="fonte">
         Fonte: <a href={FONTE_MARCOS.url} target="_blank" rel="noopener">{FONTE_MARCOS.texto}</a>.
-        Janelas entre os percentis 1 e 99.
+        Marcos que pelo menos 75% das crianças alcançam até cada idade. Engatinhar saiu da lista na revisão de 2022 porque muitas crianças pulam essa fase.
       </p>
     </figure>
 
@@ -113,10 +109,11 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
     position: absolute;
     top: 0;
     bottom: 0;
-    left: var(--ini);
+    left: 0;
     right: calc(100% - var(--fim));
+    min-width: 2.2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding-inline: 0.6rem;
     border-radius: 999px;

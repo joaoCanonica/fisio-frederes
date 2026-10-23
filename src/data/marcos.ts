@@ -1,25 +1,27 @@
 /**
- * Janelas de aquisição (percentis 1 e 99, em meses) dos seis marcos motores amplos.
- * Fonte: WHO Multicentre Growth Reference Study Group. Acta Paediatrica 2006;
- * Suppl 450:86–95. Registro: docs/pesquisa/marcos-motores.md#1
- * Conferir os valores na tabela original antes do go-live.
+ * Idade (em meses) até a qual pelo menos 75% das crianças já alcançaram cada marco
+ * motor, segundo os checklists revisados pelo CDC e pela Academia Americana de
+ * Pediatria em 2022 (Zubler JM et al. Pediatrics 2022;149(3):e2021052138).
+ * Substitui as janelas da OMS (2006). Registro: docs/pesquisa/marcos-motores.md#3
  */
 export interface Marco {
   readonly nome: string;
-  readonly inicio: number;
-  readonly fim: number;
+  /** Meses. */
+  readonly idade: number;
 }
 
 export const FONTE_MARCOS = {
-  texto: 'OMS, WHO Motor Development Study, Acta Paediatrica, 2006',
-  url: 'https://www.who.int/tools/child-growth-standards/standards/motor-development-milestones',
+  texto: 'CDC e Academia Americana de Pediatria, Zubler et al., Pediatrics, 2022',
+  url: 'https://doi.org/10.1542/peds.2021-052138',
 } as const;
 
 export const marcos: readonly Marco[] = [
-  { nome: 'Sentar sem apoio', inicio: 3.8, fim: 9.2 },
-  { nome: 'Ficar em pé com apoio', inicio: 4.8, fim: 11.4 },
-  { nome: 'Engatinhar', inicio: 5.2, fim: 13.5 },
-  { nome: 'Andar com apoio', inicio: 5.9, fim: 13.7 },
-  { nome: 'Ficar em pé sozinho', inicio: 6.9, fim: 16.9 },
-  { nome: 'Andar sozinho', inicio: 8.2, fim: 17.6 },
+  { nome: 'Sustenta a cabeça de bruços', idade: 2 },
+  { nome: 'Rola de bruços para barriga para cima', idade: 6 },
+  { nome: 'Senta sem apoio', idade: 9 },
+  { nome: 'Fica em pé e anda segurando nos móveis', idade: 12 },
+  { nome: 'Dá alguns passos sozinha', idade: 15 },
+  { nome: 'Anda sem apoio', idade: 18 },
+  { nome: 'Chuta bola e corre', idade: 24 },
+  { nome: 'Pula com os dois pés', idade: 30 },
 ];

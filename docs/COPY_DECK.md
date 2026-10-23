@@ -32,7 +32,7 @@ Regras aplicadas em todo o texto: identificação COFFITO (nome, profissão, CRE
 **Título:** Quem é João Pedro Frederes
 
 **Texto:**
-Fisioterapeuta formado pela Uniplac, com pós-graduação em Fisioterapia Neuropediátrica e mestrado em Ambiente e Saúde. Atende bebês e crianças principalmente na NeuroKids, em Lages (SC), e também no Centro de Reabilitação da Uniplac, com foco no desenvolvimento motor e nas condições neurológicas da infância.
+Fisioterapeuta formado pela Uniplac, com pós-graduação em Fisioterapia Neuropediátrica e mestrado em Ambiente e Saúde. Atende bebês e crianças principalmente na NeuroKids, em Lages (SC), e também no Centro Especializado em Reabilitação III (CER), com foco no desenvolvimento motor e nas condições neurológicas da infância.
 
 🟨 Instituição da pós-graduação · 🟨 Instituição do mestrado: Uniplac? · 🟨 Anos de conclusão (opcional) · 🟨 Há mais alguma formação que ele queira listar?
 
@@ -41,7 +41,7 @@ Fisioterapeuta formado pela Uniplac, com pós-graduação em Fisioterapia Neurop
 - Pós-graduação em Fisioterapia Neuropediátrica
 - Mestrado em Ambiente e Saúde, Uniplac 🟨
 
-**Onde atua:** NeuroKids (@neurokidslages) · Centro de Reabilitação da Uniplac (@ceruniplac)
+**Onde atua:** NeuroKids (@neurokidslages) · Centro Especializado em Reabilitação III (CER) (@ceruniplac)
 ✅ Autorizações das duas instituições confirmadas e arquivadas (2026-10-23)
 
 **Verifique o registro:**
@@ -108,9 +108,9 @@ A fisioterapia é uma parte do cuidado. Ela não substitui o acompanhamento com 
 ## 5. Onde atua
 
 **Título:** Onde atende
-**Texto:** Os atendimentos acontecem principalmente na NeuroKids, em Lages (SC). O fisioterapeuta também atua no Centro de Reabilitação da Uniplac.
+**Texto:** Os atendimentos acontecem principalmente na NeuroKids, em Lages (SC). O fisioterapeuta também atua no Centro Especializado em Reabilitação III (CER).
 - **NeuroKids** (local principal de atendimento, cartão em destaque): ✅ R. Frei Rogério, 394, Centro, Lages (SC), CEP 88502-161 · cartão de localização com link "Abrir no Google Maps" 🟨 link exato do Maps
-- **Centro de Reabilitação da Uniplac** ("Também atua"): ✅ Av. Castelo Branco, 140, Universitário, Lages (SC), CEP 88509-900 🟨 *fonte pública de 2016 (COSEMS-SC): confirmar se segue atual*
+- **Centro Especializado em Reabilitação III (CER)** ("Também atua"): ✅ Av. Castelo Branco, 140, Universitário, Lages (SC), CEP 88509-900 🟨 *fonte pública de 2016 (COSEMS-SC): confirmar se segue atual*
 - **Região:** Lages e região (SC).
 - Atua somente em Santa Catarina; nenhum outro estado aparece no site.
 
@@ -147,7 +147,7 @@ Sim. A família faz parte do plano terapêutico: ajuda a definir os objetivos, r
 A duração do acompanhamento fisioterapêutico varia de criança para criança e depende dos objetivos do plano terapêutico. O plano é revisto periodicamente com a família e ajustado conforme a resposta da criança. Por isso, não é possível prometer prazos; o que se combina são objetivos claros e momentos de revisão.
 
 **9. Onde são os atendimentos?**
-Os atendimentos de fisioterapia de João Pedro Frederes acontecem principalmente na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro de Reabilitação da Uniplac. O endereço completo e o link para o mapa estão na seção "Onde atende". Para combinar horários, use o WhatsApp.
+Os atendimentos de fisioterapia de João Pedro Frederes acontecem principalmente na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro Especializado em Reabilitação III (CER). O endereço completo e o link para o mapa estão na seção "Onde atende". Para combinar horários, use o WhatsApp.
 
 **10. Como entrar em contato?**
 O contato com o fisioterapeuta João Pedro Frederes é feito pelo WhatsApp, pelo botão desta página, ou pelo Instagram @fisiofrederes.ped. Por privacidade, evite enviar exames ou informações de saúde da criança por mensagem antes da consulta fisioterapêutica; esses dados são tratados pessoalmente.

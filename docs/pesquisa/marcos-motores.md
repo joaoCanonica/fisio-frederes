@@ -1,6 +1,6 @@
 # Marcos do desenvolvimento motor
 
-## 1. Janelas de aquisição dos marcos motores amplos variam entre crianças saudáveis
+## 1. Janelas de aquisição dos marcos motores amplos variam entre crianças saudáveis (substituído no site pelo item 3 em 2026-10-23)
 - **Fonte:** WHO Multicentre Growth Reference Study Group. *WHO Motor Development Study: windows of achievement for six gross motor development milestones.* Acta Paediatrica, 2006; 95 (Suppl 450): 86–95. Página da OMS: https://www.who.int/tools/child-growth-standards/standards/motor-development-milestones
 - **Consultado em:** 2026-10-01
 - **Nível:** A (padrão de referência da OMS; coorte longitudinal multicêntrica, 816 crianças, 5 países)
@@ -14,7 +14,7 @@
 - **Nível:** A (documento oficial)
 - **Uso no site:** orientar que dúvidas sobre o desenvolvimento sejam conversadas com o pediatra que acompanha a criança.
 
-### Valores usados no gráfico do site (`src/data/marcos.ts`)
+### Valores usados no gráfico até 2026-10-23 (OMS)
 Janelas (percentis 1–99, meses): sentar sem apoio 3,8–9,2; ficar em pé com apoio 4,8–11,4; engatinhar 5,2–13,5; andar com apoio 5,9–13,7; ficar em pé sozinho 6,9–16,9; andar sozinho 8,2–17,6. As larguras conferem com as relatadas no resumo (5,4; 10,0; 9,4 meses). **Conferir na Tabela 1 do artigo original antes do go-live.**
 
 ## 3. Marcos de vigilância do CDC/AAP (revisão 2022): percentil 75
@@ -30,3 +30,10 @@ Janelas (percentis 1–99, meses): sentar sem apoio 3,8–9,2; ficar em pé com 
 - **Nível:** A (documento oficial)
 - **O que sustenta:** contém um instrumento de vigilância dos marcos do desenvolvimento de 0 a 10 anos. A edição de 2024 incluiu o M-CHAT-R (rastreamento de sinais de TEA), com orientações de uso.
 - **Uso no site:** "A Caderneta da Criança tem uma ficha para acompanhar os marcos do desenvolvimento; leve-a às consultas."
+
+### Atualização de 2026-10-23: gráfico e FAQ passam a usar os marcos CDC/AAP 2022
+- **Motivo:** pedido do cliente por dados mais recentes que os da OMS (2006). Não foi encontrado estudo multicêntrico mais novo com janelas de percentis 1–99; a revisão CDC/AAP (2022) é a referência de vigilância mais recente.
+- **Pesquisa:** buscas em 2026-10-23 (o acesso direto a cdc.gov estava bloqueado neste ambiente; as idades foram conferidas em reproduções dos checklists e coincidem com a lista oficial "Milestones by age" do CDC).
+- **Valores (idade até a qual ≥75% das crianças alcançam):** sustenta a cabeça de bruços 2 m · rola de bruços para barriga para cima 6 m · senta sem apoio 9 m · fica em pé e anda segurando nos móveis 12 m · dá alguns passos sozinha 15 m · anda sem apoio 18 m · chuta bola e corre 24 m · pula com os dois pés 30 m.
+- **Observação:** engatinhar foi retirado dos checklists em 2022 (muitas crianças pulam essa fase).
+- **Conferir:** antes de cada revisão anual, comparar com https://www.cdc.gov/act-early/milestones/ e com a Caderneta da Criança vigente.
