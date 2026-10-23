@@ -1,18 +1,15 @@
 ---
-// Monograma JF da logo de 2026 (J vinho, F em sálvia, mostarda e verde-azulado, com a
-// cabecinha amarela e as faíscas). Raster sem fundo gerado por scripts/gerar-marca.py
-// a partir de assets-originais/marca/logo-2026.jpg; o tamanho vem da classe do contexto.
+// Monograma JF da logo de 2026 (J vinho; F em sálvia, mostarda e verde-azulado, com a
+// cabecinha amarela e as faíscas), em vetor: public/marca/monograma.svg, gerado por
+// scripts/vetorizar-logo.py. O tamanho vem da classe do contexto.
 interface Props { class?: string; titulo?: string; decorativa?: boolean }
 const { class: cls, titulo = 'Logo de João Pedro Frederes, fisioterapeuta', decorativa = false } = Astro.props;
-const srcset = [64, 128, 256, 512].map((h) => `/marca/monograma-${h}.webp ${Math.round((h * 592) / 606)}w`).join(', ');
 ---
 <img
   class:list={['marca-img', cls]}
-  src="/marca/monograma-128.webp"
-  srcset={srcset}
-  sizes="(min-width: 48rem) 9rem, 7rem"
-  width="592"
-  height="606"
+  src="/marca/monograma.svg"
+  width="600"
+  height="612"
   alt={decorativa ? '' : titulo}
   decoding="async"
 />

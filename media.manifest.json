@@ -82,7 +82,7 @@
         ]
       },
       "problemas": [
-        "Raster (JPG 1402x1122), sem vetor: as variações sem fundo são recortes do raster",
+        "Original raster (JPG 1402x1122); vetor feito por vetorização em camadas (scripts/vetorizar-logo.py), cubo e bola redesenhados em geometria",
         "Sem a região do CREFITO no texto da logo (o site mostra CREFITO-10 na identificação)"
       ],
       "cores": {
@@ -95,13 +95,18 @@
         "observacao": "Amostradas por faixa de matiz nos pixels do monograma; aplicadas em src/config/theme.config.ts."
       },
       "derivados": [
-        "public/marca/monograma-{64,128,256,512}.webp",
+        "assets-originais/marca/vetor/logo-2026.{svg,pdf,png}",
+        "assets-originais/marca/vetor/logo-2026-fundo-escuro.{svg,pdf,png}",
+        "assets-originais/marca/vetor/emblema.{svg,pdf,png}",
+        "assets-originais/marca/vetor/monograma.{svg,pdf,png}",
+        "public/marca/monograma.svg",
+        "public/favicon.svg",
         "public/favicon-32.png",
         "public/apple-touch-icon.png",
         "public/icon-512.png",
         "public/og.jpg"
       ],
-      "usoSugerido": "Fonte da identidade. Derivados gerados por scripts/gerar-marca.py (não passam por prepare-media).",
+      "usoSugerido": "Fonte da identidade. Vetor editável em assets-originais/marca/vetor/ (ver LEIA-ME.md).",
       "legenda": {
         "status": "nao-se-aplica"
       }
