@@ -7,7 +7,7 @@ const { titulo, formato, arco = false } = Astro.props;
 ---
 <figure class:list={['vago', `vago--${formato === '9:16' ? 'vertical' : 'paisagem'}`, { 'vago--arco': arco }]}>
   <div class="vago__poster tom-vinho" aria-hidden="true">
-    <Marca class="vago__marca" />
+    <Marca class="vago__marca" decorativa />
     <span class="vago__emb">Vídeo em breve</span>
     <span class="vago__tit">{titulo}</span>
   </div>
@@ -31,7 +31,7 @@ const { titulo, formato, arco = false } = Astro.props;
   .vago--vertical .vago__poster { aspect-ratio: 9 / 16; }
   .vago--paisagem .vago__poster { aspect-ratio: 16 / 7; }
   .vago--arco .vago__poster { border-radius: 999px 999px var(--raio-g) var(--raio-g); }
-  .vago__poster :global(.vago__marca) { width: 4rem; height: auto; color: var(--marca); }
+  .vago__poster :global(.vago__marca) { width: 4.5rem; height: auto; }
   .vago__emb { font: 700 0.72rem/1 var(--fonte-texto); letter-spacing: 0.22em; text-transform: uppercase; color: var(--destaque); }
   .vago__tit { font: 400 clamp(1.3rem, 1rem + 1.6vw, 2.1rem)/1.15 var(--fonte-display); text-transform: uppercase; letter-spacing: 0.05em; max-width: 18ch; }
   figcaption { margin-top: 0.9rem; font-size: 0.85rem; color: var(--texto-suave); }

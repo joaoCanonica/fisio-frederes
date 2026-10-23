@@ -27,7 +27,7 @@ export function cssDoTema(): string {
     `@media (prefers-color-scheme: dark){:root{${compEscuro}}}`,
     `[data-tema="claro"]{${compClaro}}`,
     `[data-tema="escuro"]{${compEscuro}}`,
-    `:root{color-scheme:light dark;${aviso}--marca:${hex('vinhoProfundo')};--ilustra-rose:${hex('ilustraRose')};--ilustra-salvia:${hex('ilustraSalvia')};--ilustra-sol:${hex('ilustraSol')};--ilustra-ceu:${hex('ilustraCeu')};}`,
+    `:root{color-scheme:light dark;${aviso}--marca:${hex('vinhoProfundo')};--bola-2:${hex('mostarda')};--bola-3:${hex('tealLogo')};--bola-4:${hex('coral')};--bola-5:${hex('salvia')};--ilustra-rose:${hex('ilustraRose')};--ilustra-salvia:${hex('ilustraSalvia')};--ilustra-sol:${hex('ilustraSol')};--ilustra-ceu:${hex('ilustraCeu')};}`,
     `:root,.tom-claro{color-scheme:light;${bloco(claro)}}`,
     `@media (prefers-color-scheme: dark){:root,.tom-claro{color-scheme:dark;${bloco(escuro)}--marca:${hex('vinhoClaro')};}}`,
     `[data-tema="claro"],[data-tema="claro"] .tom-claro{color-scheme:light;${bloco(claro)}--marca:${hex('vinhoProfundo')};}`,

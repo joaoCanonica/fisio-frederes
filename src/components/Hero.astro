@@ -44,7 +44,7 @@ const temVideo = renderConvite()?.tipo === 'video';
         <Pose pose={pose} sizes={SIZES_HERO} prioridade />
       ) : (
         <MediaFrame formato="4:5" arco>
-          <div class="hero__semfoto" role="img" aria-label="Monograma JF"><Marca class="hero__marca" /></div>
+          <div class="hero__semfoto" role="img" aria-label="Monograma JF"><Marca class="hero__marca" decorativa /></div>
         </MediaFrame>
       )}
     </div>
@@ -77,7 +77,7 @@ const temVideo = renderConvite()?.tipo === 'video';
   /* Arco do retrato com contorno vinho (vinhoClaro no escuro, via --arco). */
   .hero__visual :global(.mf__midia) { border: 3px solid var(--arco); outline: 6px solid var(--superficie); outline-offset: 0; }
   .hero__semfoto { height: 100%; display: grid; place-items: center; }
-  .hero__visual :global(.hero__marca) { width: 45%; height: auto; color: var(--marca); }
+  .hero__visual :global(.hero__marca) { width: 55%; height: auto; }
 
   /* Mobile (até 60rem): retrato primeiro, no máximo 40svh, e o CTA do WhatsApp
      ainda visível sem rolar (o título sozinho já diz "crianças"). */
