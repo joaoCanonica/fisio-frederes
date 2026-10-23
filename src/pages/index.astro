@@ -29,7 +29,7 @@ const ld = EM_PRODUCAO
       '@context': 'https://schema.org',
       '@type': 'Physiotherapy',
       name: `${p.nomeCompleto.valor} – ${p.profissao.valor}`,
-      url: p.dominio.valor,
+      url: Astro.site?.href ?? p.dominio.valor,
       address: sede().endereco.valor,
       medicalSpecialty: 'Pediatric',
       employee: {
