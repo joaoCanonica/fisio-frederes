@@ -1,6 +1,6 @@
 ---
 // Fontes: docs/pesquisa/marcos-motores.md
-import { FONTE_MARCOS, marcos } from '../data/marcos.ts';
+import { FONTE_MARCOS, marcos, meses } from '../data/marcos.ts';
 import Fontes from './ui/Fontes.astro';
 import Crianca from './ui/Crianca.astro';
 const faixa = [
@@ -13,9 +13,8 @@ const faixa = [
 ] as const;
 import { copy } from '../config/copy.config.ts';
 const c = copy.porque;
-const MAX = 30;
+const MAX = 18;
 const pct = (m: number) => `${((m / MAX) * 100).toFixed(2)}%`;
-const fmt = (n: number) => n.toLocaleString('pt-BR');
 ---
 <section id="porque" class="sec tom-vinho" aria-labelledby="dev-titulo">
   <div class="wrap" data-revelar>
@@ -32,22 +31,22 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
     </div>
 
     <figure class="grafico" data-revelar>
-      <figcaption class="grafico__leg">
-        Até que idade pelo menos 3 em cada 4 crianças já alcançaram cada marco (meses)
-      </figcaption>
+      <figcaption class="grafico__leg">Em que mês cada marco costuma aparecer</figcaption>
       <table class="grafico__tab">
-        <caption class="sr-only">Idade, em meses, até a qual pelo menos 75% das crianças já alcançaram cada marco motor</caption>
+        <caption class="sr-only">Mês em que cada marco do desenvolvimento motor costuma aparecer</caption>
         <thead class="sr-only">
-          <tr><th scope="col">Marco</th><th scope="col">Até a idade (meses)</th></tr>
+          <tr><th scope="col">Marco</th><th scope="col">Mês</th></tr>
         </thead>
-        <tbody>
+        <tbody class="bolas">
           {marcos.map((m, i) => (
             <tr style={`--i:${i}`}>
-              <th scope="row">{m.nome}</th>
+              <th scope="row">
+                <span class="grafico__nome">{m.nome}{m.detalhe && <small> ({m.detalhe})</small>}</span>
+                <span class="grafico__mes">{meses(m)}{m.obrigatorio && <strong class="grafico__tag">obrigatório</strong>}</span>
+              </th>
               <td class="grafico__trilho">
-                <span class="grafico__barra" style={`--fim:${pct(m.idade)}`}>
-                  <span class="grafico__n"><span class="sr-only">até </span>{fmt(m.idade)}<span class="sr-only"> meses</span></span>
-                </span>
+                {/* Cada mês ocupa a faixa (mês − 1, mês]: o 3º mês vai de 2 a 3. */}
+                <span class="grafico__barra" style={`--ini:${pct(m.inicio - 1)};--fim:${pct(m.fim)}`}></span>
               </td>
             </tr>
           ))}
@@ -56,14 +55,13 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
           <tr>
             <td></td>
             <td class="grafico__eixo">
-              {[0, 6, 12, 18, 24, 30].map((m) => <span style={`--x:${pct(m)}`}>{m}</span>)}
+              {[0, 3, 6, 9, 12, 15, 18].map((m) => <span style={`--x:${pct(m)}`}>{m}</span>)}
             </td>
           </tr>
         </tfoot>
       </table>
       <p class="fonte">
-        Fonte: <a href={FONTE_MARCOS.url} target="_blank" rel="noopener">{FONTE_MARCOS.texto}</a>.
-        Marcos que pelo menos 75% das crianças alcançam até cada idade. Engatinhar saiu da lista na revisão de 2022 porque muitas crianças pulam essa fase.
+        Referência usada no acompanhamento: {FONTE_MARCOS.texto}. Meses de vida; o eixo vai até 18 meses.
       </p>
     </figure>
 
@@ -103,21 +101,31 @@ const fmt = (n: number) => n.toLocaleString('pt-BR');
   .grafico__tab { width: 100%; border-collapse: collapse; }
   .grafico__tab tfoot tr { border: 0; }
   .grafico__tab tr { display: grid; grid-template-columns: minmax(7.5rem, 12rem) 1fr; align-items: center; gap: 1rem; padding-block: 0.55rem; border-bottom: 1px solid var(--superficie-alt); }
-  .grafico__tab th { text-align: left; font-weight: 500; font-size: 0.92rem; }
+  .grafico__tab th { text-align: left; font-weight: 500; font-size: 0.92rem; display: grid; gap: 0.15rem; }
+  .grafico__nome small { font-size: 0.85em; color: var(--texto-suave); }
+  .grafico__mes { font-size: 0.8rem; color: var(--texto-suave); display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+  .grafico__tag {
+    font: 700 0.66rem/1 var(--fonte-texto);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    background: var(--acao);
+    color: var(--acao-texto);
+  }
   .grafico__trilho { position: relative; height: 2.1rem; padding: 0; }
   .grafico__barra {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
+    left: var(--ini);
     right: calc(100% - var(--fim));
-    min-width: 2.2rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding-inline: 0.6rem;
     border-radius: 999px;
-    background: linear-gradient(90deg, var(--destaque), var(--destaque));
+    background: var(--bola, var(--destaque));
     color: var(--acao-texto);
     font-size: 0.75rem;
     font-weight: 700;

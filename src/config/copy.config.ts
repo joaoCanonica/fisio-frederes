@@ -96,7 +96,7 @@ export const copy = {
     fontes: [NOVAK, MORGAN],
     ritmo: {
       texto:
-        'Sentar, ficar em pé e andar não têm data marcada. Por isso, as referências mais atuais, revisadas em 2022 pelo CDC e pela Academia Americana de Pediatria, mostram a idade até a qual a maioria das crianças (pelo menos 3 em cada 4) já alcançou cada marco. Passou dessa idade? Vale conversar com o pediatra, sem esperar.',
+        'Cada marco tem o seu momento, do controle da cabeça nos primeiros meses até a caminhada. O quadro abaixo mostra os meses que eu uso como referência no acompanhamento. Se algum deles não apareceu até o mês indicado, vale conversar com o pediatra e procurar uma consulta fisioterapêutica, sem esperar.',
     },
     caderneta: {
       titulo: 'Use a Caderneta da Criança',
@@ -133,7 +133,7 @@ export const copy = {
       {
         pergunta: 'Meu filho ainda não anda. Isso é um problema?',
         resposta:
-          'Não necessariamente. Pelas referências revisadas em 2022 pelo CDC e pela Academia Americana de Pediatria, pelo menos 3 em cada 4 crianças dão alguns passos sozinhas até os 15 meses e andam sem apoio até os 18 meses. Se a criança passou dessa idade, ou se há outras dificuldades motoras, o caminho é conversar com o pediatra e, se indicado, procurar uma consulta fisioterapêutica.',
+          'Não necessariamente. Os primeiros passos costumam aparecer entre o 10º e o 12º mês, e a caminhada se firma entre o 12º e o 18º mês. Se a criança passou dos 18 meses sem andar, ou se há outras dificuldades motoras, o caminho é conversar com o pediatra e, se indicado, procurar uma consulta fisioterapêutica.',
         pesquisa: 'marcos-motores.md#3',
       },
       {
