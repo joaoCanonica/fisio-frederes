@@ -45,7 +45,7 @@ Os itens abaixo dependem de pessoas e documentos; o código não consegue verifi
 - [ ] Nomes dos capítulos do vídeo P-001 (propostos a partir dos quadros).
 - [x] Fotos: as capturas do Instagram foram liberadas para o site (trocar por originais em alta resolução quando houver).
 - [ ] Até 6 publicações selecionadas para o bloco do Instagram.
-- [ ] Domínio definitivo e links do Google Maps.
+- [ ] Domínio definitivo: **fisiojoaofrederes.com.br** (já configurado no site; falta registrar no Registro.br e apontar na Vercel).
 
 ## Go-live
 1. Resolver o que for possível da lista acima.

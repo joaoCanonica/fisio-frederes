@@ -279,14 +279,13 @@
       "autoria": "propria",
       "consentimento": "nao-se-aplica",
       "tcleRef": null,
-      "publicavel": false,
+      "publicavel": true,
       "previewOk": true,
       "crop": null,
       "edicoes": [],
       "pacienteRef": null,
       "menorDeIdade": false,
-      "dataRegistro": null,
-      "dataRegistroObs": "Informar a data de gravação do vídeo \"Conheça o João Pedro\" (sem ela o vídeo não vai para produção). Ao receber: preencher dataRegistro e mudar publicavel para true.",
+      "dataRegistro": "2026-10-22",
       "ocr": {
         "status": "manual",
         "texto": [

@@ -30,6 +30,7 @@ ffmpeg -i mezz.mkv -i audio-norm.wav -map 0:v -map 1:a -c:v libvpx-vp9 -crf 35 -
 ffmpeg -ss 2 -i mezz.mkv -frames:v 1 poster.png   # depois: sharp → avif (q55) e webp (q78)
 ```
 
-## Pendente
-- Data de gravação (`dataRegistro`): sem ela o vídeo fica só no preview. Ao receber, preencher e mudar `publicavel` para `true`.
+Gravado em 22/10/2026 (`dataRegistro`), liberado para produção.
+
+## Opcional
 - Legenda: opcional. Se houver transcrição (ex.: SRT exportado do HappyScribe), converter para `.vtt`, revisar e usar `legenda.status: "revisada"`.
