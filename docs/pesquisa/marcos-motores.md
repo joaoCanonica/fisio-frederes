@@ -37,3 +37,11 @@ Janelas (percentis 1–99, meses): sentar sem apoio 3,8–9,2; ficar em pé com 
 - **Valores (idade até a qual ≥75% das crianças alcançam):** sustenta a cabeça de bruços 2 m · rola de bruços para barriga para cima 6 m · senta sem apoio 9 m · fica em pé e anda segurando nos móveis 12 m · dá alguns passos sozinha 15 m · anda sem apoio 18 m · chuta bola e corre 24 m · pula com os dois pés 30 m.
 - **Observação:** engatinhar foi retirado dos checklists em 2022 (muitas crianças pulam essa fase).
 - **Conferir:** antes de cada revisão anual, comparar com https://www.cdc.gov/act-early/milestones/ e com a Caderneta da Criança vigente.
+
+### Atualização de 2026-10-23 (2): quadro com a referência do fisioterapeuta
+- **Pedido do cliente:** o quadro do site passa a mostrar os meses que João Pedro Frederes usa no acompanhamento:
+  controle cervical (tummy time) 3º mês · virar/rolar 4º ao 6º · sentar 6º · engatinhar 9º · ficar em pé 9º
+  (obrigatório) · primeiros passos 10º ao 12º · caminhar 12º ao 18º.
+- **Fonte exibida:** o próprio fisioterapeuta (nome e CREFITO), não o CDC/AAP: os meses não são os do checklist
+  de 2022 (que usa a idade em que ≥75% já alcançaram o marco). A FAQ "Meu filho ainda não anda" usa os mesmos meses.
+- O card "Desenvolvimento motor" segue citando CDC/AAP 2022 para a ideia geral de idade de referência.
