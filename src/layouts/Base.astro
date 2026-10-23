@@ -41,11 +41,17 @@ const canonico = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descricao} />
+    <meta property="og:image" content={new URL('/og.jpg', Astro.site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo de João Pedro Frederes, fisioterapeuta pediátrico, CREFITO 369113-F" />
     {preload && <link rel="preload" as="image" imagesrcset={preload.srcset} imagesizes={preload.sizes} type={preload.type} fetchpriority="high" />}
     <link rel="preload" as="font" type="font/woff2" href={marcellus400} crossorigin />
     <link rel="preload" as="font" type="font/woff2" href={lato400} crossorigin />
     <link rel="preload" as="font" type="font/woff2" href={lato700} crossorigin />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script is:inline>
       // .js para revelações; .entrada uma vez por sessão, nunca com reduced-motion.
       (function () {

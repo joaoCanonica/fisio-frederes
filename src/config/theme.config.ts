@@ -5,28 +5,36 @@
  *  - contraste AA de todos os pares declarados em `pares`, nos dois esquemas e nos tons;
  *  - que nenhum arquivo em src/ (fora deste) tenha cor hardcoded.
  *
- * Origem: vinho amostrado do logo (média de 16.253 pixels do monograma em
- * assets-originais/marca/logo-original.png ≈ rgb(81, 29, 42)).
+ * Origem: cores amostradas da logo de 2026 (assets-originais/marca/logo-2026.jpg),
+ * por faixa de matiz nos pixels do monograma: vinho do J (mediana #872f3d, sombra
+ * #681527, nome #601727), mostarda da cabecinha (#f0ab3a), verde-azulado da barra
+ * do F (#539691), sálvia do F (#afc5b8), coral das faíscas e do cubo (#e5978a) e o
+ * creme do fundo (#fdfcf8).
  */
 
 /** Primitivas: nomes por papel, não por uso. Não usar direto em componentes. */
 export const primitivas = {
-  vinhoProfundo: '#511d2a', // amostrado do logo · cor de ação
-  vinhoMedio: '#6c2a3b', // hover
-  vinhoNoite: '#2b0e16',
-  vinhoClaro: '#d9a7b3', // ação/links sobre fundos escuros
-  rose: '#ead2cd', // acento quente (nude) derivado do vinho
-  roseSuave: '#f6ebe8',
-  gelo: '#f4f3f3', // fundo (branco-gelo do mockup do logo)
-  geloClaro: '#fbfafa',
+  vinhoProfundo: '#681527', // sombra do J na logo · cor de ação
+  vinhoMedio: '#872f3d', // corpo do J na logo · hover
+  vinhoNoite: '#2e0b14',
+  vinhoClaro: '#e8aab4', // ação/links sobre fundos escuros
+  rose: '#f3d5cd', // acento quente, do coral da logo clareado
+  roseSuave: '#faece7',
+  gelo: '#f6f2ec',
+  geloClaro: '#fdfcf8', // creme do fundo da logo
   branco: '#ffffff',
-  offWhite: '#f8f6f4', // off-white neutro, só para alternar seções
-  roseNevoa: '#fbf4f2', // fundo alternado de seção, muito suave
-  // Ilustrações (decorativas, nunca texto): tons suaves para o universo infantil.
-  ilustraRose: '#efc9c4',
-  ilustraSalvia: '#bcd8cc',
-  ilustraSol: '#f3d9a4',
-  ilustraCeu: '#c4d8ea',
+  creme: '#fdfcf8', // fundo da logo
+  offWhite: '#f8f3ea', // creme um tom abaixo, só para alternar seções
+  roseNevoa: '#fcf2e2', // topo do hero: creme com um toque da mostarda
+  // Cores da logo (decorativas: bolinhas, formas, ilustrações; nunca texto).
+  mostarda: '#f0ab3a',
+  tealLogo: '#539691',
+  salvia: '#afc5b8',
+  coral: '#e5978a',
+  ilustraRose: '#eeb0a4', // coral
+  ilustraSalvia: '#bcd1c5', // sálvia
+  ilustraSol: '#f5c46a', // mostarda
+  ilustraCeu: '#9cc6c1', // verde-azulado
   grafite: '#262123', // texto
   grafiteMedio: '#5b5053',
   grafiteNoite: '#1a1416',
@@ -63,7 +71,7 @@ export interface Tokens {
 }
 
 const claro: Tokens = {
-  fundo: 'branco',
+  fundo: 'creme',
   superficie: 'branco',
   superficieAlt: 'offWhite',
   texto: 'grafite',
@@ -144,7 +152,10 @@ export const theme = {
     texto: "'Lato', 'Lato Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif",
   },
 
-  /** Motivo "coluna de pontos" do monograma: diâmetros relativos, de cima para baixo. */
+  /**
+   * Motivo das bolinhas (a "cabecinha" e a bola da logo): diâmetros relativos, de cima
+   * para baixo. As cores alternam entre as da logo (--marca e --bola-2 a --bola-5).
+   */
   pontos: [4, 6, 8, 9, 6, 5, 12],
 } as const;
 

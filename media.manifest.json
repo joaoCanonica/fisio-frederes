@@ -16,7 +16,7 @@
       "autoria": "CONFIRMAR",
       "consentimento": "nao-se-aplica",
       "publicavel": false,
-      "previewOk": true,
+      "previewOk": false,
       "crop": null,
       "edicoes": [],
       "pacienteRef": null,
@@ -48,7 +48,60 @@
         "assets-originais/marca/derivados/logotipo-mono-claro.svg",
         "assets-originais/marca/derivados/logotipo-mono-escuro.svg"
       ],
-      "usoSugerido": "Fonte da identidade (tema vinho/branco-gelo). Usar os SVG derivados só depois de comparar com o vetor original do designer.",
+      "usoSugerido": "Substituída pela logo de 2026 (marca-logo-2026). Mantida só como histórico.",
+      "legenda": {
+        "status": "nao-se-aplica"
+      }
+    },
+    {
+      "id": "marca-logo-2026",
+      "arquivo": "assets-originais/marca/logo-2026.jpg",
+      "categoria": "marca",
+      "tipo": "imagem",
+      "largura": 1402,
+      "altura": 1122,
+      "bytes": 153396,
+      "sha256": "f095455b14e69697a2b6b23e77bb35b551d3eaf7e497c86df416889c3d5a1c1d",
+      "descricao": "Logo de 2026: monograma JF (J vinho; F em sálvia, mostarda e verde-azulado formando uma criança com a cabecinha amarela e faíscas de movimento), cubo de brinquedo com estrela à esquerda e bola colorida à direita ligados por um fio; abaixo, 'JOÃO PEDRO FREDERES', 'FISIOTERAPEUTA PEDIÁTRICO' e 'CREFITO 369113 - F'. Fundo creme.",
+      "alt": "Logo de João Pedro Frederes, fisioterapeuta pediátrico, CREFITO 369113-F",
+      "autoria": "propria",
+      "consentimento": "nao-se-aplica",
+      "publicavel": false,
+      "previewOk": false,
+      "crop": null,
+      "edicoes": [],
+      "pacienteRef": null,
+      "menorDeIdade": false,
+      "dataRegistro": null,
+      "ocr": {
+        "status": "manual",
+        "texto": [
+          "JOÃO PEDRO FREDERES",
+          "FISIOTERAPEUTA PEDIÁTRICO",
+          "CREFITO 369113 - F"
+        ]
+      },
+      "problemas": [
+        "Raster (JPG 1402x1122), sem vetor: as variações sem fundo são recortes do raster",
+        "Sem a região do CREFITO no texto da logo (o site mostra CREFITO-10 na identificação)"
+      ],
+      "cores": {
+        "vinho": "#872f3d (sombra #681527; nome #601727)",
+        "mostarda": "#f0ab3a",
+        "tealLogo": "#539691",
+        "salvia": "#afc5b8",
+        "coral": "#e5978a",
+        "fundo": "#fdfcf8",
+        "observacao": "Amostradas por faixa de matiz nos pixels do monograma; aplicadas em src/config/theme.config.ts."
+      },
+      "derivados": [
+        "public/marca/monograma-{64,128,256,512}.webp",
+        "public/favicon-32.png",
+        "public/apple-touch-icon.png",
+        "public/icon-512.png",
+        "public/og.jpg"
+      ],
+      "usoSugerido": "Fonte da identidade. Derivados gerados por scripts/gerar-marca.py (não passam por prepare-media).",
       "legenda": {
         "status": "nao-se-aplica"
       }

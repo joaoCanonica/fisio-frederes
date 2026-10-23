@@ -252,3 +252,10 @@ a:hover {
 
 /* "Adesivo": ilustração sobre círculo colorido (ui/Ilustracao em listas). */
 .adesivo { display: block; aspect-ratio: 1; border-radius: 50%; padding: 16%; background: color-mix(in oklab, var(--cor-adesivo, var(--ilustra-sol)) 55%, var(--superficie)); }
+
+/* Bolinhas coloridas da marca (cabecinha e bola da logo): alternam as cores da logo. */
+.bolas > :nth-child(5n + 1) { --bola: var(--marca); }
+.bolas > :nth-child(5n + 2) { --bola: var(--bola-2); }
+.bolas > :nth-child(5n + 3) { --bola: var(--bola-3); }
+.bolas > :nth-child(5n + 4) { --bola: var(--bola-4); }
+.bolas > :nth-child(5n + 5) { --bola: var(--bola-5); }

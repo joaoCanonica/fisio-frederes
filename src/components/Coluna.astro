@@ -1,6 +1,6 @@
 ---
-// Assinatura "A Coluna": a coluna de pontos vertebrais do monograma vira o
-// indicador de progresso. Cada ponto é uma seção; acende quando a seção passa.
+// Assinatura "A Coluna": bolinhas nas cores da logo (como a cabecinha e a bola)
+// viram o indicador de progresso. Cada bolinha é uma seção; acende quando a seção passa.
 // Em reduced-motion: estática e completa (todos acesos, sem transição).
 // Estado controlado por src/scripts/secoes.ts.
 import { theme } from '../config/theme.config.ts';
@@ -10,7 +10,7 @@ const max = Math.max(...theme.pontos);
 const tam = (i: number) => (theme.pontos[i % theme.pontos.length] ?? max) / max;
 ---
 <nav class="coluna" aria-label="Seções da página" data-coluna>
-  <ol>
+  <ol class="bolas">
     {lista.map((s, i) => (
       <li>
         <a href={`#${s.id}`} data-alvo={s.id} style={`--t:${tam(i)}`}>
@@ -63,7 +63,7 @@ const tam = (i: number) => (theme.pontos[i % theme.pontos.length] ?? max) / max;
     border: 1.5px solid var(--destaque);
     transition: background-color 0.4s var(--ease), transform 0.4s var(--ease);
   }
-  a[data-aceso] .coluna__ponto { background: var(--destaque); }
+  a[data-aceso] .coluna__ponto { background: var(--bola, var(--destaque)); }
   a[aria-current='true'] .coluna__ponto { transform: scale(1.35); }
   .coluna__rotulo {
     position: absolute;
@@ -84,7 +84,7 @@ const tam = (i: number) => (theme.pontos[i % theme.pontos.length] ?? max) / max;
   a:hover .coluna__rotulo,
   a:focus-visible .coluna__rotulo { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
-    .coluna__ponto { background: var(--destaque); transition: none; }
+    .coluna__ponto { background: var(--bola, var(--destaque)); transition: none; }
     a[aria-current='true'] .coluna__ponto { transform: none; }
   }
 </style>
