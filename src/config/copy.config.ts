@@ -21,7 +21,7 @@ export interface Faq {
 const LICARI: Fonte = { texto: 'Licari et al., Autism Research, 2020', url: 'https://doi.org/10.1002/aur.2230' };
 const MORGAN: Fonte = { texto: 'Morgan et al., JAMA Pediatrics, 2021', url: 'https://doi.org/10.1001/jamapediatrics.2021.0878' };
 const NOVAK: Fonte = { texto: 'Novak et al., JAMA Pediatrics, 2017', url: 'https://doi.org/10.1001/jamapediatrics.2017.1689' };
-const OMS: Fonte = { texto: 'OMS, WHO Motor Development Study, 2006', url: 'https://www.who.int/tools/child-growth-standards/standards/motor-development-milestones' };
+const CDC_AAP: Fonte = { texto: 'CDC e Academia Americana de Pediatria (Zubler et al., Pediatrics, 2022)', url: 'https://doi.org/10.1542/peds.2021-052138' };
 const MS_TEA: Fonte = { texto: 'Ministério da Saúde, Diretrizes de Atenção à Reabilitação da Pessoa com TEA, 2014', url: 'http://bvsms.saude.gov.br/bvs/publicacoes/diretrizes_atencao_reabilitacao_pessoa_autismo.pdf' };
 const CADERNETA: Fonte = { texto: 'Ministério da Saúde, Caderneta da Criança, 7ª ed., 2024', url: 'https://www.gov.br/saude/caderneta-digital-da-crianca' };
 
@@ -37,25 +37,25 @@ export const copy = {
     eyebrow: 'Quem sou',
     titulo: 'Prazer, sou o João Pedro',
     texto:
-      'Sou fisioterapeuta formado pela Uniplac, pós-graduado em Fisioterapia Neuropediátrica e mestre em Ambiente e Saúde. Atendo bebês e crianças na NeuroKids, em Lages, e também no Centro de Reabilitação da Uniplac. Meu trabalho é olhar para o movimento de cada criança e encontrar, junto com a família, o que ajuda ela a brincar, explorar e ganhar autonomia.',
+      'Sou fisioterapeuta, formado pela Uniplac, aqui em Lages. Fiz pós-graduação em Fisioterapia Neuropediátrica e mestrado em Ambiente e Saúde. Hoje atendo bebês e crianças na NeuroKids e no Centro Especializado em Reabilitação III (CER). No dia a dia, observo como cada criança se movimenta e, junto com a família, busco o que a ajuda a brincar, explorar o mundo e ganhar autonomia.',
     verifique: 'Meu registro pode ser conferido no Conselho Regional de Fisioterapia e Terapia Ocupacional (CREFITO).',
   },
 
   atua: {
     eyebrow: 'Com quem trabalho',
     titulo: 'Para quem é o atendimento',
-    intro: 'Bebês e crianças que precisam de ajuda com o movimento, cada uma no seu tempo.',
+    intro: 'Bebês e crianças que precisam de ajuda no movimento, em diferentes fases da vida.',
     areas: [
       {
         titulo: 'Desenvolvimento motor',
         texto:
-          'Para quem está demorando para sentar, engatinhar, ficar em pé ou andar, ou tem dificuldade para correr e pular. Cada marco tem uma janela de idade, e eu acompanho o ritmo de cada criança.',
-        fontes: [OMS],
+          'Para quem está demorando para sentar, engatinhar, ficar em pé ou andar, ou tem dificuldade para correr e pular. Cada marco tem uma idade de referência, e eu acompanho o ritmo de cada criança.',
+        fontes: [CDC_AAP],
       },
       {
         titulo: 'Neuropediatria',
         texto:
-          'Para crianças com condições neurológicas que afetam o movimento, como a paralisia cerebral. Nesses casos, as diretrizes recomendam começar cedo, assim que o risco é identificado.',
+          'Para crianças com condições neurológicas que afetam o desenvolvimento. Nesses casos, as diretrizes recomendam começar cedo, assim que o diagnóstico é identificado.',
         fontes: [NOVAK, MORGAN],
       },
       {
@@ -96,7 +96,7 @@ export const copy = {
     fontes: [NOVAK, MORGAN],
     ritmo: {
       texto:
-        'Sentar, engatinhar, ficar em pé e andar não têm data marcada. Um estudo da Organização Mundial da Saúde com crianças saudáveis de cinco países mostrou que cada marco acontece dentro de uma janela de vários meses.',
+        'Sentar, ficar em pé e andar não têm data marcada. Por isso, as referências mais atuais, revisadas em 2022 pelo CDC e pela Academia Americana de Pediatria, mostram a idade até a qual a maioria das crianças (pelo menos 3 em cada 4) já alcançou cada marco. Passou dessa idade? Vale conversar com o pediatra, sem esperar.',
     },
     caderneta: {
       titulo: 'Use a Caderneta da Criança',
@@ -133,8 +133,8 @@ export const copy = {
       {
         pergunta: 'Meu filho ainda não anda. Isso é um problema?',
         resposta:
-          'Não necessariamente. Segundo a Organização Mundial da Saúde, crianças saudáveis começam a andar sozinhas dentro de uma janela ampla, entre cerca de 8 e 18 meses. Se a criança passou dessa faixa, ou se há outras dificuldades motoras, o caminho é conversar com o pediatra e, se indicado, procurar uma consulta fisioterapêutica.',
-        pesquisa: 'marcos-motores.md#1',
+          'Não necessariamente. Pelas referências revisadas em 2022 pelo CDC e pela Academia Americana de Pediatria, pelo menos 3 em cada 4 crianças dão alguns passos sozinhas até os 15 meses e andam sem apoio até os 18 meses. Se a criança passou dessa idade, ou se há outras dificuldades motoras, o caminho é conversar com o pediatra e, se indicado, procurar uma consulta fisioterapêutica.',
+        pesquisa: 'marcos-motores.md#3',
       },
       {
         pergunta: 'A fisioterapia trata o autismo?',
@@ -145,7 +145,7 @@ export const copy = {
       {
         pergunta: 'Por que começar cedo?',
         resposta:
-          'Os primeiros anos de vida são uma fase de grande plasticidade do sistema nervoso. Para crianças com paralisia cerebral ou alto risco, diretrizes internacionais recomendam começar a intervenção assim que o risco é identificado. Começar cedo não é garantia de resultado; significa aproveitar uma fase importante do desenvolvimento, com um plano terapêutico ajustado a cada criança.',
+          'Os primeiros anos de vida são uma fase de grande plasticidade do sistema nervoso. Para crianças com condições neurológicas, diretrizes internacionais recomendam começar a intervenção assim que o diagnóstico é identificado. Começar cedo não é garantia de resultado; significa aproveitar uma fase importante do desenvolvimento, com um plano terapêutico ajustado a cada criança.',
         pesquisa: 'fisioterapia-neuropediatrica.md#1,#2',
       },
       {
@@ -167,7 +167,7 @@ export const copy = {
       {
         pergunta: 'Onde são os atendimentos?',
         resposta:
-          'Os atendimentos de fisioterapia de João Pedro Frederes acontecem na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro de Reabilitação da Uniplac. O endereço e o link do mapa estão na seção "Onde atendo" desta página. Para combinar horários, basta chamar no WhatsApp.',
+          'Os atendimentos de fisioterapia de João Pedro Frederes acontecem na NeuroKids, na Rua Frei Rogério, 394, Centro, Lages (SC). Ele também atua no Centro Especializado em Reabilitação III (CER). O endereço e o link do mapa estão na seção "Onde atendo" desta página. Para combinar horários, basta chamar no WhatsApp.',
       },
       {
         pergunta: 'Como entrar em contato?',

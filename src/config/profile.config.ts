@@ -77,7 +77,7 @@ export const profile = {
     },
     {
       id: 'cer-uniplac',
-      nome: 'Centro de Reabilitação Uniplac',
+      nome: 'Centro Especializado em Reabilitação III (CER)',
       instagram: 'ceruniplac',
       autorizacao: 'formal-arquivada',
       comprovante: 'Autorização de uso do nome e do espaço confirmada pelo cliente em 2026-10-23 (arquivada com o cliente)',
