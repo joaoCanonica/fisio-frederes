@@ -1,19 +1,19 @@
-"""Gera as variações da logo a partir de assets-originais/marca/logo-2026.jpg.
+"""Gera os ícones PNG e a imagem de compartilhamento a partir de assets-originais/marca/logo-2026.jpg.
+(O monograma e o favicon em SVG vêm de scripts/vetorizar-logo.py.)
 
     python3 scripts/gerar-marca.py
 
 O original tem fundo creme (#fdfcf8). Para cada variação o fundo é removido por
 "desmistura" de cor (alfa proporcional à distância do creme e cor recuperada sem
 halo). No monograma, uma abertura morfológica apaga as linhas finas (os fios que
-ligam o cubo e a bola), que ficariam soltas no recorte. Saída em public/marca/ e
-nos ícones de public/. Rodar de novo só se a logo mudar.
+ligam o cubo e a bola), que ficariam soltas no recorte. Saída: ícones e og.jpg em
+public/. Rodar de novo só se a logo mudar.
 """
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter
 
 RAIZ = Path(__file__).resolve().parent.parent
 ORIGINAL = RAIZ / 'assets-originais/marca/logo-2026.jpg'
-SAIDA = RAIZ / 'public/marca'
 FUNDO = (253, 252, 248)
 T0, T1 = 10, 70  # distância (soma RGB) do creme: abaixo de T0 é fundo, acima de T1 é opaco
 
@@ -106,15 +106,8 @@ def quadrado(rgba: Image.Image, fundo=None) -> Image.Image:
     return base
 
 
-def salvar(rgba: Image.Image, nome: str, alturas: list[int]) -> None:
-    for h in alturas:
-        w = round(rgba.width * h / rgba.height)
-        rgba.resize((w, h), Image.LANCZOS).save(SAIDA / f'{nome}-{h}.webp', quality=90, method=6)
-    print(nome, rgba.size, [f'{nome}-{h}.webp' for h in alturas])
-
 
 def main() -> None:
-    SAIDA.mkdir(parents=True, exist_ok=True)
     orig = Image.open(ORIGINAL)
     # Emblema completo (cubo, JF e bola) fica só no og.jpg: sobre fundo escuro as sombras
     # do cubo e da bola não recortam bem, então o site usa o monograma.
@@ -123,7 +116,8 @@ def main() -> None:
     # Tira a bola (canto inferior direito) e restos à esquerda do J.
     mono = apagar(mono, [(520, 400, 610, 625), (0, 0, 20, 625)])
     mono = aparar(so_formas_grandes(mono), 6)
-    salvar(mono, 'monograma', [64, 128, 256, 512])
+    # (O monograma do site é o vetor de scripts/vetorizar-logo.py; o recorte raster
+    # abaixo serve só de base para os ícones PNG.)
     # Logo completa (com nome e CREFITO), fundo creme preservado, para compartilhamento.
     og = Image.new('RGB', (1200, 630), FUNDO)
     cheia = orig.convert('RGB')

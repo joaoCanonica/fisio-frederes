@@ -16,11 +16,12 @@ Substitui `logo-original.png` (monograma com a coluna de pontos), mantido só co
 As cores da logo que não passam AA como texto (mostarda, verde-azulado, sálvia, coral) ficam só em
 elementos decorativos: bolinhas da "Coluna", marcadores, formas e ilustrações (`--bola-2` a `--bola-5`).
 
-## Variações (`python3 scripts/gerar-marca.py`)
-- `public/marca/monograma-{64,128,256,512}.webp`: JF + cabecinha + faíscas, fundo removido, sem os fios
-  do cubo e da bola (cabeçalho, rodapé, entrada, placeholders).
-- `public/favicon-32.png`, `public/apple-touch-icon.png`, `public/icon-512.png`: monograma num quadrado creme.
-- `public/og.jpg` (1200x630): logo completa para links compartilhados (WhatsApp, redes).
-- O emblema com cubo e bola não é recortado: as sombras não ficam boas sobre o fundo escuro.
+## Vetor (editável)
+`python3 scripts/vetorizar-logo.py` gera em `assets-originais/marca/vetor/` a logo completa, a versão
+para fundo escuro, o emblema e o monograma em SVG em camadas (ids por parte, cores sólidas e três degradês),
+e `node scripts/exportar-logo.mjs` exporta cada um em PDF vetorial e PNG transparente. Detalhes em
+`assets-originais/marca/vetor/LEIA-ME.md`.
 
-Quando houver o vetor (SVG/PDF) do designer, trocar os recortes por ele.
+No site: `public/marca/monograma.svg` (cabeçalho, rodapé, entrada, placeholders) e `public/favicon.svg`.
+`python3 scripts/gerar-marca.py` gera, a partir do raster, os ícones PNG (`favicon-32.png`,
+`apple-touch-icon.png`, `icon-512.png`) e `og.jpg` (1200x630, logo completa para links compartilhados).
