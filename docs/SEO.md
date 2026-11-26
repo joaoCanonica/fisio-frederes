@@ -20,6 +20,8 @@ responde com base no que está indexado e no Perfil da Empresa. Não é erro do 
    - Enquanto for `vercel.app`: tipo "Prefixo do URL", método "Tag HTML". Copiar só o código do `content="..."` para a variável
      `GOOGLE_SITE_VERIFICATION` na Vercel (ambiente Production) e fazer um novo deploy; depois clicar em Verificar.
    - Em "Sitemaps", enviar `sitemap.xml`. Em "Inspeção de URL", pedir indexação da página inicial.
+   - Código atual (2026-11-26) já no site: `profile.googleSiteVerification` em `src/config/profile.config.ts`. Ao comprar o domínio,
+     o mesmo código pode ir num registro TXT do DNS (`google-site-verification=...`) para a propriedade do tipo "Domínio".
    - (Opcional) Bing Webmaster Tools: variável `BING_SITE_VERIFICATION`. O Bing alimenta o ChatGPT e o Copilot.
 3. **Perfil da Empresa no Google** (business.google.com): é o que mais pesa em buscas como "fisioterapeuta infantil Lages" e na IA do Google.
    Categoria "Fisioterapeuta", endereço da NeuroKids (ou área atendida), WhatsApp, horário, fotos, e o link do site.

@@ -18,13 +18,14 @@ import BarraMobile from '../components/BarraMobile.astro';
 import { EM_PRODUCAO } from '../lib/modo.ts';
 import { listarPendencias } from '../lib/validacao.ts';
 import { identificacao } from '../lib/contato.ts';
+import { profile } from '../config/profile.config.ts';
 import { cssDoTema, themeColor } from '../lib/tema.ts';
 
 interface Props { titulo: string; descricao: string; noindex?: boolean; landing?: boolean; preload?: { srcset: string; sizes: string; type: string } | undefined }
 const { titulo, descricao, noindex = false, landing = false, preload } = Astro.props;
 // Verificação do Google Search Console (e do Bing): o código vai na variável de ambiente
 // da Vercel; sem ela, nada é emitido.
-const verificacaoGoogle = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+const verificacaoGoogle = process.env.GOOGLE_SITE_VERIFICATION?.trim() || profile.googleSiteVerification;
 const verificacaoBing = process.env.BING_SITE_VERIFICATION?.trim();
 const pend = EM_PRODUCAO ? [] : listarPendencias();
 const nBloq = pend.filter((p) => p.nivel === 'bloqueante').length;

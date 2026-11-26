@@ -114,6 +114,12 @@ export const profile = {
   /** Domínio de produção, sem barra final. */
   /** Escolhido pelo cliente (2026-10-23); registrar no Registro.br antes do go-live. */
   dominio: confirmado('https://fisiojoaofrederes.com.br'),
+
+  /**
+   * Código de verificação do Google Search Console (é público: vai numa <meta> da página).
+   * A variável de ambiente GOOGLE_SITE_VERIFICATION, se existir, tem prioridade.
+   */
+  googleSiteVerification: 'DtWCA-EfDu6kGZ-TU4BLqatZXsSYQA4i7pGXZ_MKNmA',
 } as const;
 
 export type Profile = typeof profile;
