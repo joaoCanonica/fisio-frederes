@@ -25,7 +25,9 @@ interface Props { titulo: string; descricao: string; noindex?: boolean; landing?
 const { titulo, descricao, noindex = false, landing = false, preload } = Astro.props;
 // Verificação do Google Search Console (e do Bing): o código vai na variável de ambiente
 // da Vercel; sem ela, nada é emitido.
-const verificacaoGoogle = process.env.GOOGLE_SITE_VERIFICATION?.trim() || profile.googleSiteVerification;
+const verificacaoGoogle = [
+  ...new Set([process.env.GOOGLE_SITE_VERIFICATION?.trim(), ...profile.googleSiteVerification].filter((c): c is string => !!c)),
+];
 const verificacaoBing = process.env.BING_SITE_VERIFICATION?.trim();
 const pend = EM_PRODUCAO ? [] : listarPendencias();
 const nBloq = pend.filter((p) => p.nivel === 'bloqueante').length;
@@ -40,7 +42,7 @@ const canonico = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={descricao} />
     <meta name="author" content={identificacao()} />
     <meta name="theme-color" content={themeColor()} />
-    {EM_PRODUCAO && verificacaoGoogle && <meta name="google-site-verification" content={verificacaoGoogle} />}
+    {EM_PRODUCAO && verificacaoGoogle.map((c) => <meta name="google-site-verification" content={c} />)}
     {EM_PRODUCAO && verificacaoBing && <meta name="msvalidate.01" content={verificacaoBing} />}
     <style is:global set:html={cssDoTema()}></style>
     {EM_PRODUCAO && !noindex ? <link rel="canonical" href={canonico} /> : <meta name="robots" content="noindex, nofollow" />}
