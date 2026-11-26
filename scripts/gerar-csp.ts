@@ -12,7 +12,8 @@ function* paginas(dir: string): Generator<string> {
   for (const n of readdirSync(dir)) {
     const p = join(dir, n);
     if (statSync(p).isDirectory()) yield* paginas(p);
-    else if (p.endsWith('.html')) yield p;
+    // googleXXXX.html (verificação do Search Console) precisa ficar byte a byte igual.
+    else if (p.endsWith('.html') && !/^google[0-9a-f]+\.html$/.test(n)) yield p;
   }
 }
 

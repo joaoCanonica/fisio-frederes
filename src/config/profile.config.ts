@@ -116,10 +116,12 @@ export const profile = {
   dominio: confirmado('https://fisiojoaofrederes.com.br'),
 
   /**
-   * Código de verificação do Google Search Console (é público: vai numa <meta> da página).
-   * A variável de ambiente GOOGLE_SITE_VERIFICATION, se existir, tem prioridade.
+   * Códigos de verificação do Google Search Console (públicos: cada um vira uma <meta>).
+   * c_2Q…: propriedade "Prefixo do URL" (tag HTML). DtWCA…: o mesmo token do TXT de DNS.
+   * O arquivo public/googlea5b1f7a2259f29d9.html é o método "arquivo HTML".
+   * A variável de ambiente GOOGLE_SITE_VERIFICATION, se existir, entra junto.
    */
-  googleSiteVerification: 'DtWCA-EfDu6kGZ-TU4BLqatZXsSYQA4i7pGXZ_MKNmA',
+  googleSiteVerification: ['c_2Q5p9KOaQ7Iszg3T8Y9Yk2GFRIJ_vB_yb_4wp6cgk', 'DtWCA-EfDu6kGZ-TU4BLqatZXsSYQA4i7pGXZ_MKNmA'] as readonly string[],
 } as const;
 
 export type Profile = typeof profile;

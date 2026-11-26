@@ -20,7 +20,8 @@ function* paginas(dir: string): Generator<string> {
   for (const n of readdirSync(dir)) {
     const p = join(dir, n);
     if (statSync(p).isDirectory()) yield* paginas(p);
-    else if (p.endsWith('.html') && !p.includes('/pendencias/') && !p.includes('/_kit/')) yield p;
+    // googleXXXX.html: arquivo de verificação do Search Console, não é página do site.
+    else if (p.endsWith('.html') && !p.includes('/pendencias/') && !p.includes('/_kit/') && !/^google[0-9a-f]+\.html$/.test(n)) yield p;
   }
 }
 const textoVisivel = (html: string): string =>
