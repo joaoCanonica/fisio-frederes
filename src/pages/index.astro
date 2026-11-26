@@ -14,30 +14,67 @@ import Atendimento from '../components/Atendimento.astro';
 import SlotConvite from '../components/SlotConvite.astro';
 import SlotAtendimentos from '../components/SlotAtendimentos.astro';
 import Contato from '../components/Contato.astro';
-import { profile, registroCrefito, sede } from '../config/profile.config.ts';
+import { profile, registroCrefito, sede, tituloProfissional } from '../config/profile.config.ts';
+import { instagramUrl } from '../lib/contato.ts';
 import { poseDaSecao, SIZES_HERO } from '../lib/retrato.ts';
-import { EM_PRODUCAO } from '../lib/modo.ts';
+import { EM_PRODUCAO, exibir } from '../lib/modo.ts';
 const p = profile;
 const poseHero = poseDaSecao('inicio');
 const preload = poseHero ? { srcset: poseHero.avif, sizes: SIZES_HERO, type: 'image/avif' } : undefined;
 const titulo = `${p.nomeMarca.valor} · Fisioterapia pediátrica em Lages (SC)`;
 const descricao =
   'João Pedro Frederes, fisioterapeuta (CREFITO 369113-F): atendimento neuropediátrico com foco no desenvolvimento motor de bebês e crianças, em Lages (SC). Contato pelo WhatsApp.';
-// Dados estruturados só em produção (com dados confirmados).
+// Dados estruturados só em produção (com dados confirmados). Um @graph com o local de
+// atendimento e o profissional, para o Google (busca local) e para buscadores de IA.
+const site = Astro.site?.href ?? p.dominio.valor;
+const u = sede();
 const ld = EM_PRODUCAO
   ? JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'Physiotherapy',
-      name: `${p.nomeCompleto.valor} – ${p.profissao.valor}`,
-      url: Astro.site?.href ?? p.dominio.valor,
-      address: sede().endereco.valor,
-      medicalSpecialty: 'Pediatric',
-      employee: {
-        '@type': 'Person',
-        name: p.nomeCompleto.valor,
-        jobTitle: p.profissao.valor,
-        identifier: registroCrefito(),
-      },
+      '@graph': [
+        {
+          '@type': ['Physiotherapy', 'MedicalBusiness'],
+          '@id': `${site}#atendimento`,
+          name: `${p.nomeCompleto.valor} · Fisioterapia pediátrica`,
+          description: descricao,
+          url: site,
+          image: new URL('/og.jpg', site).href,
+          logo: new URL('/icon-512.png', site).href,
+          telephone: `+${p.whatsapp.valor}`,
+          medicalSpecialty: 'Pediatric',
+          areaServed: { '@type': 'City', name: 'Lages', containedInPlace: { '@type': 'State', name: 'Santa Catarina' } },
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Rua Frei Rogério, 394, Centro',
+            addressLocality: 'Lages',
+            addressRegion: 'SC',
+            postalCode: '88502-161',
+            addressCountry: 'BR',
+          },
+          hasMap: exibir(u.mapsUrl) ?? undefined,
+          sameAs: [instagramUrl()],
+          employee: { '@id': `${site}#joao-pedro-frederes` },
+        },
+        {
+          '@type': 'Person',
+          '@id': `${site}#joao-pedro-frederes`,
+          name: p.nomeCompleto.valor,
+          jobTitle: `${p.profissao.valor} pediátrico`,
+          description: `${p.profissao.valor}, ${tituloProfissional().toLowerCase()}, mestre em ${p.titulos.mestrado.valor.programa}. Atende bebês e crianças em Lages (SC).`,
+          url: site,
+          image: new URL('/og.jpg', site).href,
+          identifier: registroCrefito(),
+          hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Registro profissional', name: registroCrefito() },
+          alumniOf: { '@type': 'CollegeOrUniversity', name: 'Uniplac (Universidade do Planalto Catarinense)' },
+          knowsAbout: ['Fisioterapia pediátrica', 'Fisioterapia neuropediátrica', 'Desenvolvimento motor infantil', 'Transtorno do espectro autista (aspectos motores)'],
+          worksFor: [
+            { '@id': `${site}#atendimento` },
+            ...p.vinculos.map((v) => ({ '@type': 'Organization', name: v.nome, sameAs: instagramUrl(v.instagram) })),
+          ],
+          workLocation: { '@type': 'Place', name: u.nome, address: 'Rua Frei Rogério, 394, Centro, Lages (SC)' },
+          sameAs: [instagramUrl()],
+        },
+      ],
     })
   : null;
 ---

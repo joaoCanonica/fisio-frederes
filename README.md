@@ -42,6 +42,7 @@ Pesquisa de conteúdo de saúde: `docs/pesquisa/`. Conformidade: `docs/COMPLIANC
 
 ## Deploy (Vercel)
 - Projeto `fisio-frederes`, ligado ao GitHub. `vercel.json` define install/build, cabeçalhos de segurança, redirect www → domínio principal e cache.
+- Google/IA: ver `docs/SEO.md` (Search Console com a variável `GOOGLE_SITE_VERIFICATION`, Perfil da Empresa, links).
 - Sem `SITE_ENV=production`, todo deploy sai **em revisão** (`noindex`, robots `Disallow: /`, faixa amarela).
 - Go-live: registrar **fisiojoaofrederes.com.br** no Registro.br, adicioná-lo em Settings → Domains na Vercel (seguir os DNS indicados), definir `SITE_ENV=production` no ambiente Production e fazer um novo deploy. `SITE_URL` é opcional (o domínio já é o padrão).
 
